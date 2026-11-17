@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0f14">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self' https://*.trycloudflare.com https://api.github.com; img-src 'self' data: https://*.trycloudflare.com; base-uri 'none'; form-action 'none'">
+<title>Mein Haus in Flexhausen</title>
+<style>
+:root{--bg:#0d0f14;--card:#171a22;--line:#2a2f3c;--text:#f3f1ea;--dim:#a4a8b5;--gold:#f5c542;--gold2:#ffe9a6;--ok:#57d38c;--warn:#ff8a5c}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+body{min-height:100vh;padding:20px 16px 40px;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+main{max-width:520px;margin:0 auto}
+h1{font-size:30px;line-height:1.1;margin:8px 0 4px;letter-spacing:.5px;font-weight:900;color:var(--gold);text-transform:uppercase}
+.sub{color:var(--dim);margin:0 0 18px}
+form{display:flex;gap:8px;margin-bottom:8px}
+.at{position:relative;flex:1;min-width:0}
+.at span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--dim);font-weight:700}
+input{width:100%;height:52px;border-radius:14px;border:2px solid var(--line);background:#10131a;color:var(--text);font:inherit;font-size:18px;padding:0 14px 0 34px;outline:none}
+input:focus{border-color:var(--gold)}
+button{height:52px;padding:0 20px;border:0;border-radius:14px;background:var(--gold);color:#1b1503;font:inherit;font-weight:800;font-size:17px;cursor:pointer;white-space:nowrap}
+button:active{transform:scale(.98)}
+.hint{color:var(--dim);font-size:14px;margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:16px}
+.who{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.who b{font-size:22px;line-height:1.2;overflow-wrap:anywhere}
+.who small{display:block;color:var(--dim);font-size:14px;overflow-wrap:anywhere}
+.rank{flex:none;text-align:center;background:#10131a;border:1px solid var(--line);border-radius:14px;padding:6px 12px}
+.rank b{display:block;font-size:22px;color:var(--gold)}
+.rank small{font-size:12px}
+.pic{margin:14px -6px 6px;border-radius:14px;overflow:hidden;background:linear-gradient(#1c2a4a,#31507c 62%,#2f5a36 62%,#254a2c)}
+.pic svg{display:block;width:100%;height:auto}
+.pic img{display:block;margin:0 auto;padding:10px 0 0;max-width:100%;max-height:360px;width:auto;height:auto}
+.lvl{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:10px}
+.lvl .n{font-size:15px;font-weight:800;color:#1b1503;background:var(--gold);border-radius:999px;padding:3px 12px}
+.lvl .h{font-size:22px;font-weight:800}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.num{background:#10131a;border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.num b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+.num small{color:var(--dim);font-size:13px}
+.bar{height:14px;border-radius:999px;background:#10131a;border:1px solid var(--line);overflow:hidden;margin:8px 0 6px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .6s}
+.next{font-size:15px}
+.next b{color:var(--gold2)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{font-size:13px;border-radius:999px;padding:4px 10px;background:#10131a;border:1px solid var(--line);color:var(--dim)}
+.tag.ok{color:var(--ok);border-color:#285a3f}
+.tag.warn{color:var(--warn);border-color:#6b3a28}
+.live{display:flex;align-items:center;gap:6px;color:var(--dim);font-size:13px;margin-top:12px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:p 1.6s infinite}
+.dot.off{background:var(--warn);animation:none}
+@keyframes p{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}.bar i{transition:none}}
+.msg{color:var(--dim)}
+.sug{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.sug button{height:auto;padding:10px 14px;text-align:left;background:#10131a;color:var(--text);border:1px solid var(--line);font-weight:600;font-size:16px;white-space:normal;overflow-wrap:anywhere}
+.sug small{color:var(--dim);font-weight:400}
+h2{font-size:15px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
+ol{list-style:none;margin:0;padding:0}
+li{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+li:first-child{border-top:0}
+li .p{flex:none;width:26px;color:var(--gold);font-weight:800;text-align:right}
+li .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+li .lv{flex:none;color:var(--dim);font-size:14px;font-variant-numeric:tabular-nums}
+footer{color:var(--dim);font-size:13px;text-align:center;margin-top:8px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <h1>Flexhausen</h1>
+  <p class="sub">Dein Haus aus dem TikTok-LIVE von @flexhausen</p>
+  <form id="f" autocomplete="off">
+    <label class="at"><span>@</span><input id="q" name="name" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40" placeholder="dein TikTok-Name" aria-label="Dein TikTok-Name"></label>
+    <button type="submit">Zeigen</button>
+  </form>
+  <p class="hint">Gib deinen TikTok-Benutzernamen ein (der mit dem @) oder deinen Anzeigenamen.</p>
+
+  <section id="out" class="card" hidden aria-live="polite"></section>
+
+  <section class="card">
+    <h2>Die besten Zehn</h2>
+    <ol id="top"><li class="msg">lädt …</li></ol>
+    <div class="live"><span id="dot" class="dot"></span><span id="tot">–</span></div>
+  </section>
+  <footer>Zahlen und Haus direkt aus dem Spiel, alle zwei Sekunden neu.</footer>
+</main>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id) }
+  var fmt = function (n) { return Math.round(n || 0).toLocaleString('de-DE') }
+  var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e }
+  var current = ''; var timer = 0; var busy = false; var lastImg = null; var lastSrc = ''
+
+  /* the house as a drawing: it grows with the level (wider, higher, finer) */
+  function drawing (level) {
+    var NS = 'http://www.w3.org/2000/svg'
+    var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 320 200'); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Haus der Stufe ' + level)
+    var add = function (tag, a) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e }
+    var L = Math.max(1, Math.min(20, level | 0))
+    var kinds = [['#8a5a33', '#5d3a1e', '#6b3f22'], ['#8d9099', '#5f626b', '#7a3b30'], ['#e9dcc0', '#b9a67e', '#8a4a36'], ['#f2f3f5', '#c3c7d1', '#3c4250'], ['#dff1fb', '#9fcbe6', '#5b89a8'], ['#1b1638', '#ff3fd0', '#31e6ff'], ['#b9b3a6', '#8a8376', '#5a6b8c'], ['#9fe9ff', '#56c2ea', '#e8fbff'], ['#f5d98a', '#d1a53a', '#fff0c2'], ['#ffffff', '#f5c542', '#ffe9a6']]
+    var kind = L <= 3 ? 0 : L <= 6 ? 1 : L <= 9 ? 2 : L <= 12 ? 3 : L <= 15 ? 4 : L === 16 ? 5 : L === 17 ? 6 : L === 18 ? 7 : L === 19 ? 8 : 9
+    var c = kinds[kind]
+    var floors = L <= 2 ? 1 : L <= 5 ? 2 : L <= 9 ? 3 : L <= 12 ? 4 : L <= 15 ? 5 : L === 18 ? 9 : L === 16 ? 7 : 6
+    var w = L === 18 ? 96 : Math.min(230, 84 + L * 8); var fh = floors > 6 ? 15 : 22
+    var h = floors * fh; var x = 160 - w / 2; var g = 172; var y = g - h
+    if (L >= 19) add('circle', { cx: 160, cy: y - 26, r: 70, fill: c[1], opacity: '.16' })
+    if (L === 17) { [x - 16, x + w - 12].forEach(function (tx) { add('rect', { x: tx, y: y - 26, width: 28, height: h + 26, fill: c[1] }); add('path', { d: 'M' + tx + ' ' + (y - 26) + 'h7v-8h7v8h7v-8h7v8', fill: 'none', stroke: c[1], 'stroke-width': 7 }) }) }
+    add('rect', { x: x, y: y, width: w, height: h, fill: c[0], stroke: kind === 5 ? c[1] : c[1], 'stroke-width': kind === 5 ? 3 : 2, rx: kind >= 3 ? 3 : 1 })
+    // roof
+    if (kind <= 2) add('path', { d: 'M' + (x - 10) + ' ' + y + 'L160 ' + (y - 34 - L) + 'L' + (x + w + 10) + ' ' + y + 'Z', fill: c[2] })
+    else if (kind === 6) add('path', { d: 'M' + x + ' ' + y + 'h12v-9h12v9h12v-9h12v9h12v-9h12v9h12v-9h12v9', fill: 'none', stroke: c[1], 'stroke-width': 6 })
+    else if (kind === 7) add('path', { d: 'M' + x + ' ' + y + 'L160 ' + (y - 46) + 'L' + (x + w) + ' ' + y + 'Z', fill: c[2], stroke: c[1], 'stroke-width': 2 })
+    else if (kind === 8) { add('path', { d: 'M' + (160 - 46) + ' ' + y + 'a46 40 0 0 1 92 0Z', fill: c[1] }); add('rect', { x: 158, y: y - 56, width: 4, height: 18, fill: c[2] }) }
+    else if (kind === 9) { add('path', { d: 'M' + (x - 12) + ' ' + y + 'L160 ' + (y - 40) + 'L' + (x + w + 12) + ' ' + y + 'Z', fill: c[1] }); for (var k = 0; k < 6; k++) add('rect', { x: x + 8 + k * (w - 28) / 5, y: y + 4, width: 12, height: h - 4, fill: c[2] }) }
+    else add('rect', { x: x - 6, y: y - 7, width: w + 12, height: 8, fill: c[2], rx: 2 })
+    if (kind <= 1) add('rect', { x: x + w - 26, y: y - 30, width: 12, height: 26, fill: c[1] })
+    // windows and door
+    var cols = Math.max(2, Math.floor(w / 30)); var lit = kind === 5 ? c[2] : '#ffd76a'
+    for (var f = 0; f < floors; f++) for (var i = 0; i < cols; i++) {
+      if (f === floors - 1 && i === Math.floor(cols / 2) && kind !== 9) continue
+      if (kind === 9) continue
+      var wx = x + 9 + i * ((w - 18 - 14) / Math.max(1, cols - 1)); var wy = y + f * fh + 5
+      add('rect', { x: wx, y: wy, width: 14, height: fh - 10, fill: (f * 3 + i * 5 + L) % 4 ? lit : '#2b3145', rx: 1.5, opacity: kind === 4 || kind === 7 ? '.85' : '1' })
+    }
+    add('rect', { x: 160 - 9, y: g - Math.min(30, fh + 6), width: 18, height: Math.min(30, fh + 6), fill: kind === 9 ? c[1] : '#3a2414', rx: 2 })
+    if (L >= 8 && kind < 5) add('rect', { x: x + w + 6, y: g - 20, width: 38, height: 20, fill: c[1], rx: 2 })
+    if (L >= 13 && kind === 4) add('ellipse', { cx: x - 30, cy: g + 9, rx: 28, ry: 7, fill: '#49c6ff' })
+    if (L >= 20) for (var s = 0; s < 3; s++) add('ellipse', { cx: 60 + s * 100, cy: g + 6 + (s % 2) * 6, rx: 46, ry: 10, fill: '#ffffff', opacity: '.75' })
+    return svg
+  }
+
+  function show (d) {
+    var out = $('out'); out.hidden = false; out.textContent = ''
+    if (d.error) { out.appendChild(el('p', 'msg', d.error)); return }
+    if (!d.found) {
+      if (d.suggestions && d.suggestions.length) {
+        out.appendChild(el('p', 'msg', 'Kein genauer Treffer. Meinst du:'))
+        var box = el('div', 'sug')
+        d.suggestions.forEach(function (s) { var b = el('button'); b.type = 'button'; b.appendChild(el('span', '', s.name + ' ')); b.appendChild(el('small', '', '@' + s.id + ' · Stufe ' + s.level)); b.addEventListener('click', function () { $('q').value = s.id; look(s.id, true) }); box.appendChild(b) })
+        out.appendChild(box)
+      } else out.appendChild(el('p', 'msg', 'Unter diesem Namen steht noch kein Haus in Flexhausen. Komm in den LIVE und lass ein Like da – dann hast du eins.'))
+      return
+    }
+    var h = d.house
+    var who = el('div', 'who'); var left = el('div'); left.appendChild(el('b', '', h.name)); left.appendChild(el('small', '', '@' + h.id)); who.appendChild(left)
+    var rank = el('div', 'rank'); rank.appendChild(el('b', '', '#' + fmt(h.rank))); rank.appendChild(el('small', '', 'von ' + fmt(d.totals.residents))); who.appendChild(rank)
+    out.appendChild(who)
+    var pic = el('div', 'pic')
+    if (h.img) {
+      /* the same picture stays the same element from reading to reading: nothing flickers */
+      var src = BASE + h.img
+      if (!lastImg || lastSrc !== src) { lastSrc = src; lastImg = el('img'); lastImg.alt = 'Haus der Stufe ' + h.level + ' – ' + h.house; lastImg.decoding = 'async'; lastImg.onerror = (function (lv, im) { return function () { if (im.parentNode) im.parentNode.replaceChild(drawing(lv), im); lastImg = null } })(h.level, lastImg); lastImg.src = src }
+      pic.appendChild(lastImg)
+    } else pic.appendChild(drawing(h.level))
+    out.appendChild(pic)
+    var lvl = el('div', 'lvl'); lvl.appendChild(el('span', 'n', 'Stufe ' + h.level)); lvl.appendChild(el('span', 'h', h.house)); out.appendChild(lvl)
+    var nums = el('div', 'nums')
+    var a = el('div', 'num'); a.appendChild(el('b', '', fmt(h.likes))); a.appendChild(el('small', '', 'Likes')); nums.appendChild(a)
+    var b = el('div', 'num'); b.appendChild(el('b', '', fmt(h.coins))); b.appendChild(el('small', '', 'Coins')); nums.appendChild(b)
+    out.appendChild(nums)
+    if (h.next) {
+      var bar = el('div', 'bar'); var fill = el('i'); bar.appendChild(fill); out.appendChild(bar)
+      setTimeout(function () { fill.style.width = Math.round(h.next.part * 100) + '%' }, 30)
+      var nx = el('div', 'next'); nx.appendChild(document.createTextNode('Noch ')); nx.appendChild(el('b', '', fmt(h.next.likes) + ' Likes')); nx.appendChild(document.createTextNode(' oder ')); nx.appendChild(el('b', '', fmt(h.next.coins) + ' Coins'))
+      nx.appendChild(document.createTextNode(' bis Stufe ' + h.next.level + (h.next.name ? ' – ' + h.next.name : ''))); out.appendChild(nx)
+    } else { var done = el('div', 'next'); done.appendChild(el('b', '', 'Höchste Stufe erreicht – dein Haus ist fertig.')); out.appendChild(done) }
+    var tags = el('div', 'tags')
+    tags.appendChild(el('span', 'tag ' + (h.onMap ? 'ok' : 'warn'), h.onMap ? 'steht in der Stadt' : 'gerade eingelagert – beim nächsten Like steht es wieder'))
+    if (h.damaged) tags.appendChild(el('span', 'tag warn', 'beschädigt'))
+    if (h.hotel) tags.appendChild(el('span', 'tag ok', 'Hotel Stufe ' + h.hotel.level + (h.hotel.name ? ' – ' + h.hotel.name : '')))
+    if (h.followed) tags.appendChild(el('span', 'tag', 'Haustier vor der Tür'))
+    if (h.vaultWins) tags.appendChild(el('span', 'tag', 'Tresor geknackt: ' + h.vaultWins + '×'))
+    out.appendChild(tags)
+    var live = el('div', 'live'); live.appendChild(el('span', 'dot' + (d.fresh ? '' : ' off'))); live.appendChild(el('span', '', d.fresh ? 'live – wird alle 2 Sekunden neu gelesen' : 'der Stream läuft gerade nicht – letzter Stand')); out.appendChild(live)
+  }
+
+  /* On the fixed address (GitHub Pages) the numbers come from the game's own address, which changes now and then:
+     it stands in adresse.json next to this page. If the game does not answer there, the newest address is fetched
+     once more – straight from GitHub, past every cache – and the question is asked again. */
+  var BASE = ''
+  var STATIC = /\.github\.io$/.test(location.hostname)
+  function resolve (fresh) {
+    /* owner.github.io/repo/ – or, for the site of an organization, owner.github.io/ with the repository owner.github.io */
+    var owner = location.hostname.split('.')[0]; var repo = location.pathname.split('/').filter(Boolean)[0] || (owner + '.github.io')
+    var pages = function () { return fetch('adresse.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json() }) }
+    var api = function () { return fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/adresse.json', { headers: { Accept: 'application/vnd.github.raw+json' }, cache: 'no-store' }).then(function (r) { return r.json() }) }
+    return (fresh ? api() : pages()).catch(function () { return fresh ? pages() : api() }).then(function (j) {
+      var a = String((j && j.api) || '').replace(/\/+$/, '')
+      if (!/^https:\/\/[a-z0-9-]+\.trycloudflare\.com$/.test(a)) throw new Error('keine Adresse')
+      BASE = a; return a
+    })
+  }
+  function get (path) {
+    var go = function () { return fetch(BASE + path, { cache: 'no-store' }).then(function (r) { if (!r.ok && r.status !== 429) throw new Error('weg'); return r.json() }) }
+    if (!STATIC) return go()
+    return (BASE ? Promise.resolve() : resolve(false)).then(go).catch(function () { return resolve(true).then(go) })
+  }
+  function look (name, first) {
+    name = String(name || '').trim(); if (!name) return
+    current = name; clearTimeout(timer)
+    if (first) { var out = $('out'); out.hidden = false; out.textContent = ''; out.appendChild(el('p', 'msg', 'suche …')) ; try { localStorage.setItem('flexhausen-name', name) } catch (e) {} ; try { history.replaceState(null, '', '?name=' + encodeURIComponent(name)) } catch (e) {} }
+    if (busy) return
+    busy = true
+    get('/api/haus?name=' + encodeURIComponent(name)).then(function (d) { if (name === current) { show(d); if (d.found) timer = setTimeout(function () { if (!document.hidden) look(current); else timer = setTimeout(function () { look(current) }, 4000) }, 2000) } })
+      .catch(function () { if (first) show({ error: 'Gerade keine Verbindung zum Spiel. Versuch es gleich noch einmal.' }); else timer = setTimeout(function () { look(current) }, 8000) })
+      .then(function () { busy = false })
+  }
+  function top () {
+    get('/api/top').then(function (d) {
+      var ol = $('top'); ol.textContent = ''
+      if (!d.top || !d.top.length) ol.appendChild(el('li', 'msg', 'Noch niemand da.'))
+      ;(d.top || []).forEach(function (h) { var li = el('li'); li.appendChild(el('span', 'p', h.rank + '.')); li.appendChild(el('span', 'nm', h.name)); li.appendChild(el('span', 'lv', 'Stufe ' + h.level + ' · ' + fmt(h.likes) + ' Likes')); ol.appendChild(li) })
+      $('tot').textContent = fmt(d.totals.residents) + ' Häuser · ' + fmt(d.totals.likes) + ' Likes' + (d.fresh ? '' : ' · Stream läuft gerade nicht')
+      $('dot').className = 'dot' + (d.fresh ? '' : ' off')
+    }).catch(function () { $('dot').className = 'dot off' })
+  }
+  $('f').addEventListener('submit', function (e) { e.preventDefault(); look($('q').value, true); $('q').blur() })
+  var start = ''
+  try { start = new URLSearchParams(location.search).get('name') || localStorage.getItem('flexhausen-name') || '' } catch (e) {}
+  if (start) { $('q').value = start.replace(/^@+/, ''); look(start, true) }
+  top(); setInterval(function () { if (!document.hidden) top() }, 10000)
+})()
+</script>
+</body>
+</html>
