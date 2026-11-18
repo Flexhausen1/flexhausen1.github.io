@@ -85,8 +85,8 @@ input:focus{border-color:var(--gold)}
 .sug small{color:var(--dim);font-weight:400}
 
 /* ranking */
-.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;margin-bottom:14px}
-.seg button{min-height:40px;border-radius:10px;font-size:14px;font-weight:700;color:var(--dim);padding:4px 6px}
+.seg{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;margin-bottom:14px}
+.seg button{min-height:40px;border-radius:10px;font-size:13px;font-weight:700;color:var(--dim);padding:4px 2px}
 .seg button[aria-pressed=true]{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#1b1503}
 .pod{display:grid;grid-template-columns:1fr 1.14fr 1fr;gap:8px;align-items:end;margin-bottom:14px}
 .pd{display:block;min-width:0;padding:8px 8px 10px;text-align:center;border-radius:16px;background:var(--card);border:1px solid var(--line)}
@@ -112,6 +112,36 @@ ol{list-style:none;margin:0;padding:0}
 .list li.i .row .nm{color:var(--gold2)}
 .list li.i{background:rgba(245,197,66,.08);margin:0 -14px;padding:0 14px;border-top-color:transparent}
 .mine b.big{font-size:26px;color:var(--gold)}
+
+/* map */
+.mapbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.mwrap{border-radius:16px;border:1px solid var(--line);background:#0a0d16;overflow:auto;max-height:72vh;-webkit-overflow-scrolling:touch}
+.min{position:relative;width:100%}
+.min.big{width:260%}
+canvas{display:block;width:100%;height:auto;touch-action:manipulation;cursor:pointer}
+.pin,.sel{position:absolute;width:0;height:0;pointer-events:none}
+.pin:before,.sel:before{content:"";position:absolute;left:-10px;top:-10px;width:20px;height:20px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.65),0 0 14px #fff;animation:pin 1.4s infinite}
+.sel:before{border-color:var(--gold);box-shadow:0 0 0 2px rgba(0,0,0,.65);animation:none}
+@keyframes pin{50%{transform:scale(1.45);opacity:.65}}
+.leg{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:12px;margin:10px 2px 14px}
+.leg i{flex:1;height:10px;border-radius:999px;background:linear-gradient(90deg,#5f7f96,#3fb0a8,#57d38c,#b8d94a,#f5c542,#ff9d4a,#ff5d73,#c86bff)}
+.leg b{flex:none;width:12px;height:12px;border-radius:3px;background:#161b29;border:1px solid var(--line)}
+.news li{display:flex;gap:10px;align-items:baseline;padding:9px 0}
+.news .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.news .nm b{font-weight:700}
+.news small{flex:none;color:var(--dim);font-size:12px;font-variant-numeric:tabular-nums}
+
+/* idea box, stream times, series */
+textarea{display:block;width:100%;min-height:104px;margin-top:12px;border-radius:14px;border:2px solid var(--line);background:var(--card2);color:var(--text);font:inherit;padding:12px 14px;outline:none;resize:vertical}
+textarea:focus{border-color:var(--gold)}
+.idrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+.idrow small{color:var(--dim);font-size:13px;font-variant-numeric:tabular-nums}
+.b1[disabled]{opacity:.55}
+.fine{color:var(--dim);font-size:12px;margin:12px 0 0}
+.okmsg{color:var(--gold2);font-weight:700;margin-top:10px}
+.znote{margin:8px 0 0;color:var(--gold2);font-weight:700}
+.vid{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+a.b2{text-decoration:none}
 
 /* levels */
 .st{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -144,8 +174,8 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
 
 /* categories at the bottom */
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:8;padding:0 10px calc(10px + env(safe-area-inset-bottom));pointer-events:none}
-.nav div{pointer-events:auto;max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:6px;border-radius:22px;background:rgba(18,21,30,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 12px 36px rgba(0,0,0,.55)}
-.nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;border-radius:16px;color:var(--dim);font-size:12px;font-weight:700}
+.nav div{pointer-events:auto;max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:6px;border-radius:22px;background:rgba(18,21,30,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 12px 36px rgba(0,0,0,.55)}
+.nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;min-width:0;border-radius:16px;color:var(--dim);font-size:11.5px;font-weight:700;white-space:nowrap}
 .nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .nav button[aria-current=page]{color:#1b1503;background:linear-gradient(180deg,var(--gold2),var(--gold))}
 
@@ -154,8 +184,8 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
 .ov img{max-width:100%;max-height:60vh;border-radius:14px;border:1px solid var(--line)}
 .ov .rowb{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .ov p{margin:0;color:var(--dim);font-size:14px;text-align:center}
-@media (max-width:359px){.b1,.btn{padding:0 14px;font-size:16px}.nav button{font-size:11px}h1{font-size:23px}}
-@media (prefers-reduced-motion:reduce){.dot,.go i{animation:none}.bar i{transition:none}button:active,.btn:active,.go:active{transform:none}}
+@media (max-width:359px){.b1,.btn{padding:0 14px;font-size:16px}.nav button{font-size:10.5px}.seg button{font-size:12px}h1{font-size:23px}}
+@media (prefers-reduced-motion:reduce){.dot,.go i,.pin:before{animation:none}.bar i{transition:none}button:active,.btn:active,.go:active{transform:none}}
 </style>
 </head>
 <body>
@@ -191,13 +221,33 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     </section>
   </section>
 
+  <section id="t-karte" hidden>
+    <h2>Stadtkarte</h2>
+    <p class="lead">Live aus dem Spiel: jedes Feld ist ein Grundstück. Tippe auf ein Haus.</p>
+    <div class="mapbar">
+      <button type="button" id="mFind" class="b2">Mein Haus finden</button>
+      <button type="button" id="mZoom" class="b2">Größer</button>
+    </div>
+    <div id="mWrap" class="mwrap"><div id="mIn" class="min"><canvas id="mC" width="10" height="10" role="img" aria-label="Karte von Flexhausen: jedes Feld ist ein Grundstück, die Farbe zeigt die Stufe des Hauses"></canvas><i id="mPin" class="pin" hidden></i><i id="mSel" class="sel" hidden></i></div></div>
+    <div class="leg"><b></b><span>frei</span><span>Stufe 1</span><i></i><span id="legMax">25</span></div>
+    <section id="mInfo" class="card" hidden aria-live="polite"></section>
+    <p id="mMe" class="hint" hidden></p>
+    <section class="card list news">
+      <h3>Gerade passiert</h3>
+      <ol id="mNews"><li class="msg">lädt …</li></ol>
+    </section>
+    <div class="live"><span id="mDot" class="dot"></span><span id="mTot">–</span></div>
+  </section>
+
   <section id="t-rang" hidden>
     <h2>Rangliste</h2>
-    <p class="lead">Tippe auf einen Namen, um das Haus zu sehen.</p>
+    <p class="lead" id="rLead">Tippe auf einen Namen, um das Haus zu sehen.</p>
     <div class="seg" role="group" aria-label="Art der Rangliste">
-      <button type="button" id="a-stufe" aria-pressed="true">Top-Häuser</button>
-      <button type="button" id="a-likes" aria-pressed="false">Meiste Likes</button>
-      <button type="button" id="a-neu" aria-pressed="false">Neu da</button>
+      <button type="button" id="a-stufe" aria-pressed="true">Top</button>
+      <button type="button" id="a-likes" aria-pressed="false">Likes</button>
+      <button type="button" id="a-heute" aria-pressed="false">Heute</button>
+      <button type="button" id="a-woche" aria-pressed="false">Woche</button>
+      <button type="button" id="a-neu" aria-pressed="false">Neu</button>
     </div>
     <div id="pod" class="pod"></div>
     <section id="mine" class="card mine" hidden></section>
@@ -222,6 +272,26 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
       </ol>
     </section>
     <section class="card">
+      <h3>Deine Idee für Flexhausen</h3>
+      <p class="msg">Was fehlt in der Stadt? Schreib es uns. Jede Idee bekommt eine Ticket-Nummer.</p>
+      <textarea id="ideeT" maxlength="400" rows="4" placeholder="Zum Beispiel: ein Fußballplatz neben dem Marktplatz" aria-label="Deine Idee für Flexhausen"></textarea>
+      <div class="idrow"><small id="ideeN">0 / 400</small><button type="button" id="ideeB" class="b1">Idee senden</button></div>
+      <p id="ideeM" class="msg okmsg" hidden aria-live="polite"></p>
+      <p class="fine">Deine Idee und dein TikTok-Name (falls du ihn bei „Mein Haus“ eingegeben hast) gehen nur an das Team von Flexhausen. Sie werden nicht veröffentlicht.</p>
+    </section>
+    <section class="card">
+      <h3>Stream-Zeiten</h3>
+      <p id="zNow" class="msg">lädt …</p>
+      <p id="zNote" class="znote" hidden></p>
+      <ol id="zList" class="cmd"></ol>
+    </section>
+    <section class="card">
+      <h3>Die Serie „Sieben Tage“</h3>
+      <p class="msg">Kurze Filme über Bürgermeister Momo und seine Stadt.</p>
+      <div id="vList" class="vid"></div>
+      <a class="b2 back" href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener">Alle Videos auf TikTok</a>
+    </section>
+    <section class="card">
       <h3>Das kannst du in den Chat schreiben</h3>
       <ol class="cmd">
         <li><code>haus</code><span>Dein Haus wird gezeigt<small>Ist viel los, kommt eine kurze Einblendung.</small></span></li>
@@ -242,9 +312,10 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
 </main>
 <nav class="nav" aria-label="Bereiche"><div>
   <button type="button" id="n-haus" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>Mein Haus</button>
+  <button type="button" id="n-karte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14"/><path d="M15 6v14"/></svg>Karte</button>
   <button type="button" id="n-rang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/></svg>Rangliste</button>
   <button type="button" id="n-stufen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20v-5h4v5"/><path d="M10 20V10h4v10"/><path d="M15 20V5h4v15"/></svg>Stufen</button>
-  <button type="button" id="n-info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.5"/></svg>So geht’s</button>
+  <button type="button" id="n-info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.5"/></svg>Mehr</button>
 </div></nav>
 <div id="ov" class="ov" hidden></div>
 <script>
@@ -256,7 +327,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
   /* own = the viewer's own name (typed in or remembered); current = the house on the screen (may be somebody else's,
      opened from a board) */
   var own = ''; var art = 'stufe'; var FOLLOW = null; var myLevel = 0; var lvLoaded = false; var lastSig = ''
-  var TABS = ['haus', 'rang', 'stufen', 'info']
+  var TABS = ['haus', 'karte', 'rang', 'stufen', 'info']; var ARTS = ['stufe', 'likes', 'heute', 'woche', 'neu']; var tabNow = 'haus'; var MAXLV = 25; var infoAt = 0
   var same = function (a, b) { return String(a || '').replace(/^@+/, '').toLowerCase() === String(b || '').replace(/^@+/, '').toLowerCase() }
   var ago = function (t) {
     var m = Math.max(0, Math.round((Date.now() - t) / 60000))
@@ -432,6 +503,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     if (h.followed) tags.appendChild(el('span', 'tag', 'Haustier vor der Tür'))
     if (h.vaultWins) tags.appendChild(el('span', 'tag', 'Tresor geknackt: ' + h.vaultWins + '×'))
     out.appendChild(tags)
+    if (h.onMap && own && (same(own, current) || same(own, h.id))) { var mb = el('button', 'b2 back', 'Auf der Karte zeigen'); mb.type = 'button'; mb.addEventListener('click', function () { wantFind = true; tab('karte') }); out.appendChild(mb) }
     var sb = el('button', 'b1 share', 'Haus teilen'); sb.type = 'button'; sb.addEventListener('click', function () { share(h, d) }); out.appendChild(sb)
     var lv2 = el('div', 'live'); lv2.appendChild(el('span', 'dot' + (d.fresh ? '' : ' off'))); lv2.appendChild(el('span', '', d.fresh ? 'live – wird alle 2 Sekunden neu gelesen' : 'der Stream läuft gerade nicht – letzter Stand')); out.appendChild(lv2)
   }
@@ -478,9 +550,12 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     if (TABS.indexOf(t) < 0) t = 'haus'
     TABS.forEach(function (x) { $('t-' + x).hidden = x !== t; var b = $('n-' + x); if (x === t) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current') })
     try { history.replaceState(null, '', location.pathname + location.search + (t === 'haus' ? '' : '#' + t)) } catch (e) {}
+    tabNow = t
     if (!keep) window.scrollTo(0, 0)
     if (t === 'rang') board()
     if (t === 'stufen' && !lvLoaded) levels()
+    if (t === 'karte') karte()
+    if (t === 'info') about()
   }
   function open (id) { $('q').value = id; tab('haus'); look(id, true, !!own && !same(own, id)) }
   /* whether the first house needs a follow (the rule of the stream): the texts of the page follow it */
@@ -496,12 +571,16 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     var t = d.totals || {}
     $('sH').textContent = fmt(t.residents); $('sL').textContent = fmt(t.likes); $('sN').textContent = typeof t.today === 'number' ? fmt(t.today) : '–'
     if (typeof t.follow === 'boolean') follow(t.follow)
-    $('tot').textContent = d.fresh ? 'live – wird laufend neu gelesen' : 'der Stream läuft gerade nicht – letzter Stand'
-    $('dot').className = 'dot' + (d.fresh ? '' : ' off')
+    if (t.levels) { MAXLV = t.levels; $('legMax').textContent = t.levels }
+    $('tot').textContent = $('mTot').textContent = d.fresh ? 'live – wird laufend neu gelesen' : 'der Stream läuft gerade nicht – letzter Stand'
+    $('dot').className = $('mDot').className = 'dot' + (d.fresh ? '' : ' off')
     live(!!d.fresh)
   }
-  var under = function (h) { return art === 'likes' ? fmt(h.likes) + ' Likes' : art === 'neu' ? ago(h.since) : 'Stufe ' + h.level }
-  var side = function (h) { return art === 'likes' ? 'Stufe ' + h.level : art === 'neu' ? 'Stufe ' + h.level + ' · ' + ago(h.since) : 'Stufe ' + h.level + ' · ' + fmt(h.likes) + ' Likes' }
+  var plus = function (h) { return '+' + fmt(h.gain) + ' Likes' }
+  var under = function (h) { return art === 'likes' ? fmt(h.likes) + ' Likes' : art === 'neu' ? ago(h.since) : art === 'heute' || art === 'woche' ? plus(h) : 'Stufe ' + h.level }
+  var side = function (h) { return art === 'likes' ? 'Stufe ' + h.level : art === 'neu' ? 'Stufe ' + h.level + ' · ' + ago(h.since) : art === 'heute' || art === 'woche' ? 'Stufe ' + h.level + ' · ' + plus(h) : 'Stufe ' + h.level + ' · ' + fmt(h.likes) + ' Likes' }
+  var LEAD = { stufe: 'Die größten Häuser der Stadt. Tippe auf einen Namen, um das Haus zu sehen.', likes: 'Wer insgesamt die meisten Likes gegeben hat.', heute: 'Die meisten Likes seit heute 0 Uhr – jeden Tag fängt es neu an.', woche: 'Die meisten Likes seit Montag – jede Woche fängt es neu an.', neu: 'Wer zuletzt eingezogen ist.' }
+  var OF = { stufe: ' Häusern', likes: ' nach Likes', heute: ' mit Likes heute', woche: ' mit Likes diese Woche' }
   function rowOf (h, me) {
     var li = el('li', me ? 'i' : ''); var b = el('button', 'row'); b.type = 'button'
     b.appendChild(el('span', 'p', art === 'neu' ? '' : h.pos + '.')); b.appendChild(el('span', 'nm', h.name)); b.appendChild(el('span', 'lv', side(h)))
@@ -527,17 +606,141 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
       var ol = $('rl'); ol.textContent = ''
       if (!d.list.length) ol.appendChild(el('li', 'msg', 'Noch niemand da.'))
       d.list.slice(np).forEach(function (h) { ol.appendChild(rowOf(h, d.me && h.id === d.me.id)) })
-      var box = $('mine'); box.textContent = ''; box.hidden = !d.me
+      var box = $('mine'); box.textContent = ''; var later = !d.me && own && (art === 'heute' || art === 'woche'); box.hidden = !d.me && !later
       if (d.me) {
         box.appendChild(el('h3', '', 'Dein Platz'))
-        var p2 = el('p', 'msg'); p2.appendChild(el('b', 'big', '#' + fmt(d.me.pos))); p2.appendChild(document.createTextNode(' von ' + fmt(d.totals.residents) + (art === 'likes' ? ' nach Likes' : ' Häusern'))); box.appendChild(p2)
+        var p2 = el('p', 'msg'); p2.appendChild(el('b', 'big', '#' + fmt(d.me.pos))); p2.appendChild(document.createTextNode(' von ' + fmt(d.count || d.totals.residents) + (OF[art] || ''))); box.appendChild(p2)
         var near = el('ol', 'list'); d.me.near.forEach(function (h) { near.appendChild(rowOf(h, h.id === d.me.id)) }); box.appendChild(near)
-      }
+      } else if (later) { box.appendChild(el('h3', '', 'Dein Platz')); box.appendChild(el('p', 'msg', art === 'heute' ? 'Heute stehst du noch nicht in dieser Liste.' : 'Diese Woche stehst du noch nicht in dieser Liste.')) }
     }).catch(function () { $('dot').className = 'dot off' })
   }
   function pick (a) {
-    art = a; lastSig = ''
-    ;['stufe', 'likes', 'neu'].forEach(function (x) { $('a-' + x).setAttribute('aria-pressed', x === a ? 'true' : 'false') })
+    art = a; lastSig = ''; $('rLead').textContent = LEAD[a] || ''
+    ARTS.forEach(function (x) { $('a-' + x).setAttribute('aria-pressed', x === a ? 'true' : 'false') })
+  }
+
+  /* ---- the map (18.11.2026 ~16:50, the streamer: "Die Stadtkarte soll live funktionieren, immer aktualisiert werden")
+     The plots lie in rings around the market place, exactly as in the game (plotGrid in stinkhausen.js): ring 2 is the
+     first one, every ring runs through dx and dz from -ring to +ring. One field per plot, its color is the level of
+     the house; it is read again every four seconds while the map is on the screen, and a field that changed flashes. */
+  var GRID = null; var CELL = {}; var mapStr = ''; var flash = {}; var mapMe = null; var mapBig = false; var mapT = 0; var mapBusy = false; var wantFind = false
+  var STOPS = ['#5f7f96', '#3fb0a8', '#57d38c', '#b8d94a', '#f5c542', '#ff9d4a', '#ff5d73', '#c86bff']
+  function grid (total) {
+    var out = []; var R = 2
+    for (var ring = 2; out.length < total; ring++) { R = ring; for (var dx = -ring; dx <= ring && out.length < total; dx++) for (var dz = -ring; dz <= ring && out.length < total; dz++) { if (Math.max(Math.abs(dx), Math.abs(dz)) === ring) out.push([dx, dz]) } }
+    return { cells: out, r: R }
+  }
+  function draw () {
+    if (!GRID) return
+    var c = $('mC'); var w = $('mIn').clientWidth; if (!w) return
+    var px = Math.round(w * Math.min(window.devicePixelRatio || 1, mapBig ? 2 : 3))
+    if (c.width !== px) { c.width = px; c.height = px }
+    var g = c.getContext('2d'); var n = GRID.r * 2 + 1; var s = px / n; var pad = Math.max(0.5, s * 0.09); var now = Date.now()
+    g.fillStyle = '#0a0d16'; g.fillRect(0, 0, px, px)
+    var p0 = (GRID.r - 1) * s + pad; var pw = 3 * s - 2 * pad
+    g.fillStyle = 'rgba(245,197,66,.18)'; g.fillRect(p0, p0, pw, pw); g.strokeStyle = '#f5c542'; g.lineWidth = Math.max(1, s * 0.14); g.strokeRect(p0, p0, pw, pw)
+    for (var i = 0; i < GRID.cells.length; i++) {
+      var lv = parseInt(mapStr.charAt(i) || '0', 36) || 0
+      g.fillStyle = flash[i] > now ? '#ffffff' : lv ? STOPS[Math.min(STOPS.length - 1, Math.floor((lv - 1) * STOPS.length / MAXLV))] : '#161b29'
+      g.fillRect((GRID.cells[i][0] + GRID.r) * s + pad, (GRID.cells[i][1] + GRID.r) * s + pad, s - 2 * pad, s - 2 * pad)
+    }
+  }
+  function place (mark, i) {
+    if (!GRID || i == null || i < 0 || !GRID.cells[i]) { mark.hidden = true; return }
+    var n = GRID.r * 2 + 1
+    mark.style.left = ((GRID.cells[i][0] + GRID.r + 0.5) / n * 100) + '%'; mark.style.top = ((GRID.cells[i][1] + GRID.r + 0.5) / n * 100) + '%'; mark.hidden = false
+  }
+  function center (i) {
+    if (!GRID) return
+    var w = $('mWrap'); var n = GRID.r * 2 + 1; var c = i != null && i >= 0 && GRID.cells[i] ? GRID.cells[i] : [0, 0]; var W = $('mIn').clientWidth
+    w.scrollLeft = (c[0] + GRID.r + 0.5) / n * W - w.clientWidth / 2; w.scrollTop = (c[1] + GRID.r + 0.5) / n * W - w.clientHeight / 2
+  }
+  function zoom (on) {
+    mapBig = on; $('mIn').className = 'min' + (on ? ' big' : ''); $('mZoom').textContent = on ? 'Kleiner' : 'Größer'; draw()
+  }
+  function happened (list) {
+    var ol = $('mNews'); ol.textContent = ''
+    if (!list || !list.length) { ol.appendChild(el('li', 'msg', 'Gerade ist es ruhig.')); return }
+    list.forEach(function (e) {
+      var li = el('li'); var nm = el('span', 'nm'); nm.appendChild(el('b', '', e.name)); nm.appendChild(document.createTextNode(e.in ? ' ist eingezogen' : ' baut aus' + (e.house ? ': ' + e.house : '')))
+      var sec = Math.max(0, Math.round((Date.now() - e.t) / 1000)); li.appendChild(nm); li.appendChild(el('small', '', sec < 60 ? 'vor ' + sec + ' Sek.' : ago(e.t))); ol.appendChild(li)
+    })
+  }
+  function karte () {
+    clearTimeout(mapT)
+    if (tabNow !== 'karte' || mapBusy) return
+    mapBusy = true
+    get('/api/karte' + (own ? '?name=' + encodeURIComponent(own) : '')).then(function (d) {
+      stats(d)
+      if (!GRID || GRID.cells.length !== d.n) { GRID = grid(d.n); CELL = {}; GRID.cells.forEach(function (c, i) { CELL[(c[0] + GRID.r) * 100 + c[1] + GRID.r] = i }); mapStr = '' }
+      var m = String(d.map || ''); var changed = m !== mapStr
+      if (mapStr && mapStr.length === m.length) for (var i = 0; i < m.length; i++) if (m.charAt(i) !== mapStr.charAt(i)) flash[i] = Date.now() + 1300
+      mapStr = m; draw(); if (changed) setTimeout(draw, 1400)
+      mapMe = d.me; place($('mPin'), d.me && d.me.plot != null ? d.me.plot : -1)
+      var hint = $('mMe'); hint.hidden = !(d.me && d.me.plot == null)
+      if (!hint.hidden) hint.textContent = 'Dein Haus ist gerade eingelagert und steht deshalb nicht auf der Karte. Beim nächsten Like steht es wieder.'
+      happened(d.news)
+      if (wantFind) { wantFind = false; findMine() }
+    }).catch(function () { $('mDot').className = 'dot off' }).then(function () { mapBusy = false; if (tabNow === 'karte') mapT = setTimeout(karte, document.hidden ? 9000 : 4000) })
+  }
+  function tapped (e) {
+    if (!GRID || !mapStr) return
+    var r = $('mC').getBoundingClientRect(); var n = GRID.r * 2 + 1
+    var gx = Math.floor((e.clientX - r.left) / r.width * n); var gz = Math.floor((e.clientY - r.top) / r.height * n)
+    var i = CELL[gx * 100 + gz]; var box = $('mInfo'); box.hidden = false; box.textContent = ''
+    if (i == null) { place($('mSel'), -1); box.appendChild(el('p', 'msg', Math.abs(gx - GRID.r) <= 1 && Math.abs(gz - GRID.r) <= 1 ? 'Das ist der Marktplatz in der Mitte der Stadt.' : 'Hier ist kein Grundstück.')); return }
+    place($('mSel'), i)
+    if (!(parseInt(mapStr.charAt(i), 36) > 0)) { box.appendChild(el('p', 'msg', 'Grundstück ' + (i + 1) + ' ist gerade frei.')); return }
+    box.appendChild(el('p', 'msg', 'lädt …'))
+    get('/api/platz?nr=' + i).then(function (d) {
+      box.textContent = ''
+      if (!d.found) { box.appendChild(el('p', 'msg', 'Grundstück ' + (i + 1) + ' ist gerade frei.')); return }
+      var h = d.house; var who = el('div', 'who'); var left = el('div'); left.appendChild(el('b', '', h.name)); left.appendChild(el('small', '', '@' + h.id + ' · Grundstück ' + (i + 1))); who.appendChild(left)
+      var lv = el('div', 'rank'); lv.appendChild(el('b', '', String(h.level))); lv.appendChild(el('small', '', 'Stufe')); who.appendChild(lv); box.appendChild(who)
+      var b = el('button', 'b2 back', 'Haus ansehen'); b.type = 'button'; b.addEventListener('click', function () { open(h.id) }); box.appendChild(b)
+    }).catch(function () { box.textContent = ''; box.appendChild(el('p', 'msg', 'Gerade keine Verbindung zum Spiel.')) })
+  }
+  function findMine () {
+    if (!own) { tab('haus'); try { $('q').focus() } catch (e) {} return }
+    if (mapMe && mapMe.plot != null) { if (!mapBig) zoom(true); place($('mPin'), mapMe.plot); setTimeout(function () { center(mapMe.plot) }, 60); return }
+    var box = $('mInfo'); box.hidden = false; box.textContent = ''
+    box.appendChild(el('p', 'msg', mapMe ? 'Dein Haus ist gerade eingelagert und steht deshalb nicht auf der Karte. Beim nächsten Like steht es wieder.' : 'Unter deinem Namen steht noch kein Haus in der Stadt.'))
+  }
+
+  /* ---- stream times and the series (read from the game once a minute while this area is open) */
+  var clock = function (t) { return new Date(t).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) }
+  var dayOf = function (t) {
+    var a = new Date(t); a.setHours(0, 0, 0, 0); var b = new Date(); b.setHours(0, 0, 0, 0); var diff = Math.round((b - a) / 86400000)
+    return diff === 0 ? 'Heute' : diff === 1 ? 'Gestern' : new Date(t).toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' })
+  }
+  function about () {
+    if (Date.now() - infoAt < 30000) return
+    infoAt = Date.now()
+    get('/api/info').then(function (d) {
+      stats(d)
+      var s = d.sessions || []; var on = !!d.fresh && s.length > 0
+      $('zNow').textContent = on ? 'Jetzt live – seit ' + dayOf(s[0].from).toLowerCase() + ' ' + clock(s[0].from) + ' Uhr.' : s.length ? 'Gerade nicht live. Zuletzt: ' + dayOf(s[0].to).toLowerCase() + ' bis ' + clock(s[0].to) + ' Uhr.' : 'Gerade nicht live.'
+      $('zNote').hidden = !d.note; $('zNote').textContent = d.note || ''
+      var ol = $('zList'); ol.textContent = ''
+      s.slice(on ? 1 : 0).forEach(function (x) { var li = el('li'); li.appendChild(el('code', '', dayOf(x.from))); li.appendChild(el('span', '', clock(x.from) + ' – ' + clock(x.to) + ' Uhr')); ol.appendChild(li) })
+      var v = $('vList'); v.textContent = ''
+      ;(d.videos || []).forEach(function (x) { if (!/^https:\/\/www\.tiktok\.com\/@flexhausen\/video\/\d+$/.test(x.url)) return; var a = el('a', 'b2', x.titel); a.href = x.url; a.target = '_blank'; a.rel = 'noopener'; v.appendChild(a) })
+    }).catch(function () { infoAt = 0 })
+  }
+
+  /* ---- the idea box: one short text to the team, answered with a ticket number; nothing of it is shown here */
+  function post (path, body) {
+    var go = function () { return fetch(BASE + path, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(body), cache: 'no-store' }).then(function (r) { return r.json() }) }
+    if (!STATIC) return go()
+    return (BASE ? Promise.resolve() : resolve(false)).then(go).catch(function () { return resolve(true).then(go) })
+  }
+  function idea () {
+    var t = $('ideeT').value.replace(/\s+/g, ' ').trim(); var m = $('ideeM'); m.hidden = false
+    if (t.length < 8) { m.textContent = 'Schreib ein bisschen mehr – mindestens ein kurzer Satz.'; return }
+    $('ideeB').disabled = true; m.textContent = 'wird gesendet …'
+    post('/api/idee', { text: t, name: own || '' }).then(function (d) {
+      if (d && d.ok) { $('ideeT').value = ''; $('ideeN').textContent = '0 / 400'; m.textContent = 'Danke! Deine Idee ist notiert – Ticket #' + d.ticket + '.' } else m.textContent = (d && d.error) || 'Das hat gerade nicht geklappt. Versuch es gleich noch einmal.'
+    }).catch(function () { m.textContent = 'Gerade keine Verbindung. Versuch es gleich noch einmal.' }).then(function () { $('ideeB').disabled = false })
   }
   /* the viewer's own level in the list of all levels: his is marked, the ones below are done */
   function mark () {
@@ -567,13 +770,22 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
   $('backMine').addEventListener('click', function () { if (own) { $('q').value = own.replace(/^@+/, ''); look(own, true) } })
   $('toInfo').addEventListener('click', function () { tab('info') })
   TABS.forEach(function (x) { $('n-' + x).addEventListener('click', function () { tab(x) }) })
-  ;['stufe', 'likes', 'neu'].forEach(function (x) { $('a-' + x).addEventListener('click', function () { pick(x); board() }) })
+  ARTS.forEach(function (x) { $('a-' + x).addEventListener('click', function () { pick(x); board() }) })
+  $('mC').addEventListener('click', tapped)
+  $('mZoom').addEventListener('click', function () { zoom(!mapBig); setTimeout(function () { center(mapMe && mapMe.plot != null ? mapMe.plot : -1) }, 60) })
+  $('mFind').addEventListener('click', findMine)
+  $('ideeB').addEventListener('click', idea)
+  $('ideeT').addEventListener('input', function () { $('ideeN').textContent = this.value.length + ' / 400' })
+  window.addEventListener('resize', function () { if (tabNow === 'karte') draw() })
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && tabNow === 'karte') karte() })
+  setInterval(function () { if (!document.hidden && tabNow === 'info') about() }, 60000)
   var start = ''; var asked = ''
   try { own = localStorage.getItem('flexhausen-name') || '' } catch (e) {}
   try { asked = new URLSearchParams(location.search).get('name') || '' } catch (e) {}
   start = asked || own
-  tab(String(location.hash || '').replace('#', ''), true)
+  var first = String(location.hash || '').replace('#', '')
   if (start) { $('q').value = start.replace(/^@+/, ''); look(start, true, !!own && !same(own, start)) }
+  tab(first, true)
   board(); setInterval(function () { if (!document.hidden) board() }, 10000)
 })()
 </script>
