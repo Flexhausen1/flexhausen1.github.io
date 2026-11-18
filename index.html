@@ -166,17 +166,10 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:8px}
     a.href = on ? 'https://www.tiktok.com/@flexhausen/live' : 'https://www.tiktok.com/@flexhausen'
     $('goT').textContent = on ? 'Jetzt live – zum Stream' : 'Der Stream ist gerade aus – zum Profil von @flexhausen'
   }
-  var sImg = null; var sSrc = ''
-  /* the house picture once more, this time allowed to be drawn into a picture of our own (it comes from the game's address) */
-  function prep (src) {
-    if (sSrc === src) return
-    sSrc = src; sImg = null
-    var im = new Image(); im.crossOrigin = 'anonymous'
-    im.onload = function () { if (sSrc === src) sImg = im }
-    im.src = src + '?teilen=1'
-  }
   function rrect (g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath() }
-  function picture (h, d, withHouse) {
+  /* sImg = the house picture that already stands on the page (it is loaded so that it may be drawn into a picture of
+     our own – no second download: through the tunnel that took up to ten seconds behind the pictures of all levels) */
+  function picture (h, d, sImg) {
     var W = 1080; var H = 1920; var F = 'system-ui,-apple-system,"Segoe UI",Roboto,sans-serif'
     var c = document.createElement('canvas'); c.width = W; c.height = H; var g = c.getContext('2d')
     var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#131724'); bg.addColorStop(1, '#07080c'); g.fillStyle = bg; g.fillRect(0, 0, W, H)
@@ -187,7 +180,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:8px}
     /* the house on its sky */
     var px = 100; var py = 380; var pw = W - 200; var ph = 780
     var sky = g.createLinearGradient(0, py, 0, py + ph); sky.addColorStop(0, '#1c2a4a'); sky.addColorStop(1, '#3f679c'); g.fillStyle = sky; rrect(g, px, py, pw, ph, 40); g.fill()
-    if (withHouse && sImg && sImg.naturalWidth) {
+    if (sImg && sImg.naturalWidth) {
       var k = Math.min((pw - 50) / sImg.naturalWidth, (ph - 50) / sImg.naturalHeight); var iw = sImg.naturalWidth * k; var ih = sImg.naturalHeight * k
       g.save(); rrect(g, px, py, pw, ph, 40); g.clip(); g.imageSmoothingEnabled = false; g.drawImage(sImg, W / 2 - iw / 2, py + ph - ih - 8, iw, ih); g.restore()
     }
@@ -213,8 +206,20 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:8px}
     return c
   }
   function share (h, d) {
+    var ov = $('ov'); ov.textContent = ''; ov.hidden = false; ov.appendChild(el('p', '', 'Bild wird gebaut …'))
+    var tries = 0
+    /* the house picture may still be on its way: wait for it for six seconds at most */
+    var go = function () {
+      if (ov.hidden) return
+      var ready = !!(lastImg && lastImg.complete && lastImg.naturalWidth)
+      if (!ready && h.img && lastImg && tries++ < 40) { setTimeout(go, 150); return }
+      built(h, d, ready ? lastImg : null)
+    }
+    go()
+  }
+  function built (h, d, house) {
     var url = ''
-    try { url = picture(h, d, true).toDataURL('image/jpeg', 0.9) } catch (e) { try { url = picture(h, d, false).toDataURL('image/jpeg', 0.9) } catch (e2) { return } }
+    try { url = picture(h, d, house).toDataURL('image/jpeg', 0.9) } catch (e) { try { url = picture(h, d, null).toDataURL('image/jpeg', 0.9) } catch (e2) { $('ov').hidden = true; return } }
     var link = location.origin + location.pathname + '?name=' + encodeURIComponent(h.id)
     var ov = $('ov'); ov.textContent = ''; ov.hidden = false
     var im = el('img'); im.alt = 'Dein Haus in Flexhausen als Bild'; im.src = url; ov.appendChild(im)
@@ -253,7 +258,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:8px}
     if (h.img) {
       /* the same picture stays the same element from reading to reading: nothing flickers */
       var src = BASE + h.img
-      if (!lastImg || lastSrc !== src) { lastSrc = src; lastImg = el('img'); lastImg.alt = 'Haus der Stufe ' + h.level + ' – ' + h.house; lastImg.decoding = 'async'; lastImg.onerror = (function (lv, im) { return function () { if (im.parentNode) im.parentNode.replaceChild(drawing(lv), im); lastImg = null } })(h.level, lastImg); lastImg.src = src }
+      if (!lastImg || lastSrc !== src) { lastSrc = src; lastImg = el('img'); lastImg.crossOrigin = 'anonymous'; lastImg.alt = 'Haus der Stufe ' + h.level + ' – ' + h.house; lastImg.decoding = 'async'; lastImg.onerror = (function (lv, im) { return function () { if (im.parentNode) im.parentNode.replaceChild(drawing(lv), im); lastImg = null } })(h.level, lastImg); lastImg.src = src }
       pic.appendChild(lastImg)
     } else pic.appendChild(drawing(h.level))
     out.appendChild(pic)
@@ -275,7 +280,6 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:8px}
     if (h.followed) tags.appendChild(el('span', 'tag', 'Haustier vor der Tür'))
     if (h.vaultWins) tags.appendChild(el('span', 'tag', 'Tresor geknackt: ' + h.vaultWins + '×'))
     out.appendChild(tags)
-    if (h.img) prep(BASE + h.img)
     var sb = el('button', 'share', 'Haus teilen'); sb.type = 'button'; sb.addEventListener('click', function () { share(h, d) }); out.appendChild(sb)
     var lv2 = el('div', 'live'); lv2.appendChild(el('span', 'dot' + (d.fresh ? '' : ' off'))); lv2.appendChild(el('span', '', d.fresh ? 'live – wird alle 2 Sekunden neu gelesen' : 'der Stream läuft gerade nicht – letzter Stand')); out.appendChild(lv2)
   }
