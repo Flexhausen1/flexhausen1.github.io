@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b0d13">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self' https://*.trycloudflare.com https://api.github.com; img-src 'self' data: https://*.trycloudflare.com; base-uri 'none'; form-action 'none'">
-<title>My House in Flex Vegas</title>
+<title>Mein Haus in Krötenhausen</title>
 <style>
 :root{--bg:#0b0d13;--card:#151924;--card2:#10131b;--line:#262c3a;--text:#f4f2ec;--dim:#9ea3b3;--gold:#f5c542;--gold2:#ffe9a6;--ok:#57d38c;--warn:#ff8a5c;--red:#e11d48;--sky1:#1c2a4a;--sky2:#3f679c}
 *{box-sizing:border-box}
@@ -193,135 +193,135 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
   <header class="top">
     <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="#1b1503"/></svg></span>
     <div>
-      <h1>Flex Vegas</h1>
-      <p class="sub">The city from the TikTok LIVE of @flexhausen</p>
+      <h1>Krötenhausen</h1>
+      <p class="sub">Die Stadt aus dem TikTok-LIVE von @flexhausen</p>
     </div>
   </header>
-  <a id="go" class="go off" href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener"><i></i><span id="goT">Go to @flexhausen on TikTok</span></a>
+  <a id="go" class="go off" href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener"><i></i><span id="goT">Zum TikTok von @flexhausen</span></a>
   <div class="stats" aria-live="off">
-    <div><b id="sH">–</b><small>houses</small></div>
-    <div><b id="sL">–</b><small>likes</small></div>
-    <div><b id="sN">–</b><small>new today</small></div>
+    <div><b id="sH">–</b><small>Häuser</small></div>
+    <div><b id="sL">–</b><small>Likes</small></div>
+    <div><b id="sN">–</b><small>heute neu</small></div>
   </div>
 
   <section id="t-haus">
-    <h2>My House</h2>
-    <p class="lead">Find your house with your TikTok name.</p>
+    <h2>Mein Haus</h2>
+    <p class="lead">Such dein Haus mit deinem TikTok-Namen.</p>
     <form id="f" autocomplete="off">
-      <label class="at"><span>@</span><input id="q" name="name" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40" placeholder="your TikTok name" aria-label="Your TikTok name"></label>
-      <button class="b1" type="submit">Show</button>
+      <label class="at"><span>@</span><input id="q" name="name" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40" placeholder="dein TikTok-Name" aria-label="Dein TikTok-Name"></label>
+      <button class="b1" type="submit">Zeigen</button>
     </form>
-    <p class="hint">Your username (the one with the @) or your display name.</p>
+    <p class="hint">Dein Benutzername (der mit dem @) oder dein Anzeigename.</p>
     <section id="out" class="card" hidden aria-live="polite"></section>
-    <button id="backMine" class="b2 back" type="button" hidden>Back to my house</button>
+    <button id="backMine" class="b2 back" type="button" hidden>Zurück zu meinem Haus</button>
     <section id="leer" class="card">
-      <h3>No house yet?</h3>
-      <p class="msg" id="leerT">Come to the LIVE of @flexhausen – your house is built there.</p>
-      <button id="toInfo" class="b2 back" type="button">How it works</button>
+      <h3>Noch kein Haus?</h3>
+      <p class="msg" id="leerT">Komm in den LIVE von @flexhausen – dort wird dein Haus gebaut.</p>
+      <button id="toInfo" class="b2 back" type="button">So geht’s</button>
     </section>
   </section>
 
   <section id="t-karte" hidden>
-    <h2>City Map</h2>
-    <p class="lead">Live from the game: every square is a lot. Tap a house.</p>
+    <h2>Stadtkarte</h2>
+    <p class="lead">Live aus dem Spiel: jedes Feld ist ein Grundstück. Tippe auf ein Haus.</p>
     <div class="mapbar">
-      <button type="button" id="mFind" class="b2">Find my house</button>
-      <button type="button" id="mZoom" class="b2">Bigger</button>
+      <button type="button" id="mFind" class="b2">Mein Haus finden</button>
+      <button type="button" id="mZoom" class="b2">Größer</button>
     </div>
-    <div id="mWrap" class="mwrap"><div id="mIn" class="min"><canvas id="mC" width="10" height="10" role="img" aria-label="Map of Flex Vegas: every square is a lot, the color shows the level of the house"></canvas><i id="mPin" class="pin" hidden></i><i id="mSel" class="sel" hidden></i></div></div>
-    <div class="leg"><b></b><span>open</span><span>Level 1</span><i></i><span id="legMax">25</span></div>
+    <div id="mWrap" class="mwrap"><div id="mIn" class="min"><canvas id="mC" width="10" height="10" role="img" aria-label="Karte von Krötenhausen: jedes Feld ist ein Grundstück, die Farbe zeigt die Stufe des Hauses"></canvas><i id="mPin" class="pin" hidden></i><i id="mSel" class="sel" hidden></i></div></div>
+    <div class="leg"><b></b><span>frei</span><span>Stufe 1</span><i></i><span id="legMax">25</span></div>
     <section id="mInfo" class="card" hidden aria-live="polite"></section>
     <p id="mMe" class="hint" hidden></p>
     <section class="card list news">
-      <h3>Just happened</h3>
-      <ol id="mNews"><li class="msg">loading …</li></ol>
+      <h3>Gerade passiert</h3>
+      <ol id="mNews"><li class="msg">lädt …</li></ol>
     </section>
     <div class="live"><span id="mDot" class="dot"></span><span id="mTot">–</span></div>
   </section>
 
   <section id="t-rang" hidden>
-    <h2>Leaderboard</h2>
-    <p class="lead" id="rLead">Tap a name to see the house.</p>
-    <div class="seg" role="group" aria-label="Kind of leaderboard">
+    <h2>Rangliste</h2>
+    <p class="lead" id="rLead">Tippe auf einen Namen, um das Haus zu sehen.</p>
+    <div class="seg" role="group" aria-label="Art der Rangliste">
       <button type="button" id="a-stufe" aria-pressed="true">Top</button>
-      <button type="button" id="a-likes" aria-pressed="false">likes</button>
-      <button type="button" id="a-heute" aria-pressed="false">Today</button>
-      <button type="button" id="a-woche" aria-pressed="false">Week</button>
-      <button type="button" id="a-neu" aria-pressed="false">New</button>
+      <button type="button" id="a-likes" aria-pressed="false">Likes</button>
+      <button type="button" id="a-heute" aria-pressed="false">Heute</button>
+      <button type="button" id="a-woche" aria-pressed="false">Woche</button>
+      <button type="button" id="a-neu" aria-pressed="false">Neu</button>
     </div>
     <div id="pod" class="pod"></div>
     <section id="mine" class="card mine" hidden></section>
-    <section class="card list"><ol id="rl"><li class="msg">loading …</li></ol></section>
+    <section class="card list"><ol id="rl"><li class="msg">lädt …</li></ol></section>
     <div class="live"><span id="dot" class="dot"></span><span id="tot">–</span></div>
   </section>
 
   <section id="t-stufen" hidden>
-    <h2 id="stH">All Levels</h2>
-    <p class="lead">This is how your house grows – from the shack to the very top.</p>
-    <div id="st" class="st"><p class="msg">loading …</p></div>
+    <h2 id="stH">Alle Stufen</h2>
+    <p class="lead">So wächst dein Haus – von der Hütte bis ganz nach oben.</p>
+    <div id="st" class="st"><p class="msg">lädt …</p></div>
   </section>
 
   <section id="t-info" hidden>
-    <h2>How it works</h2>
-    <p class="lead">Three steps to your house.</p>
+    <h2>So geht’s</h2>
+    <p class="lead">In drei Schritten zu deinem Haus.</p>
     <section class="card">
       <ol class="steps">
-        <li><div><b>Come to the LIVE</b><span>Flex Vegas runs on TikTok at @flexhausen.</span></div></li>
-        <li><div><b id="how2">Your house gets built</b><span id="how2t">As soon as you are in, your first house stands in the city.</span></div></li>
-        <li><div><b>Let it grow</b><span>Every like brings your house closer to the next level. Gifts count too, but they are never needed.</span></div></li>
+        <li><div><b>Komm in den LIVE</b><span>Krötenhausen läuft auf TikTok bei @flexhausen.</span></div></li>
+        <li><div><b id="how2">Dein Haus wird gebaut</b><span id="how2t">Sobald du dabei bist, steht dein erstes Haus in der Stadt.</span></div></li>
+        <li><div><b>Lass es wachsen</b><span>Mit jedem Like kommt dein Haus der nächsten Stufe näher. Geschenke zählen auch, nötig sind sie nie.</span></div></li>
       </ol>
     </section>
     <section class="card">
-      <h3>Your idea for Flex Vegas</h3>
-      <p class="msg">What is missing in the city? Tell us. Every idea gets a ticket number.</p>
-      <textarea id="ideeT" maxlength="400" rows="4" placeholder="For example: a soccer field next to the market square" aria-label="Your idea for Flex Vegas"></textarea>
-      <div class="idrow"><small id="ideeN">0 / 400</small><button type="button" id="ideeB" class="b1">Send idea</button></div>
+      <h3>Deine Idee für Krötenhausen</h3>
+      <p class="msg">Was fehlt in der Stadt? Schreib es uns. Jede Idee bekommt eine Ticket-Nummer.</p>
+      <textarea id="ideeT" maxlength="400" rows="4" placeholder="Zum Beispiel: ein Fußballplatz neben dem Marktplatz" aria-label="Deine Idee für Krötenhausen"></textarea>
+      <div class="idrow"><small id="ideeN">0 / 400</small><button type="button" id="ideeB" class="b1">Idee senden</button></div>
       <p id="ideeM" class="msg okmsg" hidden aria-live="polite"></p>
-      <p class="fine">Your idea and your TikTok name (if you entered it under “My House”) only go to the team of Flex Vegas. They are not published.</p>
+      <p class="fine">Deine Idee und dein TikTok-Name (falls du ihn bei „Mein Haus“ eingegeben hast) gehen nur an das Team von Krötenhausen. Sie werden nicht veröffentlicht.</p>
     </section>
     <section class="card">
-      <h3>Stream Times</h3>
-      <p id="zNow" class="msg">loading …</p>
+      <h3>Stream-Zeiten</h3>
+      <p id="zNow" class="msg">lädt …</p>
       <p id="zNote" class="znote" hidden></p>
       <ol id="zList" class="cmd"></ol>
     </section>
     <section class="card">
-      <h3>The series “Seven Days”</h3>
-      <p class="msg">Short films about Mayor Momo and his city.</p>
+      <h3>Die Serie „Sieben Tage“</h3>
+      <p class="msg">Kurze Filme über Bürgermeister Momo und seine Stadt.</p>
       <div id="vList" class="vid"></div>
-      <a class="b2 back" href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener">All videos on TikTok</a>
+      <a class="b2 back" href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener">Alle Videos auf TikTok</a>
     </section>
     <section class="card">
-      <h3>What you can type in chat</h3>
+      <h3>Das kannst du in den Chat schreiben</h3>
       <ol class="cmd">
-        <li><code>house</code><span>Your house is shown<small>When it is busy, a short card appears instead.</small></span></li>
-        <li><code>color blue</code><span>Paints your house<small>from level 4, many colors</small></span></li>
-        <li><code>!dog</code><span>A pet at your door<small>!dog !cat from level 3 · !panda !fox from 8 · !golem from 12 · !dragon from 15</small></span></li>
-        <li><code>rules</code><span>The rules as a window in the stream</span></li>
+        <li><code>haus</code><span>Dein Haus wird gezeigt<small>Ist viel los, kommt eine kurze Einblendung.</small></span></li>
+        <li><code>farbe blau</code><span>Streicht dein Haus<small>ab Stufe 4, viele Farben</small></span></li>
+        <li><code>!hund</code><span>Ein Haustier vor der Tür<small>!hund !katze ab Stufe 3 · !panda !fuchs ab 8 · !golem ab 12 · !drache ab 15</small></span></li>
+        <li><code>regeln</code><span>Die Regeln als Fenster im Stream</span></li>
       </ol>
     </section>
     <section class="card qa">
-      <h3>Common Questions</h3>
-      <p><b>Does it cost anything?</b>No. You get and grow your house without money.</p>
-      <p><b>My house is not in the city anymore?</b>When the city is full, small houses are put in storage. Your level stays, and with your next like it stands again.</p>
-      <p><b>How fresh are the numbers?</b>They come straight from the game and are read again every two seconds.</p>
+      <h3>Häufige Fragen</h3>
+      <p><b>Kostet das etwas?</b>Nein. Dein Haus bekommst und baust du ohne Geld aus.</p>
+      <p><b>Mein Haus steht nicht mehr in der Stadt?</b>Ist die Stadt voll, werden kleine Häuser eingelagert. Deine Stufe bleibt, und beim nächsten Like steht es wieder.</p>
+      <p><b>Wie aktuell sind die Zahlen?</b>Sie kommen direkt aus dem Spiel und werden alle zwei Sekunden neu gelesen.</p>
     </section>
   </section>
 
-  <footer>Numbers and houses straight from the game.</footer>
+  <footer>Zahlen und Häuser direkt aus dem Spiel.</footer>
 </main>
-<nav class="nav" aria-label="Sections"><div>
-  <button type="button" id="n-haus" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>My House</button>
-  <button type="button" id="n-karte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14"/><path d="M15 6v14"/></svg>Map</button>
-  <button type="button" id="n-rang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/></svg>Leaderboard</button>
-  <button type="button" id="n-stufen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20v-5h4v5"/><path d="M10 20V10h4v10"/><path d="M15 20V5h4v15"/></svg>Levels</button>
-  <button type="button" id="n-info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.5"/></svg>More</button>
+<nav class="nav" aria-label="Bereiche"><div>
+  <button type="button" id="n-haus" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>Mein Haus</button>
+  <button type="button" id="n-karte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14"/><path d="M15 6v14"/></svg>Karte</button>
+  <button type="button" id="n-rang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/></svg>Rangliste</button>
+  <button type="button" id="n-stufen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20v-5h4v5"/><path d="M10 20V10h4v10"/><path d="M15 20V5h4v15"/></svg>Stufen</button>
+  <button type="button" id="n-info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.5"/></svg>Mehr</button>
 </div></nav>
 <div id="ov" class="ov" hidden></div>
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id) }
-  var fmt = function (n) { return Math.round(n || 0).toLocaleString('en-US') }
+  var fmt = function (n) { return Math.round(n || 0).toLocaleString('de-DE') }
   var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e }
   var current = ''; var timer = 0; var busy = false; var lastImg = null; var lastSrc = ''
   /* own = the viewer's own name (typed in or remembered); current = the house on the screen (may be somebody else's,
@@ -331,16 +331,16 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
   var same = function (a, b) { return String(a || '').replace(/^@+/, '').toLowerCase() === String(b || '').replace(/^@+/, '').toLowerCase() }
   var ago = function (t) {
     var m = Math.max(0, Math.round((Date.now() - t) / 60000))
-    if (m < 1) return 'just now'
-    if (m < 60) return '' + m + ' min ago'
-    if (m < 1440) return '' + Math.round(m / 60) + ' hrs ago'
-    var d = Math.round(m / 1440); return '' + d + (d === 1 ? ' day ago' : ' days ago')
+    if (m < 1) return 'gerade eben'
+    if (m < 60) return 'vor ' + m + ' Min.'
+    if (m < 1440) return 'vor ' + Math.round(m / 60) + ' Std.'
+    var d = Math.round(m / 1440); return 'vor ' + d + (d === 1 ? ' Tag' : ' Tagen')
   }
 
   /* the house as a drawing: it grows with the level (wider, higher, finer) */
   function drawing (level) {
     var NS = 'http://www.w3.org/2000/svg'
-    var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 320 200'); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'House of level ' + level)
+    var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 320 200'); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Haus der Stufe ' + level)
     var add = function (tag, a) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e }
     var L = Math.max(1, Math.min(20, level | 0))
     var kinds = [['#8a5a33', '#5d3a1e', '#6b3f22'], ['#8d9099', '#5f626b', '#7a3b30'], ['#e9dcc0', '#b9a67e', '#8a4a36'], ['#f2f3f5', '#c3c7d1', '#3c4250'], ['#dff1fb', '#9fcbe6', '#5b89a8'], ['#1b1638', '#ff3fd0', '#31e6ff'], ['#b9b3a6', '#8a8376', '#5a6b8c'], ['#9fe9ff', '#56c2ea', '#e8fbff'], ['#f5d98a', '#d1a53a', '#fff0c2'], ['#ffffff', '#f5c542', '#ffe9a6']]
@@ -383,7 +383,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
   function live (on) {
     var a = $('go'); a.className = 'go' + (on ? '' : ' off')
     a.href = on ? 'https://www.tiktok.com/@flexhausen/live' : 'https://www.tiktok.com/@flexhausen'
-    $('goT').textContent = on ? 'Live now – go to the stream' : 'The stream is off right now – go to the profile of @flexhausen'
+    $('goT').textContent = on ? 'Jetzt live – zum Stream' : 'Der Stream ist gerade aus – zum Profil von @flexhausen'
   }
   function rrect (g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath() }
   /* sImg = the house picture that already stands on the page (it is loaded so that it may be drawn into a picture of
@@ -394,8 +394,8 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#131724'); bg.addColorStop(1, '#07080c'); g.fillStyle = bg; g.fillRect(0, 0, W, H)
     g.strokeStyle = '#f5c542'; g.lineWidth = 6; rrect(g, 36, 36, W - 72, H - 72, 52); g.stroke()
     g.textAlign = 'center'; g.textBaseline = 'alphabetic'
-    g.fillStyle = '#f5c542'; g.font = '900 128px ' + F; g.fillText('FLEXHAUSEN', W / 2, 250)
-    g.fillStyle = '#a4a8b5'; g.font = '700 40px ' + F; g.fillText('MY HOUSE IN THE TIKTOK LIVE', W / 2, 322)
+    g.fillStyle = '#f5c542'; g.font = '900 128px ' + F; g.fillText('KRÖTENHAUSEN', W / 2, 250)
+    g.fillStyle = '#a4a8b5'; g.font = '700 40px ' + F; g.fillText('MEIN HAUS IM TIKTOK-LIVE', W / 2, 322)
     /* the house on its sky */
     var px = 100; var py = 380; var pw = W - 200; var ph = 780
     var sky = g.createLinearGradient(0, py, 0, py + ph); sky.addColorStop(0, '#1c2a4a'); sky.addColorStop(1, '#3f679c'); g.fillStyle = sky; rrect(g, px, py, pw, ph, 40); g.fill()
@@ -404,7 +404,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
       g.save(); rrect(g, px, py, pw, ph, 40); g.clip(); g.imageSmoothingEnabled = false; g.drawImage(sImg, W / 2 - iw / 2, py + ph - ih - 8, iw, ih); g.restore()
     }
     /* level, house, name */
-    var lv = 'LEVEL ' + h.level + (d.totals && d.totals.levels ? ' OF ' + d.totals.levels : '')
+    var lv = 'STUFE ' + h.level + (d.totals && d.totals.levels ? ' VON ' + d.totals.levels : '')
     g.font = '900 46px ' + F; var lw = g.measureText(lv).width + 70
     g.fillStyle = '#f5c542'; rrect(g, W / 2 - lw / 2, 1200, lw, 76, 38); g.fill(); g.fillStyle = '#1b1503'; g.fillText(lv, W / 2, 1255)
     g.fillStyle = '#ffe9a6'; g.font = '800 60px ' + F; g.fillText(h.house || '', W / 2, 1362)
@@ -413,19 +413,19 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     g.fillText(h.name, W / 2, 1478)
     g.fillStyle = '#a4a8b5'; g.font = '600 38px ' + F; g.fillText('@' + h.id, W / 2, 1536)
     /* three numbers */
-    var cells = [['#' + fmt(h.rank), 'of ' + fmt(d.totals.residents) + ' houses'], [fmt(h.likes), 'likes'], [fmt(h.coins), 'coins']]
+    var cells = [['#' + fmt(h.rank), 'von ' + fmt(d.totals.residents) + ' Häusern'], [fmt(h.likes), 'Likes'], [fmt(h.coins), 'Coins']]
     for (var i = 0; i < 3; i++) {
       var bx = 100 + i * 300; g.fillStyle = '#10131a'; rrect(g, bx, 1578, 280, 150, 24); g.fill(); g.strokeStyle = '#2a2f3c'; g.lineWidth = 2; g.stroke()
       var n = 58; g.fillStyle = i ? '#f3f1ea' : '#f5c542'; do { g.font = '900 ' + n + 'px ' + F; n -= 3 } while (g.measureText(cells[i][0]).width > 250 && n > 26)
       g.fillText(cells[i][0], bx + 140, 1650)
       g.fillStyle = '#a4a8b5'; g.font = '600 26px ' + F; g.fillText(cells[i][1], bx + 140, 1700)
     }
-    g.fillStyle = '#f3f1ea'; g.font = '800 40px ' + F; g.fillText('Find your house: ' + location.host, W / 2, 1800)
-    g.fillStyle = '#a4a8b5'; g.font = '600 32px ' + F; g.fillText('LIVE on TikTok: @flexhausen', W / 2, 1850)
+    g.fillStyle = '#f3f1ea'; g.font = '800 40px ' + F; g.fillText('Such dein Haus: ' + location.host, W / 2, 1800)
+    g.fillStyle = '#a4a8b5'; g.font = '600 32px ' + F; g.fillText('LIVE auf TikTok: @flexhausen', W / 2, 1850)
     return c
   }
   function share (h, d) {
-    var ov = $('ov'); ov.textContent = ''; ov.hidden = false; ov.appendChild(el('p', '', 'Building the picture …'))
+    var ov = $('ov'); ov.textContent = ''; ov.hidden = false; ov.appendChild(el('p', '', 'Bild wird gebaut …'))
     var tries = 0
     /* the house picture may still be on its way: wait for it for six seconds at most */
     var go = function () {
@@ -441,19 +441,19 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     try { url = picture(h, d, house).toDataURL('image/jpeg', 0.9) } catch (e) { try { url = picture(h, d, null).toDataURL('image/jpeg', 0.9) } catch (e2) { $('ov').hidden = true; return } }
     var link = location.origin + location.pathname + '?name=' + encodeURIComponent(h.id)
     var ov = $('ov'); ov.textContent = ''; ov.hidden = false
-    var im = el('img'); im.alt = 'Your house in Flex Vegas as a picture'; im.src = url; ov.appendChild(im)
+    var im = el('img'); im.alt = 'Dein Haus in Krötenhausen als Bild'; im.src = url; ov.appendChild(im)
     var row = el('div', 'rowb'); var file = null
     try { var bin = atob(url.split(',')[1]); var arr = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i); file = new File([arr], 'mein-haus-flexhausen.jpg', { type: 'image/jpeg' }) } catch (e3) {}
     if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
-      var b1 = el('button', 'b1', 'Share'); b1.type = 'button'
-      b1.addEventListener('click', function () { navigator.share({ files: [file], text: 'My house in Flex Vegas: ' + link }).catch(function () {}) }); row.appendChild(b1)
+      var b1 = el('button', 'b1', 'Teilen'); b1.type = 'button'
+      b1.addEventListener('click', function () { navigator.share({ files: [file], text: 'Mein Haus in Krötenhausen: ' + link }).catch(function () {}) }); row.appendChild(b1)
     }
-    var a = el('a', 'btn', 'Save picture'); a.href = url; a.download = 'mein-haus-flexhausen.jpg'; row.appendChild(a)
-    var b2 = el('button', 'b1 x', 'Copy link'); b2.type = 'button'
-    b2.addEventListener('click', function () { try { navigator.clipboard.writeText(link).then(function () { b2.textContent = 'Copied' }, function () { b2.textContent = link }) } catch (e4) { b2.textContent = link } }); row.appendChild(b2)
-    var b3 = el('button', 'b1 x', 'Close'); b3.type = 'button'; b3.addEventListener('click', function () { ov.hidden = true; ov.textContent = '' }); row.appendChild(b3)
+    var a = el('a', 'btn', 'Bild speichern'); a.href = url; a.download = 'mein-haus-flexhausen.jpg'; row.appendChild(a)
+    var b2 = el('button', 'b1 x', 'Link kopieren'); b2.type = 'button'
+    b2.addEventListener('click', function () { try { navigator.clipboard.writeText(link).then(function () { b2.textContent = 'Kopiert' }, function () { b2.textContent = link }) } catch (e4) { b2.textContent = link } }); row.appendChild(b2)
+    var b3 = el('button', 'b1 x', 'Schließen'); b3.type = 'button'; b3.addEventListener('click', function () { ov.hidden = true; ov.textContent = '' }); row.appendChild(b3)
     ov.appendChild(row)
-    ov.appendChild(el('p', '', 'Tip: hold the picture, save it and put it in your story or your chat.'))
+    ov.appendChild(el('p', '', 'Tipp: Bild gedrückt halten, speichern und in deine Story oder deinen Chat packen.'))
   }
 
   function show (d) {
@@ -465,47 +465,47 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     if (d.error) { out.appendChild(el('p', 'msg', d.error)); return }
     if (!d.found) {
       if (d.suggestions && d.suggestions.length) {
-        out.appendChild(el('p', 'msg', 'No exact match. Did you mean:'))
+        out.appendChild(el('p', 'msg', 'Kein genauer Treffer. Meinst du:'))
         var box = el('div', 'sug')
-        d.suggestions.forEach(function (s) { var b = el('button'); b.type = 'button'; b.appendChild(el('span', '', s.name + ' ')); b.appendChild(el('small', '', '@' + s.id + ' · level ' + s.level)); b.addEventListener('click', function () { $('q').value = s.id; look(s.id, true) }); box.appendChild(b) })
+        d.suggestions.forEach(function (s) { var b = el('button'); b.type = 'button'; b.appendChild(el('span', '', s.name + ' ')); b.appendChild(el('small', '', '@' + s.id + ' · Stufe ' + s.level)); b.addEventListener('click', function () { $('q').value = s.id; look(s.id, true) }); box.appendChild(b) })
         out.appendChild(box)
-      } else out.appendChild(el('p', 'msg', 'There is no house in Flex Vegas under this name yet. ' + (FOLLOW ? 'Follow @flexhausen in the LIVE – then yours gets built.' : 'Come to the LIVE and leave a like – then you have one.')))
+      } else out.appendChild(el('p', 'msg', 'Unter diesem Namen steht noch kein Haus in Krötenhausen. ' + (FOLLOW ? 'Folge @flexhausen im LIVE – dann wird deins gebaut.' : 'Komm in den LIVE und lass ein Like da – dann hast du eins.')))
       return
     }
     var h = d.house
     if (!own || same(own, current) || same(own, h.id)) { if (myLevel !== h.level) { myLevel = h.level; mark() } }
     var who = el('div', 'who'); var left = el('div'); left.appendChild(el('b', '', h.name)); left.appendChild(el('small', '', '@' + h.id)); who.appendChild(left)
-    var rank = el('button', 'rank'); rank.type = 'button'; rank.setAttribute('aria-label', 'Rank ' + h.rank + ' – open leaderboard'); rank.addEventListener('click', function () { pick('stufe'); tab('rang') }); rank.appendChild(el('b', '', '#' + fmt(h.rank))); rank.appendChild(el('small', '', 'of ' + fmt(d.totals.residents))); who.appendChild(rank)
+    var rank = el('button', 'rank'); rank.type = 'button'; rank.setAttribute('aria-label', 'Platz ' + h.rank + ' – zur Rangliste'); rank.addEventListener('click', function () { pick('stufe'); tab('rang') }); rank.appendChild(el('b', '', '#' + fmt(h.rank))); rank.appendChild(el('small', '', 'von ' + fmt(d.totals.residents))); who.appendChild(rank)
     out.appendChild(who)
     var pic = el('div', 'pic')
     if (h.img) {
       /* the same picture stays the same element from reading to reading: nothing flickers */
       var src = BASE + h.img
-      if (!lastImg || lastSrc !== src) { lastSrc = src; lastImg = el('img'); lastImg.crossOrigin = 'anonymous'; lastImg.alt = 'House of level ' + h.level + ' – ' + h.house; lastImg.decoding = 'async'; lastImg.onerror = (function (lv, im) { return function () { if (im.parentNode) im.parentNode.replaceChild(drawing(lv), im); lastImg = null } })(h.level, lastImg); lastImg.src = src }
+      if (!lastImg || lastSrc !== src) { lastSrc = src; lastImg = el('img'); lastImg.crossOrigin = 'anonymous'; lastImg.alt = 'Haus der Stufe ' + h.level + ' – ' + h.house; lastImg.decoding = 'async'; lastImg.onerror = (function (lv, im) { return function () { if (im.parentNode) im.parentNode.replaceChild(drawing(lv), im); lastImg = null } })(h.level, lastImg); lastImg.src = src }
       pic.appendChild(lastImg)
     } else pic.appendChild(drawing(h.level))
     out.appendChild(pic)
-    var lvl = el('div', 'lvl'); lvl.appendChild(el('span', 'n', 'Level ' + h.level + (d.totals && d.totals.levels ? ' of ' + d.totals.levels : ''))); lvl.appendChild(el('span', 'h', h.house)); out.appendChild(lvl)
+    var lvl = el('div', 'lvl'); lvl.appendChild(el('span', 'n', 'Stufe ' + h.level + (d.totals && d.totals.levels ? ' von ' + d.totals.levels : ''))); lvl.appendChild(el('span', 'h', h.house)); out.appendChild(lvl)
     var nums = el('div', 'nums')
-    var a = el('div', 'num'); a.appendChild(el('b', '', fmt(h.likes))); a.appendChild(el('small', '', 'likes given')); nums.appendChild(a)
-    var b = el('div', 'num'); b.appendChild(el('b', '', fmt(h.coins))); b.appendChild(el('small', '', 'coins sent')); nums.appendChild(b)
+    var a = el('div', 'num'); a.appendChild(el('b', '', fmt(h.likes))); a.appendChild(el('small', '', 'Likes gegeben')); nums.appendChild(a)
+    var b = el('div', 'num'); b.appendChild(el('b', '', fmt(h.coins))); b.appendChild(el('small', '', 'Coins geschickt')); nums.appendChild(b)
     out.appendChild(nums)
     if (h.next) {
       var bar = el('div', 'bar'); var fill = el('i'); bar.appendChild(fill); out.appendChild(bar)
       setTimeout(function () { fill.style.width = Math.round(h.next.part * 100) + '%' }, 30)
-      var nx = el('div', 'next'); nx.appendChild(document.createTextNode('')); nx.appendChild(el('b', '', fmt(h.next.likes) + ' likes')); nx.appendChild(document.createTextNode(' or ')); nx.appendChild(el('b', '', fmt(h.next.coins) + ' coins'))
-      nx.appendChild(document.createTextNode(' to level ' + h.next.level + (h.next.name ? ' – ' + h.next.name : ''))); out.appendChild(nx)
-    } else { var done = el('div', 'next'); done.appendChild(el('b', '', 'Top level reached – your house is complete.')); out.appendChild(done) }
+      var nx = el('div', 'next'); nx.appendChild(document.createTextNode('Noch ')); nx.appendChild(el('b', '', fmt(h.next.likes) + ' Likes')); nx.appendChild(document.createTextNode(' oder ')); nx.appendChild(el('b', '', fmt(h.next.coins) + ' Coins'))
+      nx.appendChild(document.createTextNode(' bis Stufe ' + h.next.level + (h.next.name ? ' – ' + h.next.name : ''))); out.appendChild(nx)
+    } else { var done = el('div', 'next'); done.appendChild(el('b', '', 'Höchste Stufe erreicht – dein Haus ist fertig.')); out.appendChild(done) }
     var tags = el('div', 'tags')
-    tags.appendChild(el('span', 'tag ' + (h.onMap ? 'ok' : 'warn'), h.onMap ? 'stands in the city' : 'in storage right now – with your next like it stands again'))
-    if (h.damaged) tags.appendChild(el('span', 'tag warn', 'damaged'))
-    if (h.hotel) tags.appendChild(el('span', 'tag ok', 'Hotel level ' + h.hotel.level + (h.hotel.name ? ' – ' + h.hotel.name : '')))
-    if (h.followed) tags.appendChild(el('span', 'tag', 'pet at the door'))
-    if (h.vaultWins) tags.appendChild(el('span', 'tag', 'Vault cracked: ' + h.vaultWins + '×'))
+    tags.appendChild(el('span', 'tag ' + (h.onMap ? 'ok' : 'warn'), h.onMap ? 'steht in der Stadt' : 'gerade eingelagert – beim nächsten Like steht es wieder'))
+    if (h.damaged) tags.appendChild(el('span', 'tag warn', 'beschädigt'))
+    if (h.hotel) tags.appendChild(el('span', 'tag ok', 'Hotel Stufe ' + h.hotel.level + (h.hotel.name ? ' – ' + h.hotel.name : '')))
+    if (h.followed) tags.appendChild(el('span', 'tag', 'Haustier vor der Tür'))
+    if (h.vaultWins) tags.appendChild(el('span', 'tag', 'Tresor geknackt: ' + h.vaultWins + '×'))
     out.appendChild(tags)
-    if (h.onMap && own && (same(own, current) || same(own, h.id))) { var mb = el('button', 'b2 back', 'Show on the map'); mb.type = 'button'; mb.addEventListener('click', function () { wantFind = true; tab('karte') }); out.appendChild(mb) }
-    var sb = el('button', 'b1 share', 'Share house'); sb.type = 'button'; sb.addEventListener('click', function () { share(h, d) }); out.appendChild(sb)
-    var lv2 = el('div', 'live'); lv2.appendChild(el('span', 'dot' + (d.fresh ? '' : ' off'))); lv2.appendChild(el('span', '', d.fresh ? 'live – read again every 2 seconds' : 'the stream is not running – last state')); out.appendChild(lv2)
+    if (h.onMap && own && (same(own, current) || same(own, h.id))) { var mb = el('button', 'b2 back', 'Auf der Karte zeigen'); mb.type = 'button'; mb.addEventListener('click', function () { wantFind = true; tab('karte') }); out.appendChild(mb) }
+    var sb = el('button', 'b1 share', 'Haus teilen'); sb.type = 'button'; sb.addEventListener('click', function () { share(h, d) }); out.appendChild(sb)
+    var lv2 = el('div', 'live'); lv2.appendChild(el('span', 'dot' + (d.fresh ? '' : ' off'))); lv2.appendChild(el('span', '', d.fresh ? 'live – wird alle 2 Sekunden neu gelesen' : 'der Stream läuft gerade nicht – letzter Stand')); out.appendChild(lv2)
   }
 
   /* On the fixed address (GitHub Pages) the numbers come from the game's own address, which changes now and then:
@@ -534,14 +534,14 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     name = String(name || '').trim(); if (!name) return
     current = name; clearTimeout(timer)
     if (first) {
-      var out = $('out'); out.hidden = false; out.textContent = ''; out.appendChild(el('p', 'msg', 'searching …'))
+      var out = $('out'); out.hidden = false; out.textContent = ''; out.appendChild(el('p', 'msg', 'suche …'))
       if (!peek) { own = name; lastSig = ''; try { localStorage.setItem('flexhausen-name', name) } catch (e) {} }
       try { history.replaceState(null, '', '?name=' + encodeURIComponent(name) + location.hash) } catch (e) {}
     }
     if (busy) { if (first) setTimeout(function () { if (current === name) look(name) }, 400); return }
     busy = true
     get('/api/haus?name=' + encodeURIComponent(name)).then(function (d) { if (name === current) { show(d); if (d.found) timer = setTimeout(function () { if (!document.hidden) look(current); else timer = setTimeout(function () { look(current) }, 4000) }, 2000) } })
-      .catch(function () { if (first) show({ error: 'No connection to the game right now. Try again in a moment.' }); else timer = setTimeout(function () { look(current) }, 8000) })
+      .catch(function () { if (first) show({ error: 'Gerade keine Verbindung zum Spiel. Versuch es gleich noch einmal.' }); else timer = setTimeout(function () { look(current) }, 8000) })
       .then(function () { busy = false })
   }
   /* (18.11.2026 ~16:30, the streamer: the page "besser geordnet, mit Kategorien unten", and nicer) – four areas with
@@ -562,25 +562,25 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
   function follow (on) {
     if (FOLLOW === on) return
     FOLLOW = on
-    $('leerT').textContent = on ? 'Follow @flexhausen in the LIVE – then your house gets built.' : 'Come to the LIVE of @flexhausen and leave a like – then your house gets built.'
-    $('how2').textContent = on ? 'Follow @flexhausen' : 'Leave a like'
-    $('how2t').textContent = on ? 'Who follows gets a first house in the city.' : 'With your first like your first house stands in the city.'
-    var f = $('st1'); if (f) f.textContent = on ? 'your first house – for following' : 'from the first like'
+    $('leerT').textContent = on ? 'Folge @flexhausen im LIVE – dann wird dein Haus gebaut.' : 'Komm in den LIVE von @flexhausen und lass ein Like da – dann wird dein Haus gebaut.'
+    $('how2').textContent = on ? 'Folge @flexhausen' : 'Lass ein Like da'
+    $('how2t').textContent = on ? 'Wer folgt, bekommt sein erstes Haus in der Stadt.' : 'Mit dem ersten Like steht dein erstes Haus in der Stadt.'
+    var f = $('st1'); if (f) f.textContent = on ? 'dein erstes Haus – fürs Folgen' : 'ab dem ersten Like'
   }
   function stats (d) {
     var t = d.totals || {}
     $('sH').textContent = fmt(t.residents); $('sL').textContent = fmt(t.likes); $('sN').textContent = typeof t.today === 'number' ? fmt(t.today) : '–'
     if (typeof t.follow === 'boolean') follow(t.follow)
     if (t.levels) { MAXLV = t.levels; $('legMax').textContent = t.levels }
-    $('tot').textContent = $('mTot').textContent = d.fresh ? 'live – read again all the time' : 'the stream is not running – last state'
+    $('tot').textContent = $('mTot').textContent = d.fresh ? 'live – wird laufend neu gelesen' : 'der Stream läuft gerade nicht – letzter Stand'
     $('dot').className = $('mDot').className = 'dot' + (d.fresh ? '' : ' off')
     live(!!d.fresh)
   }
-  var plus = function (h) { return '+' + fmt(h.gain) + ' likes' }
-  var under = function (h) { return art === 'likes' ? fmt(h.likes) + ' likes' : art === 'neu' ? ago(h.since) : art === 'heute' || art === 'woche' ? plus(h) : 'Level ' + h.level }
-  var side = function (h) { return art === 'likes' ? 'Level ' + h.level : art === 'neu' ? 'Level ' + h.level + ' · ' + ago(h.since) : art === 'heute' || art === 'woche' ? 'Level ' + h.level + ' · ' + plus(h) : 'Level ' + h.level + ' · ' + fmt(h.likes) + ' likes' }
-  var LEAD = { stufe: 'The biggest houses in the city. Tap a name to see the house.', likes: 'Who gave the most likes in total.', heute: 'Most likes since midnight – every day it starts over.', woche: 'Most likes since Monday – every week it starts over.', neu: 'Who moved in last.' }
-  var OF = { stufe: ' houses', likes: ' by likes', heute: ' with likes today', woche: ' with likes this week' }
+  var plus = function (h) { return '+' + fmt(h.gain) + ' Likes' }
+  var under = function (h) { return art === 'likes' ? fmt(h.likes) + ' Likes' : art === 'neu' ? ago(h.since) : art === 'heute' || art === 'woche' ? plus(h) : 'Stufe ' + h.level }
+  var side = function (h) { return art === 'likes' ? 'Stufe ' + h.level : art === 'neu' ? 'Stufe ' + h.level + ' · ' + ago(h.since) : art === 'heute' || art === 'woche' ? 'Stufe ' + h.level + ' · ' + plus(h) : 'Stufe ' + h.level + ' · ' + fmt(h.likes) + ' Likes' }
+  var LEAD = { stufe: 'Die größten Häuser der Stadt. Tippe auf einen Namen, um das Haus zu sehen.', likes: 'Wer insgesamt die meisten Likes gegeben hat.', heute: 'Die meisten Likes seit heute 0 Uhr – jeden Tag fängt es neu an.', woche: 'Die meisten Likes seit Montag – jede Woche fängt es neu an.', neu: 'Wer zuletzt eingezogen ist.' }
+  var OF = { stufe: ' Häusern', likes: ' nach Likes', heute: ' mit Likes heute', woche: ' mit Likes diese Woche' }
   function rowOf (h, me) {
     var li = el('li', me ? 'i' : ''); var b = el('button', 'row'); b.type = 'button'
     b.appendChild(el('span', 'p', art === 'neu' ? '' : h.pos + '.')); b.appendChild(el('span', 'nm', h.name)); b.appendChild(el('span', 'lv', side(h)))
@@ -604,14 +604,14 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
         c.addEventListener('click', function () { open(h.id) }); pod.appendChild(c)
       })
       var ol = $('rl'); ol.textContent = ''
-      if (!d.list.length) ol.appendChild(el('li', 'msg', 'Nobody here yet.'))
+      if (!d.list.length) ol.appendChild(el('li', 'msg', 'Noch niemand da.'))
       d.list.slice(np).forEach(function (h) { ol.appendChild(rowOf(h, d.me && h.id === d.me.id)) })
       var box = $('mine'); box.textContent = ''; var later = !d.me && own && (art === 'heute' || art === 'woche'); box.hidden = !d.me && !later
       if (d.me) {
-        box.appendChild(el('h3', '', 'Your rank'))
-        var p2 = el('p', 'msg'); p2.appendChild(el('b', 'big', '#' + fmt(d.me.pos))); p2.appendChild(document.createTextNode(' of ' + fmt(d.count || d.totals.residents) + (OF[art] || ''))); box.appendChild(p2)
+        box.appendChild(el('h3', '', 'Dein Platz'))
+        var p2 = el('p', 'msg'); p2.appendChild(el('b', 'big', '#' + fmt(d.me.pos))); p2.appendChild(document.createTextNode(' von ' + fmt(d.count || d.totals.residents) + (OF[art] || ''))); box.appendChild(p2)
         var near = el('ol', 'list'); d.me.near.forEach(function (h) { near.appendChild(rowOf(h, h.id === d.me.id)) }); box.appendChild(near)
-      } else if (later) { box.appendChild(el('h3', '', 'Your rank')); box.appendChild(el('p', 'msg', art === 'heute' ? 'You are not on this list yet today.' : 'You are not on this list yet this week.')) }
+      } else if (later) { box.appendChild(el('h3', '', 'Dein Platz')); box.appendChild(el('p', 'msg', art === 'heute' ? 'Heute stehst du noch nicht in dieser Liste.' : 'Diese Woche stehst du noch nicht in dieser Liste.')) }
     }).catch(function () { $('dot').className = 'dot off' })
   }
   function pick (a) {
@@ -656,14 +656,14 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     w.scrollLeft = (c[0] + GRID.r + 0.5) / n * W - w.clientWidth / 2; w.scrollTop = (c[1] + GRID.r + 0.5) / n * W - w.clientHeight / 2
   }
   function zoom (on) {
-    mapBig = on; $('mIn').className = 'min' + (on ? ' big' : ''); $('mZoom').textContent = on ? 'Smaller' : 'Bigger'; draw()
+    mapBig = on; $('mIn').className = 'min' + (on ? ' big' : ''); $('mZoom').textContent = on ? 'Kleiner' : 'Größer'; draw()
   }
   function happened (list) {
     var ol = $('mNews'); ol.textContent = ''
-    if (!list || !list.length) { ol.appendChild(el('li', 'msg', 'It is quiet right now.')); return }
+    if (!list || !list.length) { ol.appendChild(el('li', 'msg', 'Gerade ist es ruhig.')); return }
     list.forEach(function (e) {
-      var li = el('li'); var nm = el('span', 'nm'); nm.appendChild(el('b', '', e.name)); nm.appendChild(document.createTextNode(e.in ? ' moved in' : ' is building' + (e.house ? ': ' + e.house : '')))
-      var sec = Math.max(0, Math.round((Date.now() - e.t) / 1000)); li.appendChild(nm); li.appendChild(el('small', '', sec < 60 ? '' + sec + ' sec ago' : ago(e.t))); ol.appendChild(li)
+      var li = el('li'); var nm = el('span', 'nm'); nm.appendChild(el('b', '', e.name)); nm.appendChild(document.createTextNode(e.in ? ' ist eingezogen' : ' baut aus' + (e.house ? ': ' + e.house : '')))
+      var sec = Math.max(0, Math.round((Date.now() - e.t) / 1000)); li.appendChild(nm); li.appendChild(el('small', '', sec < 60 ? 'vor ' + sec + ' Sek.' : ago(e.t))); ol.appendChild(li)
     })
   }
   function karte () {
@@ -678,7 +678,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
       mapStr = m; draw(); if (changed) setTimeout(draw, 1400)
       mapMe = d.me; place($('mPin'), d.me && d.me.plot != null ? d.me.plot : -1)
       var hint = $('mMe'); hint.hidden = !(d.me && d.me.plot == null)
-      if (!hint.hidden) hint.textContent = 'Your house is in storage right now, so it is not on the map. With your next like it stands again.'
+      if (!hint.hidden) hint.textContent = 'Dein Haus ist gerade eingelagert und steht deshalb nicht auf der Karte. Beim nächsten Like steht es wieder.'
       happened(d.news)
       if (wantFind) { wantFind = false; findMine() }
     }).catch(function () { $('mDot').className = 'dot off' }).then(function () { mapBusy = false; if (tabNow === 'karte') mapT = setTimeout(karte, document.hidden ? 9000 : 4000) })
@@ -688,30 +688,30 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     var r = $('mC').getBoundingClientRect(); var n = GRID.r * 2 + 1
     var gx = Math.floor((e.clientX - r.left) / r.width * n); var gz = Math.floor((e.clientY - r.top) / r.height * n)
     var i = CELL[gx * 100 + gz]; var box = $('mInfo'); box.hidden = false; box.textContent = ''
-    if (i == null) { place($('mSel'), -1); box.appendChild(el('p', 'msg', Math.abs(gx - GRID.r) <= 1 && Math.abs(gz - GRID.r) <= 1 ? 'This is the market square in the middle of the city.' : 'There is no lot here.')); return }
+    if (i == null) { place($('mSel'), -1); box.appendChild(el('p', 'msg', Math.abs(gx - GRID.r) <= 1 && Math.abs(gz - GRID.r) <= 1 ? 'Das ist der Marktplatz in der Mitte der Stadt.' : 'Hier ist kein Grundstück.')); return }
     place($('mSel'), i)
-    if (!(parseInt(mapStr.charAt(i), 36) > 0)) { box.appendChild(el('p', 'msg', 'Lot ' + (i + 1) + ' is open right now.')); return }
-    box.appendChild(el('p', 'msg', 'loading …'))
+    if (!(parseInt(mapStr.charAt(i), 36) > 0)) { box.appendChild(el('p', 'msg', 'Grundstück ' + (i + 1) + ' ist gerade frei.')); return }
+    box.appendChild(el('p', 'msg', 'lädt …'))
     get('/api/platz?nr=' + i).then(function (d) {
       box.textContent = ''
-      if (!d.found) { box.appendChild(el('p', 'msg', 'Lot ' + (i + 1) + ' is open right now.')); return }
-      var h = d.house; var who = el('div', 'who'); var left = el('div'); left.appendChild(el('b', '', h.name)); left.appendChild(el('small', '', '@' + h.id + ' · lot ' + (i + 1))); who.appendChild(left)
-      var lv = el('div', 'rank'); lv.appendChild(el('b', '', String(h.level))); lv.appendChild(el('small', '', 'Level')); who.appendChild(lv); box.appendChild(who)
-      var b = el('button', 'b2 back', 'See the house'); b.type = 'button'; b.addEventListener('click', function () { open(h.id) }); box.appendChild(b)
-    }).catch(function () { box.textContent = ''; box.appendChild(el('p', 'msg', 'No connection to the game right now.')) })
+      if (!d.found) { box.appendChild(el('p', 'msg', 'Grundstück ' + (i + 1) + ' ist gerade frei.')); return }
+      var h = d.house; var who = el('div', 'who'); var left = el('div'); left.appendChild(el('b', '', h.name)); left.appendChild(el('small', '', '@' + h.id + ' · Grundstück ' + (i + 1))); who.appendChild(left)
+      var lv = el('div', 'rank'); lv.appendChild(el('b', '', String(h.level))); lv.appendChild(el('small', '', 'Stufe')); who.appendChild(lv); box.appendChild(who)
+      var b = el('button', 'b2 back', 'Haus ansehen'); b.type = 'button'; b.addEventListener('click', function () { open(h.id) }); box.appendChild(b)
+    }).catch(function () { box.textContent = ''; box.appendChild(el('p', 'msg', 'Gerade keine Verbindung zum Spiel.')) })
   }
   function findMine () {
     if (!own) { tab('haus'); try { $('q').focus() } catch (e) {} return }
     if (mapMe && mapMe.plot != null) { if (!mapBig) zoom(true); place($('mPin'), mapMe.plot); setTimeout(function () { center(mapMe.plot) }, 60); return }
     var box = $('mInfo'); box.hidden = false; box.textContent = ''
-    box.appendChild(el('p', 'msg', mapMe ? 'Your house is in storage right now, so it is not on the map. With your next like it stands again.' : 'There is no house in the city under your name yet.'))
+    box.appendChild(el('p', 'msg', mapMe ? 'Dein Haus ist gerade eingelagert und steht deshalb nicht auf der Karte. Beim nächsten Like steht es wieder.' : 'Unter deinem Namen steht noch kein Haus in der Stadt.'))
   }
 
   /* ---- stream times and the series (read from the game once a minute while this area is open) */
-  var clock = function (t) { return new Date(t).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) }
+  var clock = function (t) { return new Date(t).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) }
   var dayOf = function (t) {
     var a = new Date(t); a.setHours(0, 0, 0, 0); var b = new Date(); b.setHours(0, 0, 0, 0); var diff = Math.round((b - a) / 86400000)
-    return diff === 0 ? 'Today' : diff === 1 ? 'Yesterday' : new Date(t).toLocaleDateString('en-US', { weekday: 'short', day: '2-digit', month: '2-digit' })
+    return diff === 0 ? 'Heute' : diff === 1 ? 'Gestern' : new Date(t).toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' })
   }
   function about () {
     if (Date.now() - infoAt < 30000) return
@@ -719,10 +719,10 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     get('/api/info').then(function (d) {
       stats(d)
       var s = d.sessions || []; var on = !!d.fresh && s.length > 0
-      $('zNow').textContent = on ? 'Live now – since ' + dayOf(s[0].from).toLowerCase() + ' ' + clock(s[0].from) + '.' : s.length ? 'Not live right now. Last time: ' + dayOf(s[0].to).toLowerCase() + ' until ' + clock(s[0].to) + '.' : 'Not live right now.'
+      $('zNow').textContent = on ? 'Jetzt live – seit ' + dayOf(s[0].from).toLowerCase() + ' ' + clock(s[0].from) + ' Uhr.' : s.length ? 'Gerade nicht live. Zuletzt: ' + dayOf(s[0].to).toLowerCase() + ' bis ' + clock(s[0].to) + ' Uhr.' : 'Gerade nicht live.'
       $('zNote').hidden = !d.note; $('zNote').textContent = d.note || ''
       var ol = $('zList'); ol.textContent = ''
-      s.slice(on ? 1 : 0).forEach(function (x) { var li = el('li'); li.appendChild(el('code', '', dayOf(x.from))); li.appendChild(el('span', '', clock(x.from) + ' – ' + clock(x.to) + '')); ol.appendChild(li) })
+      s.slice(on ? 1 : 0).forEach(function (x) { var li = el('li'); li.appendChild(el('code', '', dayOf(x.from))); li.appendChild(el('span', '', clock(x.from) + ' – ' + clock(x.to) + ' Uhr')); ol.appendChild(li) })
       var v = $('vList'); v.textContent = ''
       ;(d.videos || []).forEach(function (x) { if (!/^https:\/\/www\.tiktok\.com\/@flexhausen\/video\/\d+$/.test(x.url)) return; var a = el('a', 'b2', x.titel); a.href = x.url; a.target = '_blank'; a.rel = 'noopener'; v.appendChild(a) })
     }).catch(function () { infoAt = 0 })
@@ -736,11 +736,11 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
   }
   function idea () {
     var t = $('ideeT').value.replace(/\s+/g, ' ').trim(); var m = $('ideeM'); m.hidden = false
-    if (t.length < 8) { m.textContent = 'Write a little more – at least one short sentence.'; return }
-    $('ideeB').disabled = true; m.textContent = 'sending …'
+    if (t.length < 8) { m.textContent = 'Schreib ein bisschen mehr – mindestens ein kurzer Satz.'; return }
+    $('ideeB').disabled = true; m.textContent = 'wird gesendet …'
     post('/api/idee', { text: t, name: own || '' }).then(function (d) {
-      if (d && d.ok) { $('ideeT').value = ''; $('ideeN').textContent = '0 / 400'; m.textContent = 'Thank you! Your idea is noted – ticket #' + d.ticket + '.' } else m.textContent = (d && d.error) || 'That did not work just now. Try again in a moment.'
-    }).catch(function () { m.textContent = 'No connection right now. Try again in a moment.' }).then(function () { $('ideeB').disabled = false })
+      if (d && d.ok) { $('ideeT').value = ''; $('ideeN').textContent = '0 / 400'; m.textContent = 'Danke! Deine Idee ist notiert – Ticket #' + d.ticket + '.' } else m.textContent = (d && d.error) || 'Das hat gerade nicht geklappt. Versuch es gleich noch einmal.'
+    }).catch(function () { m.textContent = 'Gerade keine Verbindung. Versuch es gleich noch einmal.' }).then(function () { $('ideeB').disabled = false })
   }
   /* the viewer's own level in the list of all levels: his is marked, the ones below are done */
   function mark () {
@@ -749,17 +749,17 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
       var lv = Number(all[i].getAttribute('data-l')); if (!lv) continue
       var tag = all[i].querySelector('em'); if (tag) all[i].removeChild(tag)
       all[i].className = 's' + (myLevel && lv === myLevel ? ' me' : '')
-      if (myLevel && lv <= myLevel) all[i].appendChild(el('em', '', lv === myLevel ? 'Your house' : 'geschafft'))
+      if (myLevel && lv <= myLevel) all[i].appendChild(el('em', '', lv === myLevel ? 'Dein Haus' : 'geschafft'))
     }
   }
   function levels () {
     get('/api/stufen').then(function (d) {
-      var box = $('st'); box.textContent = ''; $('stH').textContent = 'All ' + d.count + ' Levels'; lvLoaded = true
+      var box = $('st'); box.textContent = ''; $('stH').textContent = 'Alle ' + d.count + ' Stufen'; lvLoaded = true
       ;(d.levels || []).forEach(function (s) {
         var c = el('div', 's'); c.setAttribute('data-l', s.level); var p = el('div', 'p')
-        if (s.img) { var im = el('img'); im.loading = 'lazy'; im.decoding = 'async'; im.alt = 'Level ' + s.level + ' – ' + s.name; im.src = BASE + s.img; p.appendChild(im) }
-        c.appendChild(p); c.appendChild(el('b', '', 'Level ' + s.level)); c.appendChild(el('span', '', s.name))
-        var sm = el('small', '', s.level === 1 ? (FOLLOW ? 'your first house – for following' : 'from the first like') : 'from ' + fmt(s.likes) + ' likes or ' + fmt(s.coins) + ' coins'); if (s.level === 1) sm.id = 'st1'
+        if (s.img) { var im = el('img'); im.loading = 'lazy'; im.decoding = 'async'; im.alt = 'Stufe ' + s.level + ' – ' + s.name; im.src = BASE + s.img; p.appendChild(im) }
+        c.appendChild(p); c.appendChild(el('b', '', 'Stufe ' + s.level)); c.appendChild(el('span', '', s.name))
+        var sm = el('small', '', s.level === 1 ? (FOLLOW ? 'dein erstes Haus – fürs Folgen' : 'ab dem ersten Like') : 'ab ' + fmt(s.likes) + ' Likes oder ' + fmt(s.coins) + ' Coins'); if (s.level === 1) sm.id = 'st1'
         c.appendChild(sm); box.appendChild(c)
       })
       mark()
