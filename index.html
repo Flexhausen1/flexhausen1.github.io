@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b0d13">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self' https://*.trycloudflare.com https://api.github.com; img-src 'self' data: https://*.trycloudflare.com; base-uri 'none'; form-action 'none'">
-<title>Mein Haus in Krötenhausen</title>
+<title>Mein Haus in Stinkhausen</title>
 <style>
 :root{--bg:#0b0d13;--card:#151924;--card2:#10131b;--line:#262c3a;--text:#f4f2ec;--dim:#9ea3b3;--gold:#f5c542;--gold2:#ffe9a6;--ok:#57d38c;--warn:#ff8a5c;--red:#e11d48;--sky1:#1c2a4a;--sky2:#3f679c}
 *{box-sizing:border-box}
@@ -193,7 +193,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
   <header class="top">
     <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="#1b1503"/></svg></span>
     <div>
-      <h1>Krötenhausen</h1>
+      <h1>Stinkhausen</h1>
       <p class="sub">Die Stadt aus dem TikTok-LIVE von @flexhausen</p>
     </div>
   </header>
@@ -228,7 +228,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
       <button type="button" id="mFind" class="b2">Mein Haus finden</button>
       <button type="button" id="mZoom" class="b2">Größer</button>
     </div>
-    <div id="mWrap" class="mwrap"><div id="mIn" class="min"><canvas id="mC" width="10" height="10" role="img" aria-label="Karte von Krötenhausen: jedes Feld ist ein Grundstück, die Farbe zeigt die Stufe des Hauses"></canvas><i id="mPin" class="pin" hidden></i><i id="mSel" class="sel" hidden></i></div></div>
+    <div id="mWrap" class="mwrap"><div id="mIn" class="min"><canvas id="mC" width="10" height="10" role="img" aria-label="Karte von Stinkhausen: jedes Feld ist ein Grundstück, die Farbe zeigt die Stufe des Hauses"></canvas><i id="mPin" class="pin" hidden></i><i id="mSel" class="sel" hidden></i></div></div>
     <div class="leg"><b></b><span>frei</span><span>Stufe 1</span><i></i><span id="legMax">25</span></div>
     <section id="mInfo" class="card" hidden aria-live="polite"></section>
     <p id="mMe" class="hint" hidden></p>
@@ -266,18 +266,18 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     <p class="lead">In drei Schritten zu deinem Haus.</p>
     <section class="card">
       <ol class="steps">
-        <li><div><b>Komm in den LIVE</b><span>Krötenhausen läuft auf TikTok bei @flexhausen.</span></div></li>
+        <li><div><b>Komm in den LIVE</b><span>Stinkhausen läuft auf TikTok bei @flexhausen.</span></div></li>
         <li><div><b id="how2">Dein Haus wird gebaut</b><span id="how2t">Sobald du dabei bist, steht dein erstes Haus in der Stadt.</span></div></li>
         <li><div><b>Lass es wachsen</b><span>Mit jedem Like kommt dein Haus der nächsten Stufe näher. Geschenke zählen auch, nötig sind sie nie.</span></div></li>
       </ol>
     </section>
     <section class="card">
-      <h3>Deine Idee für Krötenhausen</h3>
+      <h3>Deine Idee für Stinkhausen</h3>
       <p class="msg">Was fehlt in der Stadt? Schreib es uns. Jede Idee bekommt eine Ticket-Nummer.</p>
-      <textarea id="ideeT" maxlength="400" rows="4" placeholder="Zum Beispiel: ein Fußballplatz neben dem Marktplatz" aria-label="Deine Idee für Krötenhausen"></textarea>
+      <textarea id="ideeT" maxlength="400" rows="4" placeholder="Zum Beispiel: ein Fußballplatz neben dem Marktplatz" aria-label="Deine Idee für Stinkhausen"></textarea>
       <div class="idrow"><small id="ideeN">0 / 400</small><button type="button" id="ideeB" class="b1">Idee senden</button></div>
       <p id="ideeM" class="msg okmsg" hidden aria-live="polite"></p>
-      <p class="fine">Deine Idee und dein TikTok-Name (falls du ihn bei „Mein Haus“ eingegeben hast) gehen nur an das Team von Krötenhausen. Sie werden nicht veröffentlicht.</p>
+      <p class="fine">Deine Idee und dein TikTok-Name (falls du ihn bei „Mein Haus“ eingegeben hast) gehen nur an das Team von Stinkhausen. Sie werden nicht veröffentlicht.</p>
     </section>
     <section class="card">
       <h3>Stream-Zeiten</h3>
@@ -394,7 +394,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#131724'); bg.addColorStop(1, '#07080c'); g.fillStyle = bg; g.fillRect(0, 0, W, H)
     g.strokeStyle = '#f5c542'; g.lineWidth = 6; rrect(g, 36, 36, W - 72, H - 72, 52); g.stroke()
     g.textAlign = 'center'; g.textBaseline = 'alphabetic'
-    g.fillStyle = '#f5c542'; g.font = '900 128px ' + F; g.fillText('KRÖTENHAUSEN', W / 2, 250)
+    g.fillStyle = '#f5c542'; g.font = '900 128px ' + F; g.fillText('STINKHAUSEN', W / 2, 250)
     g.fillStyle = '#a4a8b5'; g.font = '700 40px ' + F; g.fillText('MEIN HAUS IM TIKTOK-LIVE', W / 2, 322)
     /* the house on its sky */
     var px = 100; var py = 380; var pw = W - 200; var ph = 780
@@ -441,12 +441,12 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
     try { url = picture(h, d, house).toDataURL('image/jpeg', 0.9) } catch (e) { try { url = picture(h, d, null).toDataURL('image/jpeg', 0.9) } catch (e2) { $('ov').hidden = true; return } }
     var link = location.origin + location.pathname + '?name=' + encodeURIComponent(h.id)
     var ov = $('ov'); ov.textContent = ''; ov.hidden = false
-    var im = el('img'); im.alt = 'Dein Haus in Krötenhausen als Bild'; im.src = url; ov.appendChild(im)
+    var im = el('img'); im.alt = 'Dein Haus in Stinkhausen als Bild'; im.src = url; ov.appendChild(im)
     var row = el('div', 'rowb'); var file = null
     try { var bin = atob(url.split(',')[1]); var arr = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i); file = new File([arr], 'mein-haus-flexhausen.jpg', { type: 'image/jpeg' }) } catch (e3) {}
     if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
       var b1 = el('button', 'b1', 'Teilen'); b1.type = 'button'
-      b1.addEventListener('click', function () { navigator.share({ files: [file], text: 'Mein Haus in Krötenhausen: ' + link }).catch(function () {}) }); row.appendChild(b1)
+      b1.addEventListener('click', function () { navigator.share({ files: [file], text: 'Mein Haus in Stinkhausen: ' + link }).catch(function () {}) }); row.appendChild(b1)
     }
     var a = el('a', 'btn', 'Bild speichern'); a.href = url; a.download = 'mein-haus-flexhausen.jpg'; row.appendChild(a)
     var b2 = el('button', 'b1 x', 'Link kopieren'); b2.type = 'button'
@@ -469,7 +469,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
         var box = el('div', 'sug')
         d.suggestions.forEach(function (s) { var b = el('button'); b.type = 'button'; b.appendChild(el('span', '', s.name + ' ')); b.appendChild(el('small', '', '@' + s.id + ' · Stufe ' + s.level)); b.addEventListener('click', function () { $('q').value = s.id; look(s.id, true) }); box.appendChild(b) })
         out.appendChild(box)
-      } else out.appendChild(el('p', 'msg', 'Unter diesem Namen steht noch kein Haus in Krötenhausen. ' + (FOLLOW ? 'Folge @flexhausen im LIVE – dann wird deins gebaut.' : 'Komm in den LIVE und lass ein Like da – dann hast du eins.')))
+      } else out.appendChild(el('p', 'msg', 'Unter diesem Namen steht noch kein Haus in Stinkhausen. ' + (FOLLOW ? 'Folge @flexhausen im LIVE – dann wird deins gebaut.' : 'Komm in den LIVE und lass ein Like da – dann hast du eins.')))
       return
     }
     var h = d.house
