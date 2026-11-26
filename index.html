@@ -3,791 +3,904 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b0d13">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self' https://*.trycloudflare.com https://api.github.com; img-src 'self' data: https://*.trycloudflare.com; base-uri 'none'; form-action 'none'">
-<title>Mein Haus in Stinkhausen</title>
+<title>FLEXHAUSEN – Die Stadt auf dem Mond</title>
+<meta name="description" content="Flexhausen – die Minecraft-Stadt auf dem Mond aus dem TikTok-LIVE von @flexhausen. Such deinen TikTok-Namen und sieh dein Haus, deine Stufe und deinen Platz.">
+<meta name="theme-color" content="#04050a">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self' https: http://127.0.0.1:3260 http://localhost:3260; base-uri 'none'; form-action 'none'">
+<meta property="og:title" content="FLEXHAUSEN – Die Stadt auf dem Mond">
+<meta property="og:description" content="Die Minecraft-Stadt auf dem Mond aus dem TikTok-LIVE – such dein Haus.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2304050a'/%3E%3Ccircle cx='16' cy='16' r='10' fill='%23d9dde6'/%3E%3Ccircle cx='20' cy='13' r='10' fill='%2304050a'/%3E%3Ccircle cx='11' cy='19' r='1.6' fill='%23a4aab6'/%3E%3Ccircle cx='9' cy='13' r='1' fill='%23a4aab6'/%3E%3Ccircle cx='25' cy='7' r='1' fill='%23e8c36a'/%3E%3C/svg%3E">
+<!-- FLEXHAUSEN – „Mein Haus auf dem Mond“ (Umbau 26.11.2026, Helfer WEBSITE). Im Aufbau wie\n     gitterkoenig.github.io. Liegt fest auf GitHub Pages; die Zahlen kommen vom Stadt-Rechner (Adresse in
+     adresse.json, nur lesend aus der Stadt-Datenbank). Keine fremden Schriften, keine Tracker, keine Cookies.
+     Auflage 16: keine Beträge, keine Schwellen, keine Bitten – Fortschritt nur als Bau-XP in Prozent. -->
+<!-- Impressum: wie auf gitterkoenig.github.io gibt es (noch) keins. Wenn der Chef eins will, im Bereich „Start“ unter
+     „Datenschutz“ einen Block details/summary „Impressum“ mit „Angaben nach § 5 DDG“, Name, ladungsfähiger Anschrift und
+     E-Mail einfügen. Stehen dort noch Platzhalter in eckigen Klammern, lädt flexhausen-seite.js die Seite nicht hoch. -->
 <style>
-:root{--bg:#0b0d13;--card:#151924;--card2:#10131b;--line:#262c3a;--text:#f4f2ec;--dim:#9ea3b3;--gold:#f5c542;--gold2:#ffe9a6;--ok:#57d38c;--warn:#ff8a5c;--red:#e11d48;--sky1:#1c2a4a;--sky2:#3f679c}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
-body{min-height:100vh;padding:18px 16px 0;padding-bottom:calc(104px + env(safe-area-inset-bottom));background:radial-gradient(520px 300px at 50% -80px,rgba(245,197,66,.20),transparent 70%),radial-gradient(420px 320px at 100% 30%,rgba(63,103,156,.16),transparent 70%),var(--bg);background-attachment:fixed}
-main{max-width:520px;margin:0 auto}
-button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
-button:active,.btn:active,.go:active{transform:scale(.98)}
-:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-[hidden]{display:none!important}
+  :root {
+    --bg: #04050a; --panel: rgba(17,19,30,.9); --panel2: rgba(25,28,42,.92); --line: rgba(255,255,255,.07); --line2: rgba(255,255,255,.13);
+    --text: #eef0f6; --muted: #9aa1b4; --dim: #646b80;
+    --gold: #e8c36a; --gold2: #f8e3a6; --gold3: #a8772a; --silver: #d3d8e2; --bronze: #d49a6a;
+    --ice: #8fd8ff; --ice2: #c9ecff; --ink: #1b1405; --red: #ff3b5c; --moon: #c3c7d1;
+    --g0: #cfd5e0; --g1: #8fd8ff; --g2: #7be0c3; --g3: #c58bff; --g4: #e8c36a;
+    --head: "Avenir Next", "Avenir", "Futura", "Century Gothic", "Montserrat", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    --body: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --r: 18px; --tabs: 66px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+  /* (body ohne eigenen Hintergrund – sonst deckt er den Sternenhimmel zu; das Schwarz trägt html) */
+  body { margin: 0; min-height: 100vh; color: var(--text); font: 15px/1.5 var(--body); overflow-x: hidden; background: transparent;
+    padding-bottom: calc(var(--tabs) + env(safe-area-inset-bottom) + 18px); }
+  a { color: var(--ice); }
+  img { max-width: 100%; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
 
-/* head */
-.top{display:flex;align-items:center;gap:12px;margin:2px 0 14px}
-.logo{flex:none;width:48px;height:48px;border-radius:14px;background:linear-gradient(145deg,var(--gold2),var(--gold) 55%,#c98a12);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(245,197,66,.28)}
-.logo svg{width:28px;height:28px}
-.top div{min-width:0}
-h1{font-size:27px;line-height:1.05;margin:0;letter-spacing:.6px;font-weight:900;text-transform:uppercase;background:linear-gradient(90deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{color:var(--dim);margin:2px 0 0;font-size:14px}
-.go{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:8px 14px;border-radius:16px;background:linear-gradient(135deg,#ff2d55,var(--red));color:#fff;font-weight:800;font-size:17px;text-decoration:none;text-align:center;margin:0 0 12px;box-shadow:0 8px 26px rgba(225,29,72,.35)}
-.go i{flex:none;width:10px;height:10px;border-radius:50%;background:#fff;animation:p 1.2s infinite}
-.go.off{min-height:44px;background:var(--card2);border:1px solid var(--line);color:var(--dim);font-weight:600;font-size:14px;box-shadow:none}
-.go.off i{display:none}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 18px}
-.stats div{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:8px 6px;text-align:center;min-width:0}
-.stats b{display:block;font-size:19px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.stats small{color:var(--dim);font-size:12px}
+  /* ---------- Sternenhimmel (fest, eine Ebene funkelt) ---------- */
+  .sky, .sky::after { position: fixed; inset: 0; pointer-events: none; }
+  .sky { z-index: -1; background:
+      radial-gradient(900px 520px at 85% -8%, rgba(70,110,210,.20), transparent 70%),
+      radial-gradient(700px 480px at -10% 35%, rgba(130,80,210,.12), transparent 70%),
+      radial-gradient(1.2px 1.2px at 23px 41px, rgba(255,255,255,.9), transparent 70%) 0 0 / 211px 211px,
+      radial-gradient(1px 1px at 87px 133px, rgba(255,255,255,.65), transparent 70%) 0 0 / 173px 173px,
+      radial-gradient(1.5px 1.5px at 151px 77px, rgba(255,246,220,.85), transparent 70%) 0 0 / 257px 257px,
+      radial-gradient(1px 1px at 41px 171px, rgba(200,220,255,.7), transparent 70%) 0 0 / 139px 139px,
+      radial-gradient(1px 1px at 120px 20px, rgba(255,255,255,.55), transparent 70%) 0 0 / 191px 191px,
+      var(--bg); }
+  .sky::after { content: ''; background:
+      radial-gradient(1.6px 1.6px at 60px 90px, #fff, transparent 70%) 0 0 / 313px 313px,
+      radial-gradient(1.3px 1.3px at 200px 30px, #dbe9ff, transparent 70%) 0 0 / 277px 277px,
+      radial-gradient(1.2px 1.2px at 15px 220px, #fff3d6, transparent 70%) 0 0 / 349px 349px;
+    animation: twinkle 4.5s ease-in-out infinite alternate; }
+  @keyframes twinkle { from { opacity: .25 } to { opacity: 1 } }
 
-/* shared pieces */
-h2{font-size:21px;line-height:1.2;margin:0 0 4px;font-weight:800}
-.lead{color:var(--dim);font-size:14px;margin:0 0 14px}
-h3{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin:0 0 10px;font-weight:700}
-.card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)),var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-.b1,.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 20px;border-radius:14px;background:linear-gradient(180deg,var(--gold2),var(--gold));color:#1b1503;font-weight:800;font-size:17px;text-decoration:none;white-space:nowrap}
-.b1.x{background:var(--card2);color:var(--text);border:1px solid var(--line)}
-.b2{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;padding:8px 14px;border-radius:14px;background:var(--card2);border:1px solid var(--line);color:var(--text);font-weight:700;font-size:15px}
-.msg{color:var(--dim);margin:0}
-.live{display:flex;align-items:center;gap:6px;color:var(--dim);font-size:13px;margin-top:12px}
-.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--ok);animation:p 1.6s infinite}
-.dot.off{background:var(--warn);animation:none}
-@keyframes p{50%{opacity:.35}}
+  /* ---------- Kopf ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: rgba(4,5,10,.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; gap: 10px; height: 58px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); min-width: 0; }
+  .logo svg { width: 28px; height: 28px; flex: none; }
+  .logo b { font: 600 17px/1 var(--head); letter-spacing: .26em; white-space: nowrap; }
+  .live { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: 999px; font: 700 11px var(--body); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: #fff; background: rgba(255,255,255,.06); border: 1px solid var(--line2); white-space: nowrap; }
+  .live::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--dim); }
+  .live.on { background: var(--red); border-color: transparent; box-shadow: 0 0 18px rgba(255,59,92,.5); }
+  .live.on::before { background: #fff; animation: blink 1.1s infinite; }
+  @keyframes blink { 50% { opacity: .25 } }
+  .waTop { width: 34px; height: 34px; flex: none; display: inline-grid; place-items: center; border-radius: 50%; background: #1fa855; box-shadow: 0 0 0 3px rgba(37,211,102,.14); }
+  .waTop svg { width: 19px; height: 19px; }
+  @media (max-width: 360px) { .logo b { font-size: 15px; letter-spacing: .18em; } .live { padding: 6px 9px; letter-spacing: .06em; } }
 
-/* my house */
-form{display:flex;gap:8px;margin-bottom:8px}
-.at{position:relative;flex:1;min-width:0}
-.at span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--dim);font-weight:700}
-input{width:100%;height:52px;border-radius:14px;border:2px solid var(--line);background:var(--card2);color:var(--text);font:inherit;font-size:18px;padding:0 14px 0 34px;outline:none}
-input:focus{border-color:var(--gold)}
-.hint{color:var(--dim);font-size:14px;margin:0 0 16px}
-.who{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.who b{font-size:22px;line-height:1.2;overflow-wrap:anywhere}
-.who small{display:block;color:var(--dim);font-size:14px;overflow-wrap:anywhere}
-.rank{flex:none;text-align:center;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:6px 12px}
-.rank b{display:block;font-size:22px;color:var(--gold)}
-.rank small{font-size:12px;color:var(--dim)}
-.pic{margin:14px -6px 6px;border-radius:16px;overflow:hidden;background:linear-gradient(var(--sky1),var(--sky2))}
-.pic svg{display:block;width:100%;height:auto}
-.pic img{display:block;margin:0 auto;padding:10px 0 0;max-width:100%;max-height:360px;width:auto;height:auto}
-.lvl{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:10px}
-.lvl .n{font-size:15px;font-weight:800;color:#1b1503;background:linear-gradient(180deg,var(--gold2),var(--gold));border-radius:999px;padding:3px 12px}
-.lvl .h{font-size:22px;font-weight:800}
-.nums{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
-.num{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
-.num b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
-.num small{color:var(--dim);font-size:13px}
-.bar{height:14px;border-radius:999px;background:var(--card2);border:1px solid var(--line);overflow:hidden;margin:8px 0 6px}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .6s}
-.next{font-size:15px}
-.next b{color:var(--gold2)}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.tag{font-size:13px;border-radius:999px;padding:4px 10px;background:var(--card2);border:1px solid var(--line);color:var(--dim)}
-.tag.ok{color:var(--ok);border-color:#285a3f}
-.tag.warn{color:var(--warn);border-color:#6b3a28}
-.share{width:100%;margin-top:14px;background:var(--card2);color:var(--gold);border:2px solid var(--gold)}
-.back{margin-top:10px}
-.sug{display:flex;flex-direction:column;gap:8px;margin-top:10px}
-.sug button{padding:10px 14px;text-align:left;background:var(--card2);border:1px solid var(--line);border-radius:14px;font-weight:600;font-size:16px;overflow-wrap:anywhere}
-.sug small{color:var(--dim);font-weight:400}
+  /* ---------- Bereiche ---------- */
+  .view { display: none; padding: 14px 0 8px; animation: fade .35s ease both; }
+  .view.on { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
+  h2 { font: 600 15px/1.2 var(--head); letter-spacing: .22em; margin: 30px 0 12px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; color: #fff; }
+  h2::before { content: ''; flex: none; width: 18px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+  h2 small { font: 600 12px var(--body); letter-spacing: .02em; color: var(--muted); text-transform: none; margin-left: auto; white-space: nowrap; }
+  .card { background: linear-gradient(180deg, var(--panel2), var(--panel)); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; }
+  .muted { color: var(--muted); }
+  .num { font-variant-numeric: tabular-nums; }
+  .note { margin-top: 12px; padding: 14px 16px; border-radius: 14px; background: var(--panel); border: 1px dashed var(--line2); color: #d6d9e3; }
+  .offline { display: none; margin: 12px 0 0; padding: 10px 14px; border-radius: 12px; background: rgba(232,195,106,.08); border: 1px solid rgba(232,195,106,.35); color: var(--gold2); font: 600 13px var(--body); }
+  .offline.on { display: block; }
+  :focus-visible { outline: 2px solid var(--ice); outline-offset: 2px; }
 
-/* ranking */
-.seg{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;margin-bottom:14px}
-.seg button{min-height:40px;border-radius:10px;font-size:13px;font-weight:700;color:var(--dim);padding:4px 2px}
-.seg button[aria-pressed=true]{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#1b1503}
-.pod{display:grid;grid-template-columns:1fr 1.14fr 1fr;gap:8px;align-items:end;margin-bottom:14px}
-.pd{display:block;min-width:0;padding:8px 8px 10px;text-align:center;border-radius:16px;background:var(--card);border:1px solid var(--line)}
-.pd .ph{position:relative;height:96px;display:flex;align-items:flex-end;justify-content:center;border-radius:11px;overflow:hidden;background:linear-gradient(var(--sky1),var(--sky2))}
-.pd.p1{border-color:var(--gold);box-shadow:0 8px 28px rgba(245,197,66,.2)}
-.pd.p1 .ph{height:124px}
-.pd img{display:block;max-width:100%;max-height:100%;width:auto;height:auto}
-.pd .md{position:absolute;left:6px;top:6px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#1b1503;background:#c9ccd6}
-.pd.p1 .md{background:var(--gold)}
-.pd.p3 .md{background:#d08a4e}
-.pd b{display:block;margin-top:8px;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pd small{display:block;color:var(--dim);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pd.p1 small{color:var(--gold2)}
-ol{list-style:none;margin:0;padding:0}
-.list{padding:6px 14px}
-.list li{border-top:1px solid var(--line)}
-.list li:first-child{border-top:0}
-.row{display:flex;gap:10px;align-items:center;width:100%;min-height:46px;padding:6px 0;text-align:left}
-.row .p:empty{display:none}
-.row .p{flex:none;min-width:30px;color:var(--gold);font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
-.row .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
-.row .lv{flex:none;color:var(--dim);font-size:13px;font-variant-numeric:tabular-nums}
-.list li.i .row .nm{color:var(--gold2)}
-.list li.i{background:rgba(245,197,66,.08);margin:0 -14px;padding:0 14px;border-top-color:transparent}
-.mine b.big{font-size:26px;color:var(--gold)}
+  /* ---------- Bühne (Erde, Titel, Mondboden) ---------- */
+  .hero { --hp: 20px; position: relative; overflow: hidden; margin: 0 -16px; padding: 30px var(--hp) 0; isolation: isolate;
+    background: radial-gradient(120% 70% at 50% 120%, rgba(143,216,255,.10), transparent 60%); }
+  @media (min-width: 760px) { .hero { --hp: 34px; margin: 4px 0 0; border-radius: 26px; border: 1px solid var(--line); padding-top: 44px; } }
+  .earth { position: absolute; z-index: -1; top: 14px; right: -34px; width: 190px; height: 190px; animation: drift 14s ease-in-out infinite alternate; }
+  @media (min-width: 560px) { .earth { right: 10px; top: 18px; width: 220px; height: 220px; } }
+  @keyframes drift { from { transform: translateY(0) rotate(0deg) } to { transform: translateY(8px) rotate(3deg) } }
+  .sat { position: absolute; z-index: -1; left: 58%; top: 196px; width: 44px; height: 30px; opacity: .85; animation: float 9s ease-in-out infinite alternate; }
+  @keyframes float { from { transform: translate(0, 0) rotate(-8deg) } to { transform: translate(-26px, 12px) rotate(10deg) } }
+  .kicker { margin: 0 0 10px; font: 600 11px/1 var(--head); letter-spacing: .34em; text-transform: uppercase; color: var(--gold); }
+  .title { margin: 0; font: 600 clamp(34px, 10.4vw, 78px)/0.95 var(--head); letter-spacing: .08em; white-space: nowrap;
+    background: linear-gradient(180deg, #ffffff 0%, #f3f5f9 50%, #c3cad8 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,.65)) drop-shadow(0 0 24px rgba(143,216,255,.25)); }
+  .sub { margin: 12px 0 0; font: 500 clamp(15px, 4.2vw, 19px)/1.35 var(--head); letter-spacing: .06em; color: #dfe3ec; max-width: 22ch; }
+  .lead { margin: 14px 0 18px; color: #c4c9d6; max-width: 36ch; font-size: 14.5px; }
+  .ground { position: relative; z-index: -1; margin: -6px calc(-1 * var(--hp)) -1px; pointer-events: none; }
+  .ground svg { width: 100%; height: auto; display: block; }
+  .ttLink { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 8px 12px; border-radius: 999px; background: rgba(4,5,10,.55); border: 1px solid var(--line2); color: #e8ebf2; text-decoration: none; font: 600 13px var(--body); }
+  .ttLink svg { width: 15px; height: 15px; }
 
-/* map */
-.mapbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
-.mwrap{border-radius:16px;border:1px solid var(--line);background:#0a0d16;overflow:auto;max-height:72vh;-webkit-overflow-scrolling:touch}
-.min{position:relative;width:100%}
-.min.big{width:260%}
-canvas{display:block;width:100%;height:auto;touch-action:manipulation;cursor:pointer}
-.pin,.sel{position:absolute;width:0;height:0;pointer-events:none}
-.pin:before,.sel:before{content:"";position:absolute;left:-10px;top:-10px;width:20px;height:20px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.65),0 0 14px #fff;animation:pin 1.4s infinite}
-.sel:before{border-color:var(--gold);box-shadow:0 0 0 2px rgba(0,0,0,.65);animation:none}
-@keyframes pin{50%{transform:scale(1.45);opacity:.65}}
-.leg{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:12px;margin:10px 2px 14px}
-.leg i{flex:1;height:10px;border-radius:999px;background:linear-gradient(90deg,#5f7f96,#3fb0a8,#57d38c,#b8d94a,#f5c542,#ff9d4a,#ff5d73,#c86bff)}
-.leg b{flex:none;width:12px;height:12px;border-radius:3px;background:#161b29;border:1px solid var(--line)}
-.news li{display:flex;gap:10px;align-items:baseline;padding:9px 0}
-.news .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.news .nm b{font-weight:700}
-.news small{flex:none;color:var(--dim);font-size:12px;font-variant-numeric:tabular-nums}
+  /* ---------- Suche ---------- */
+  .search { position: relative; display: flex; gap: 8px; max-width: 520px; }
+  .search input { flex: 1; min-width: 0; height: 52px; padding: 0 14px 0 42px; border-radius: 14px; border: 1px solid var(--line2); background: rgba(8,10,18,.86) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239aa1b4' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4-4'/%3E%3C/svg%3E") 14px 50%/19px no-repeat; color: var(--text); font: 600 16px var(--body); outline: none; }
+  .search input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(232,195,106,.2); }
+  .btn { height: 52px; padding: 0 18px; border: 0; border-radius: 14px; background: linear-gradient(180deg, var(--gold2), var(--gold)); color: var(--ink); font: 700 15px var(--body); letter-spacing: .02em; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; white-space: nowrap; }
+  .btn:active { transform: translateY(1px); }
+  .btn.ghost { background: rgba(255,255,255,.06); color: var(--text); border: 1px solid var(--line2); }
+  .btn.small { height: 40px; padding: 0 14px; font-size: 14px; border-radius: 11px; }
 
-/* idea box, stream times, series */
-textarea{display:block;width:100%;min-height:104px;margin-top:12px;border-radius:14px;border:2px solid var(--line);background:var(--card2);color:var(--text);font:inherit;padding:12px 14px;outline:none;resize:vertical}
-textarea:focus{border-color:var(--gold)}
-.idrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
-.idrow small{color:var(--dim);font-size:13px;font-variant-numeric:tabular-nums}
-.b1[disabled]{opacity:.55}
-.fine{color:var(--dim);font-size:12px;margin:12px 0 0}
-.okmsg{color:var(--gold2);font-weight:700;margin-top:10px}
-.znote{margin:8px 0 0;color:var(--gold2);font-weight:700}
-.vid{display:flex;flex-direction:column;gap:8px;margin-top:12px}
-a.b2{text-decoration:none}
+  /* ---------- WhatsApp (gemeinsamer Kanal) ---------- */
+  .wa { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; margin: 26px 0 0; padding: 14px 16px; border-radius: 16px; background: linear-gradient(135deg, rgba(12,59,37,.9), rgba(14,80,48,.9)); border: 1px solid rgba(37,211,102,.55); color: #fff; text-decoration: none; }
+  .wa b { display: block; font: 700 15px var(--body); }
+  .wa p { margin: 4px 0 0; font-size: 13px; line-height: 1.35; color: #d6f5e3; }
+  .wa small { display: block; margin-top: 6px; font-size: 11px; color: #9fd8b8; }
+  .wa .go { padding: 9px 13px; border-radius: 999px; background: #25d366; color: #052e16; font: 700 13px var(--body); white-space: nowrap; }
 
-/* levels */
-.st{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.s{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px;text-align:center;min-width:0}
-.s .p{height:132px;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(var(--sky1),var(--sky2));border-radius:11px;overflow:hidden}
-.s img{display:block;max-width:100%;max-height:128px;width:auto;height:auto}
-.s b{display:block;margin-top:6px;color:var(--gold);font-size:13px}
-.s span{display:block;font-weight:700;font-size:15px;overflow-wrap:anywhere}
-.s small{display:block;color:var(--dim);font-size:12px}
-.s em{position:absolute;left:14px;top:14px;font-style:normal;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:rgba(11,13,19,.78);color:var(--ok)}
-.s.me{border-color:var(--gold);box-shadow:0 8px 26px rgba(245,197,66,.18)}
-.s.me em{background:var(--gold);color:#1b1503}
+  /* ---------- Hausbild (Bild aus dem Spiel, sonst gezeichnetes Mondhaus) ---------- */
+  .pic { position: relative; display: block; overflow: hidden; border-radius: 12px; border: 1px solid var(--line2);
+    background: radial-gradient(1px 1px at 18% 22%, rgba(255,255,255,.8), transparent 70%), radial-gradient(1px 1px at 72% 14%, rgba(255,255,255,.6), transparent 70%), radial-gradient(1px 1px at 44% 38%, rgba(255,255,255,.5), transparent 70%), radial-gradient(1.2px 1.2px at 88% 40%, rgba(255,240,210,.7), transparent 70%),
+      radial-gradient(ellipse at 50% 100%, rgba(143,216,255,.16), transparent 60%), linear-gradient(180deg, #0b1022, #05070f); }
+  .pic svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .3s; }
+  .pic.hasimg img { opacity: 1; }
+  .pic.hasimg svg { visibility: hidden; }
 
-/* info */
-.steps{counter-reset:s;display:flex;flex-direction:column;gap:12px}
-.steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start}
-.steps li:before{content:counter(s);flex:none;width:30px;height:30px;border-radius:50%;background:linear-gradient(180deg,var(--gold2),var(--gold));color:#1b1503;font-weight:900;display:flex;align-items:center;justify-content:center}
-.steps b{display:block}
-.steps span{color:var(--dim);font-size:14px}
-.cmd{display:flex;flex-direction:column}
-.cmd li{display:flex;gap:12px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)}
-.cmd li:first-child{border-top:0}
-.cmd code{flex:none;min-width:92px;font:700 14px/1.3 ui-monospace,Consolas,monospace;color:var(--gold2);background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:3px 8px;text-align:center}
-.cmd span{font-size:14px;color:var(--text)}
-.cmd small{display:block;color:var(--dim);font-size:13px}
-.qa p{margin:0 0 12px;font-size:14px;color:var(--dim)}
-.qa p:last-child{margin-bottom:0}
-.qa b{display:block;color:var(--text);font-size:15px}
-footer{color:var(--dim);font-size:13px;text-align:center;margin:6px 0 0}
+  /* ---------- Zahlen ---------- */
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
+  @media (min-width: 600px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+  .stat { padding: 14px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); }
+  .stat b { display: block; font: 600 28px/1 var(--head); letter-spacing: .02em; }
+  .stat span { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 
-/* categories at the bottom */
-.nav{position:fixed;left:0;right:0;bottom:0;z-index:8;padding:0 10px calc(10px + env(safe-area-inset-bottom));pointer-events:none}
-.nav div{pointer-events:auto;max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:6px;border-radius:22px;background:rgba(18,21,30,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 12px 36px rgba(0,0,0,.55)}
-.nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;min-width:0;border-radius:16px;color:var(--dim);font-size:11.5px;font-weight:700;white-space:nowrap}
-.nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.nav button[aria-current=page]{color:#1b1503;background:linear-gradient(180deg,var(--gold2),var(--gold))}
+  /* ---------- Kronen und Treppchen ---------- */
+  .crown { display: inline-block; width: 26px; height: 22px; flex: none; }
+  .podium { display: grid; grid-template-columns: 1fr 1.15fr 1fr; align-items: end; gap: 8px; }
+  .pod { position: relative; text-align: center; padding: 12px 6px 12px; border-radius: 16px 16px 10px 10px; background: var(--panel); border: 1px solid var(--line); cursor: pointer; min-width: 0; color: var(--text); font: inherit; }
+  .pod .crown { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); }
+  .pod .pic { height: 70px; margin: 6px auto 8px; }
+  .pod.p1 { padding-top: 16px; border-color: rgba(232,195,106,.5); background: linear-gradient(180deg, rgba(60,46,16,.9), var(--panel)); }
+  .pod.p1 .pic { height: 92px; border-color: rgba(232,195,106,.6); }
+  .pod.p2 { border-color: rgba(211,216,226,.3); } .pod.p3 { border-color: rgba(212,154,106,.35); }
+  .pod .nm { font-weight: 700; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pod .pt { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pod.empty { cursor: default; color: var(--dim); }
 
-/* share picture */
-.ov{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(5,6,10,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;z-index:9}
-.ov img{max-width:100%;max-height:60vh;border-radius:14px;border:1px solid var(--line)}
-.ov .rowb{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.ov p{margin:0;color:var(--dim);font-size:14px;text-align:center}
-@media (max-width:359px){.b1,.btn{padding:0 14px;font-size:16px}.nav button{font-size:10.5px}.seg button{font-size:12px}h1{font-size:23px}}
-@media (prefers-reduced-motion:reduce){.dot,.go i,.pin:before{animation:none}.bar i{transition:none}button:active,.btn:active,.go:active{transform:none}}
+  /* ---------- Listen ---------- */
+  .list { display: flex; flex-direction: column; gap: 7px; }
+  .row1 { display: grid; grid-template-columns: 34px 52px 1fr auto; align-items: center; gap: 10px; padding: 8px 12px 8px 8px; border-radius: 14px; background: var(--panel); border: 1px solid var(--line); cursor: pointer; color: var(--text); font: inherit; text-align: left; width: 100%; }
+  .row1.r1 { border-color: rgba(232,195,106,.55); background: linear-gradient(90deg, rgba(232,195,106,.14), var(--panel) 70%); }
+  .row1.r2 { border-color: rgba(211,216,226,.35); background: linear-gradient(90deg, rgba(211,216,226,.09), var(--panel) 70%); }
+  .row1.r3 { border-color: rgba(212,154,106,.4); background: linear-gradient(90deg, rgba(212,154,106,.1), var(--panel) 70%); }
+  .row1.me { box-shadow: inset 3px 0 0 var(--ice); }
+  .row1 .ps { display: grid; place-items: center; font: 600 18px var(--head); color: var(--muted); }
+  .row1 .pic { width: 52px; height: 42px; border-radius: 9px; }
+  .row1 .nm { min-width: 0; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .row1 .nm small { display: block; font-weight: 500; color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; }
+  .row1 .pt { text-align: right; font: 600 19px/1 var(--head); }
+  .row1 .pt small { display: block; margin-top: 3px; font: 700 9px var(--body); color: var(--muted); letter-spacing: .14em; }
+
+  /* ---------- Gerade passiert / Sieger ---------- */
+  .ev { display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 14px; background: var(--panel); border: 1px solid var(--line); }
+  .ev[data-k] { cursor: pointer; }
+  .ev .ic { flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 17px; background: rgba(255,255,255,.05); }
+  .ev .tx { flex: 1; min-width: 0; font-size: 14px; overflow: hidden; text-overflow: ellipsis; }
+  .ev .tx b { font-weight: 700; }
+  .ev time { flex: none; color: var(--dim); font-size: 12px; white-space: nowrap; }
+  .ev.win .ic { background: rgba(232,195,106,.14); }
+  .most { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .most span { display: inline-flex; align-items: center; gap: 6px; padding: 7px 11px; border-radius: 999px; background: rgba(232,195,106,.1); border: 1px solid rgba(232,195,106,.3); font-size: 13px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .most span[data-k] { cursor: pointer; }
+  .most b { color: var(--gold2); }
+
+  /* ---------- Mein Haus ---------- */
+  .akte { padding: 0; overflow: hidden; }
+  .akte .top { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 16px; background: rgba(0,0,0,.25); border-bottom: 1px solid var(--line); font: 600 11px var(--head); letter-spacing: .2em; color: var(--muted); text-transform: uppercase; }
+  .akte .top .stamp { color: var(--gold); border: 1.5px solid var(--gold); border-radius: 7px; padding: 3px 8px; letter-spacing: .14em; white-space: nowrap; }
+  .akte .big { margin: 16px 16px 0; height: 240px; border-radius: 14px; }
+  .who2 { padding: 16px 16px 0; min-width: 0; }
+  .who2 .nm { font: 600 30px/1.05 var(--head); letter-spacing: .02em; word-break: break-word; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .bd { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 999px; font: 700 12px var(--body); background: rgba(255,255,255,.06); border: 1px solid var(--line2); }
+  .bd.g0 { background: var(--g0); color: #141821; border: 0; } .bd.g1 { background: var(--g1); color: #04212e; border: 0; } .bd.g2 { background: var(--g2); color: #032318; border: 0; } .bd.g3 { background: var(--g3); color: #1b0633; border: 0; } .bd.g4 { background: var(--g4); color: #2a1d02; border: 0; }
+  .bd.gold { background: rgba(232,195,106,.14); border-color: rgba(232,195,106,.4); color: var(--gold2); }
+  .lvl { display: flex; align-items: baseline; gap: 12px; margin: 14px 16px 0; flex-wrap: wrap; }
+  .lvl .n { font: 600 50px/0.85 var(--head); background: linear-gradient(180deg, var(--gold2), var(--gold) 60%, var(--gold3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lvl .t { font: 600 22px/1.1 var(--head); letter-spacing: .02em; }
+  .lvl .c { width: 100%; color: var(--muted); font-size: 13px; }
+  .xp { margin: 16px 16px 0; padding: 14px; border-radius: 14px; background: rgba(143,216,255,.06); border: 1px solid rgba(143,216,255,.22); }
+  .xp .row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .xp .row span { font: 700 11px var(--body); letter-spacing: .14em; color: var(--ice2); text-transform: uppercase; }
+  .xp .row b { font: 600 24px/1 var(--head); color: #fff; }
+  .prog { position: relative; height: 12px; margin-top: 10px; border-radius: 999px; background: rgba(255,255,255,.07); overflow: hidden; }
+  .prog i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: inherit; background: linear-gradient(90deg, #4fb4ff, var(--ice) 60%, #e9f8ff); box-shadow: 0 0 14px rgba(143,216,255,.55); transition: width .6s ease; }
+  .prog.gold i { background: linear-gradient(90deg, var(--gold3), var(--gold) 55%, var(--gold2)); box-shadow: 0 0 14px rgba(232,195,106,.45); }
+  .xp small { display: block; margin-top: 8px; color: var(--muted); font-size: 12.5px; }
+  .status { display: flex; gap: 12px; align-items: flex-start; margin: 12px 16px 0; padding: 13px 14px; border-radius: 14px; }
+  .status .ic { flex: none; font-size: 22px; line-height: 1; }
+  .status b { display: block; font: 700 15px var(--body); }
+  .status p { margin: 3px 0 0; font-size: 13px; color: #cfd4df; }
+  .status.ok { background: rgba(123,224,195,.08); border: 1px solid rgba(123,224,195,.35); }
+  .status.ok b { color: #a6f0d9; }
+  .status.lager { background: rgba(232,195,106,.08); border: 1px solid rgba(232,195,106,.38); }
+  .status.lager b { color: var(--gold2); }
+  .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 16px; background: var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .facts div { background: rgba(10,12,20,.9); padding: 12px 16px; }
+  .facts b { display: block; font: 600 22px/1 var(--head); }
+  .facts span { color: var(--muted); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .next { display: flex; align-items: center; gap: 12px; margin: 14px 16px 0; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid var(--line2); }
+  .next .pic { flex: none; width: 70px; height: 56px; }
+  .next small { display: block; font: 700 10.5px var(--body); letter-spacing: .14em; color: var(--muted); text-transform: uppercase; }
+  .next b { font: 600 17px/1.15 var(--head); }
+  .pet { display: flex; align-items: center; gap: 12px; margin: 10px 16px 0; padding: 10px 12px; border-radius: 14px; border: 1px dashed var(--line2); color: var(--muted); font-size: 13px; }
+  .pet span { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-size: 20px; background: rgba(255,255,255,.04); filter: grayscale(.4); }
+  .pet b { display: block; color: #dfe3ec; font-size: 14px; }
+  .actions { display: flex; gap: 8px; padding: 16px; flex-wrap: wrap; }
+  .actions .btn { flex: 1 1 200px; }
+  .sugg { display: flex; flex-direction: column; gap: 7px; margin-top: 12px; }
+
+  /* ---------- Gemeinschaftsbauten ---------- */
+  .gemTop { display: flex; align-items: center; gap: 16px; }
+  .ring { position: relative; flex: none; width: 92px; height: 92px; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring b { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font: 600 24px/1 var(--head); }
+  .ring b small { display: block; margin-top: 4px; font: 700 9px var(--body); letter-spacing: .14em; color: var(--muted); }
+  .gemTop p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+  .gemTop h3 { margin: 0; font: 600 18px/1.2 var(--head); }
+  .now { margin-top: 14px; padding: 14px; border-radius: 16px; border: 1px solid rgba(232,195,106,.45); background: radial-gradient(400px 140px at 10% 0%, rgba(232,195,106,.16), transparent 70%), var(--panel); }
+  .now small { font: 700 10.5px var(--body); letter-spacing: .16em; color: var(--gold); text-transform: uppercase; }
+  .now .nm { display: flex; align-items: center; gap: 10px; margin-top: 6px; font: 600 20px/1.15 var(--head); }
+  .now .nm span { font-size: 26px; }
+  .now .pc { margin-left: auto; font: 600 22px var(--head); color: var(--gold2); }
+  .bauten { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 14px; }
+  @media (min-width: 600px) { .bauten { grid-template-columns: repeat(3, 1fr); } }
+  .bau { position: relative; padding: 12px; border-radius: 14px; background: var(--panel); border: 1px solid var(--line); min-width: 0; }
+  .bau .ic { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; font-size: 19px; background: rgba(255,255,255,.05); }
+  .bau .nr { position: absolute; top: 10px; right: 12px; font: 700 11px var(--body); color: var(--dim); }
+  .bau b { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.25; min-height: 2.5em; }
+  .bau .prog { height: 6px; margin-top: 8px; }
+  .bau .st { display: block; margin-top: 6px; font: 700 11px var(--body); letter-spacing: .08em; color: var(--muted); text-transform: uppercase; }
+  .bau.fertig { border-color: rgba(123,224,195,.35); }
+  .bau.fertig .ic { background: rgba(123,224,195,.14); }
+  .bau.fertig .st { color: #a6f0d9; }
+  .bau.jetzt { border-color: rgba(232,195,106,.5); }
+  .bau.jetzt .st { color: var(--gold2); }
+  .bau.geplant { opacity: .55; }
+
+  /* ---------- Stufen-Galerie ---------- */
+  .grp { display: flex; align-items: center; gap: 10px; margin: 26px 0 10px; font: 600 13px var(--head); letter-spacing: .2em; text-transform: uppercase; }
+  .grp .tg { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; font-size: 16px; background: rgba(255,255,255,.06); }
+  .grp .tg.g0 { background: rgba(207,213,224,.16); } .grp .tg.g1 { background: rgba(143,216,255,.16); } .grp .tg.g2 { background: rgba(123,224,195,.16); } .grp .tg.g3 { background: rgba(197,139,255,.18); } .grp .tg.g4 { background: rgba(232,195,106,.2); }
+  .grp small { margin-left: auto; font: 600 12px var(--body); letter-spacing: 0; color: var(--muted); text-transform: none; }
+  .gal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  @media (min-width: 600px) { .gal { grid-template-columns: repeat(3, 1fr); } }
+  .lv { position: relative; padding: 8px 8px 12px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); min-width: 0; }
+  .lv .pic { height: 0; padding-top: 72%; border-radius: 11px; }
+  .lv .no { display: block; margin: 10px 4px 0; font: 700 10.5px var(--body); letter-spacing: .16em; color: var(--muted); }
+  .lv b { display: block; margin: 2px 4px 0; font: 600 15px/1.2 var(--head); }
+  .lv small { display: block; margin: 4px 4px 0; color: var(--muted); font-size: 12px; line-height: 1.35; }
+  .lv.mine { border-color: var(--ice); box-shadow: 0 0 0 1px var(--ice), 0 0 24px rgba(143,216,255,.2); }
+  .here { position: absolute; top: 14px; left: 14px; z-index: 2; padding: 3px 8px; border-radius: 7px; background: var(--ice); color: #03202d; font: 800 10px var(--body); letter-spacing: .1em; }
+
+  /* ---------- So geht's ---------- */
+  .steps { counter-reset: s; display: flex; flex-direction: column; gap: 10px; }
+  .step { display: grid; grid-template-columns: 42px 1fr; gap: 12px; padding: 14px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); }
+  .step::before { counter-increment: s; content: counter(s); width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--gold); color: var(--gold2); font: 600 18px var(--head); }
+  .step b { display: block; font: 600 16px/1.25 var(--head); margin-bottom: 3px; }
+  .step p { margin: 0; color: #cfd4df; font-size: 14px; }
+  .step ul { margin: 4px 0 0; padding-left: 18px; color: #cfd4df; font-size: 14px; }
+  details { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-top: 8px; }
+  summary { cursor: pointer; font-weight: 700; }
+  details p { margin: 8px 0 0; color: #cfd4df; font-size: 14px; }
+  footer { margin: 34px 0 10px; text-align: center; color: var(--dim); font-size: 12px; }
+  footer b { font: 600 12px var(--head); letter-spacing: .3em; color: var(--muted); }
+
+  /* ---------- Leiste unten ---------- */
+  nav.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding-bottom: env(safe-area-inset-bottom); background: rgba(6,7,13,.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line2); }
+  nav.tabs .in { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); height: var(--tabs); }
+  nav.tabs a { position: relative; min-width: 0; padding: 0 1px; color: var(--dim); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font: 700 10px/1.1 var(--body); letter-spacing: .06em; text-transform: uppercase; text-align: center; text-decoration: none; }
+  @media (max-width: 359px) { nav.tabs a { font-size: 9px; letter-spacing: 0; } }
+  nav.tabs a svg { width: 23px; height: 23px; }
+  nav.tabs a.on { color: var(--gold); }
+  nav.tabs a.on::after { content: ''; position: absolute; top: 0; left: 30%; right: 30%; height: 2px; border-radius: 0 0 2px 2px; background: var(--gold); }
+  .skel { height: 120px; border-radius: 16px; background: linear-gradient(90deg, rgba(255,255,255,.03), rgba(255,255,255,.07), rgba(255,255,255,.03)); background-size: 200% 100%; animation: sk 1.2s infinite; }
+  @keyframes sk { to { background-position: -200% 0 } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
-<main>
-  <header class="top">
-    <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="#1b1503"/></svg></span>
-    <div>
-      <h1>Stinkhausen</h1>
-      <p class="sub">Die Stadt aus dem TikTok-LIVE von @flexhausen</p>
-    </div>
-  </header>
-  <a id="go" class="go off" href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener"><i></i><span id="goT">Zum TikTok von @flexhausen</span></a>
-  <div class="stats" aria-live="off">
-    <div><b id="sH">–</b><small>Häuser</small></div>
-    <div><b id="sL">–</b><small>Likes</small></div>
-    <div><b id="sN">–</b><small>heute neu</small></div>
+<!-- Farbverläufe für die gezeichneten Mondhäuser (einmal für alle Bilder) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <linearGradient id="hg-moon" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9bec9"/><stop offset=".45" stop-color="#7c818d"/><stop offset="1" stop-color="#3a3d46"/></linearGradient>
+  <radialGradient id="hg-crater" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#3f434d"/><stop offset=".75" stop-color="#5d616c"/><stop offset="1" stop-color="#9ca1ad"/></radialGradient>
+  <linearGradient id="hg-white" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#dfe4ee"/><stop offset="1" stop-color="#a9b1c2"/></linearGradient>
+  <linearGradient id="hg-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d7f3ff" stop-opacity=".75"/><stop offset=".5" stop-color="#7cc6f2" stop-opacity=".38"/><stop offset="1" stop-color="#3a78b8" stop-opacity=".5"/></linearGradient>
+  <linearGradient id="hg-metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a4052"/><stop offset=".45" stop-color="#6e7790"/><stop offset="1" stop-color="#2b3040"/></linearGradient>
+  <linearGradient id="hg-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".45" stop-color="#e8c36a"/><stop offset="1" stop-color="#9c6b22"/></linearGradient>
+  <linearGradient id="hg-crystal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e2ff"/><stop offset=".5" stop-color="#b780ff"/><stop offset="1" stop-color="#5a2bb0"/></linearGradient>
+  <radialGradient id="hg-win" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#e8f8ff"/><stop offset=".5" stop-color="#8fd8ff"/><stop offset="1" stop-color="#2f6fb0"/></radialGradient>
+  <radialGradient id="hg-aura" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".55"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></radialGradient>
+  <radialGradient id="hg-nebula" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#c06bff" stop-opacity=".5"/><stop offset=".6" stop-color="#ff5fb0" stop-opacity=".18"/><stop offset="1" stop-color="#ff5fb0" stop-opacity="0"/></radialGradient>
+  <linearGradient id="hg-aurora" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5dffb0" stop-opacity="0"/><stop offset=".3" stop-color="#5dffb0" stop-opacity=".5"/><stop offset=".7" stop-color="#ff7ad9" stop-opacity=".45"/><stop offset="1" stop-color="#ff7ad9" stop-opacity="0"/></linearGradient>
+  <linearGradient id="hg-tail" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#bfefff" stop-opacity="0"/><stop offset="1" stop-color="#e9fbff" stop-opacity=".9"/></linearGradient>
+  <radialGradient id="e-ocean" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#6fc0ff"/><stop offset=".45" stop-color="#2a74d6"/><stop offset="1" stop-color="#0b2a66"/></radialGradient>
+  <radialGradient id="e-halo" cx=".5" cy=".5" r=".5"><stop offset=".72" stop-color="#6fc3ff" stop-opacity="0"/><stop offset=".78" stop-color="#6fc3ff" stop-opacity=".38"/><stop offset="1" stop-color="#6fc3ff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="e-night" x1=".15" y1=".1" x2=".95" y2=".9"><stop offset=".42" stop-color="#02040c" stop-opacity="0"/><stop offset=".75" stop-color="#02040c" stop-opacity=".7"/><stop offset="1" stop-color="#02040c" stop-opacity=".92"/></linearGradient>
+  <clipPath id="e-clip"><circle cx="100" cy="100" r="74"/></clipPath>
+</defs></svg>
+<div class="sky" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#start" aria-label="Flexhausen – Start">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="#d9dde6"/><circle cx="21" cy="12" r="11.5" fill="#04050a"/><circle cx="10" cy="20" r="1.8" fill="#a4aab6"/><circle cx="8" cy="13.5" r="1.1" fill="#a4aab6"/><circle cx="14" cy="25" r="1.1" fill="#a4aab6"/><circle cx="26" cy="7" r="1.2" fill="#e8c36a"/></svg>
+      <b>FLEXHAUSEN</b>
+    </a>
+    <a id="live" class="live" href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener noreferrer">TikTok</a>
+    <a class="waTop" href="https://whatsapp.com/channel/0029VbEgmqf4o7qE9rlr9U0A" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp-Kanal von Flexhausen und Gitterkönig" title="WhatsApp-Kanal für Flexhausen und Gitterkönig"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.3 4.7 4.8-1.3A9.8 9.8 0 1 0 12 2.2zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.4-.2z"/></svg></a>
   </div>
+</header>
+<div class="wrap"><div class="offline" id="offline" role="status">Die Stadt schläft gerade – die Zahlen kommen wieder, sobald der Stadt-Rechner läuft. Die Stufen kannst du trotzdem ansehen.</div></div>
 
-  <section id="t-haus">
-    <h2>Mein Haus</h2>
-    <p class="lead">Such dein Haus mit deinem TikTok-Namen.</p>
-    <form id="f" autocomplete="off">
-      <label class="at"><span>@</span><input id="q" name="name" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40" placeholder="dein TikTok-Name" aria-label="Dein TikTok-Name"></label>
-      <button class="b1" type="submit">Zeigen</button>
+<main class="wrap">
+  <!-- ===================================================== Start -->
+  <section id="v-start" class="view on">
+    <div class="hero">
+      <svg class="earth" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="98" fill="url(#e-halo)"/>
+        <circle cx="100" cy="100" r="74" fill="url(#e-ocean)"/>
+        <g clip-path="url(#e-clip)">
+          <path d="M52 62c10-12 30-16 40-8 8 6 2 16 10 22 8 6 20 0 24 10 4 9-8 16-6 26 2 9 14 12 10 22-5 12-24 10-30 1-6-8 0-18-8-24-9-7-22 2-30-6-8-8 4-18-2-27-3-5-12-6-8-16z" fill="#4f9e5e"/>
+          <path d="M118 40c12-4 30 2 36 14 4 8-4 12 0 20 3 7 14 8 12 17-2 8-14 6-20 0-7-6-4-16-12-20-8-4-18 2-22-6-4-9 0-21 6-25z" fill="#3f8c52"/>
+          <path d="M70 128c8-3 18 2 20 10 2 9-6 16-2 24 2 5 9 8 6 13-4 6-16 2-22-4-7-7-12-17-10-27 1-7 3-13 8-16z" fill="#5a9f5c"/>
+          <path d="M140 120c8-2 16 4 16 12s-8 12-14 18c-5 5-12 4-14-2-3-8 3-14 2-20 0-4 4-7 10-8z" fill="#c9b27a"/>
+          <path d="M92 62c6 4 12 2 16 8" stroke="#c9b27a" stroke-opacity=".6" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <path d="M34 96c16-7 36-5 50 1M108 72c16-6 34-3 48 4M58 150c14 4 30 2 42-4M118 160c10-2 22-6 30-12" stroke="#fff" stroke-opacity=".55" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+          <path d="M78 44c10-4 24-4 32 0M124 104c8-2 18 0 24 4M44 120c8 2 14 2 20-1" stroke="#fff" stroke-opacity=".38" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        </g>
+        <circle cx="100" cy="100" r="74" fill="url(#e-night)"/>
+        <circle cx="100" cy="100" r="74" fill="none" stroke="#bfe6ff" stroke-opacity=".45" stroke-width="1.2"/>
+      </svg>
+      <svg class="sat" viewBox="0 0 44 30" aria-hidden="true"><rect x="0" y="10" width="14" height="10" fill="#2b5fb8" stroke="#bcd3ff" stroke-width=".8"/><rect x="30" y="10" width="14" height="10" fill="#2b5fb8" stroke="#bcd3ff" stroke-width=".8"/><path d="M14 15h16" stroke="#aab2c3" stroke-width="1.5"/><rect x="17" y="9" width="10" height="12" rx="2" fill="#e8c36a"/><path d="M22 9V3" stroke="#aab2c3" stroke-width="1.2"/><circle cx="22" cy="3" r="1.6" fill="#ff5a5a"/></svg>
+      <p class="kicker">Die Stadt auf dem Mond</p>
+      <h1 class="title">FLEXHAUSEN</h1>
+      <p class="sub">Dein Haus. Dein Name. Auf dem Mond.</p>
+      <p class="lead">Such deinen TikTok-Namen und sieh dein Mondhaus – Stufe, Bau-XP und Platz, fast in Echtzeit aus dem Spiel.</p>
+      <form class="search" id="f-start" autocomplete="off">
+        <input name="q" id="q-start" maxlength="40" placeholder="Dein TikTok-Name" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="TikTok-Name">
+        <button class="btn" type="submit">Haus zeigen</button>
+      </form>
+      <a class="ttLink" href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16.6 3c.3 2.3 1.9 4 4.2 4.2v3.2c-1.5 0-2.9-.4-4.2-1.2v6.3a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.3a2.4 2.4 0 1 0 1.5 2.2V3z"/></svg>LIVE auf TikTok <b>@flexhausen</b></a>
+      <div class="ground" aria-hidden="true"><svg viewBox="0 30 400 120">
+        <path d="M0 86 Q60 70 130 80 T260 74 T400 82 V150 H0Z" fill="#2a2d36"/>
+        <g opacity=".9">
+          <path d="M150 80A11 11 0 0 1 172 80Z" fill="#cfd5e0"/><rect x="176" y="58" width="8" height="22" rx="2" fill="#aab2c3"/><path d="M180 58V48" stroke="#aab2c3" stroke-width="1.2"/><circle cx="180" cy="48" r="1.8" fill="#ff5a5a"/>
+          <path d="M188 80A16 16 0 0 1 220 80Z" fill="#7cc6f2" fill-opacity=".55" stroke="#d7f3ff" stroke-opacity=".6"/><circle cx="204" cy="76" r="4" fill="#5fbf6a"/>
+          <rect x="226" y="44" width="10" height="36" rx="2" fill="#4a5166"/><path d="M226 44l5-10 5 10Z" fill="#e8c36a"/><rect x="229" y="50" width="4" height="3" fill="#ffe08a"/><rect x="229" y="58" width="4" height="3" fill="#ffe08a"/><rect x="229" y="66" width="4" height="3" fill="#ffe08a"/>
+          <path d="M240 80A9 9 0 0 1 258 80Z" fill="#e3e7ef"/><circle cx="249" cy="76" r="2" fill="#8fd8ff"/>
+          <path d="M100 82A8 8 0 0 1 116 82Z" fill="#e3e7ef"/><path d="M300 80A10 10 0 0 1 320 80Z" fill="#e3e7ef"/><rect x="322" y="66" width="6" height="14" rx="1.5" fill="#aab2c3"/>
+        </g>
+        <path d="M0 104 Q90 84 200 96 T400 98 V150 H0Z" fill="url(#hg-moon)"/>
+        <ellipse cx="64" cy="122" rx="30" ry="7" fill="url(#hg-crater)"/><ellipse cx="300" cy="130" rx="42" ry="9" fill="url(#hg-crater)"/><ellipse cx="190" cy="138" rx="16" ry="4" fill="url(#hg-crater)"/><ellipse cx="360" cy="112" rx="12" ry="3" fill="url(#hg-crater)"/><ellipse cx="128" cy="112" rx="9" ry="2.4" fill="url(#hg-crater)"/>
+      </svg></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b class="num" id="sHaeuser">–</b><span>Häuser</span></div>
+      <div class="stat"><b class="num" id="sWohnen">–</b><span>Gerade auf dem Mond</span></div>
+      <div class="stat"><b class="num" id="sHeute">–</b><span>Neu heute</span></div>
+      <div class="stat"><b class="num" id="sHoechste">–</b><span>Höchste Stufe</span></div>
+    </div>
+    <div id="gemStart"></div>
+
+    <h2>Die größten Häuser <small><a href="#top">Top 10</a></small></h2>
+    <div class="podium" id="podiumHome"><div class="skel" style="grid-column:1/-1;height:150px"></div></div>
+
+    <h2>Gerade passiert <small>live vom Mond</small></h2>
+    <div class="list" id="feed"><div class="skel" style="height:56px"></div></div>
+
+    <h2>So geht's</h2>
+    <div class="steps">
+      <div class="step"><div><b>Komm in den LIVE</b><p>Flexhausen läuft im TikTok-LIVE von <a href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener noreferrer">@flexhausen</a>. Momo führt dich über den Mond – mit Kratern, Sternen und der Erde am Himmel.</p></div></div>
+      <div class="step"><div><b>Dein eigenes Mondhaus</b><p>Mitspielen kann jeder, der im LIVE dabei ist. Wer mitspielt, bekommt ein eigenes Haus mit seinem Namen – mitten in der Mondstadt.</p></div></div>
+      <div class="step"><div><b>Stufe für Stufe mit Bau-XP</b><p>Häuser wachsen live mit Bau-XP: von der Landekapsel bis zum Mondpalast. Alle 25 Stufen siehst du unter „Stufen“.</p></div></div>
+      <div class="step"><div><b>Das Spiele-Rad</b><p>Immer wieder dreht Momo das Spiele-Rad. Wer das Reaktionswort am schnellsten richtig in den Chat schreibt, ist Sieger und holt Bau-XP für sein Haus.</p></div></div>
+      <div class="step"><div><b>Eingelagert? Kein Problem</b><p id="regelText">Häuser bis Stufe 10 werden nach 8 LIVE-Stunden ohne dich eingelagert, damit auf dem Mond Platz für Neue bleibt. Deine Stufe bleibt – komm in den LIVE und schreib im Chat, dann steht dein Haus wieder.</p></div></div>
+      <div class="step"><div><b>Sicher in der Stadt</b><ul><li>Sei nett im Chat – in Flexhausen sind alle Nachbarn.</li><li>Verrate nie deinen echten Namen, deine Adresse, deine Schule oder ein Passwort.</li><li>Kommt dir etwas komisch vor? Sprich mit deinen Eltern oder einem Erwachsenen, dem du vertraust.</li></ul></div></div>
+    </div>
+
+    <a class="wa" href="https://whatsapp.com/channel/0029VbEgmqf4o7qE9rlr9U0A" target="_blank" rel="noopener noreferrer">
+      <div><b>📲 Ein Kanal für beide Server</b><p>Flexhausen und Gitterkönig: Erfahr als Erster, wann die Server live sind und was als Nächstes gebaut wird.</p><small>WhatsApp-Kanal „GITTERKÖNIG - TIKTOK“ · kostenlos · keiner sieht deine Nummer · WhatsApp ab 13</small></div>
+      <span class="go">Zum Kanal</span>
+    </a>
+
+    <h2>Fragen</h2>
+    <details><summary>Ich finde meinen Namen nicht.</summary><p>Gib deinen TikTok-Namen ohne @ ein, so wie er in deinem Profil steht. Neue Häuser erscheinen hier kurz nach dem Einzug.</p></details>
+    <details><summary>Warum fangen alle bei null an?</summary><p>Flexhausen ist auf den Mond gezogen. Alle starten neu mit einer Landekapsel – die Stadt wächst ab jetzt Haus für Haus.</p></details>
+    <details><summary>Was heißt „eingelagert“?</summary><p>Dein Haus ist gerade nicht in der Stadt aufgebaut, aber nichts ist weg: Name und Stufe bleiben gespeichert. Sobald du wieder im LIVE bist und im Chat schreibst, steht dein Haus wieder auf dem Mond. Häuser ab Stufe 11 bleiben immer stehen.</p></details>
+    <details><summary>Wie schnell wird die Seite aktualisiert?</summary><p>Fast in Echtzeit: Die Zahlen kommen direkt aus dem Spiel und sind höchstens ein paar Sekunden alt.</p></details>
+    <details><summary>Wer ist Momo?</summary><p>Momo ist der Bürgermeister von Flexhausen – eine KI-Figur mit eigener Stimme, die im LIVE alles kommentiert und den Chat liest.</p></details>
+    <details><summary>Datenschutz</summary><p>Diese Seite setzt keine Cookies und zählt keine Besucher. Tippst du auf „merken“, merkt sich nur dein eigenes Gerät, welches Haus deins ist (eine kurze Nummer im Browser) – mit „Vergessen“ ist sie wieder weg. Die Seite liegt bei GitHub Pages, die Zahlen kommen über Cloudflare vom Stadt-Rechner; beide verarbeiten dabei technisch deine IP-Adresse. Gezeigt werden nur Anzeigenamen, Stufe, Platz und der Bau-Fortschritt in Prozent – unpassende Namen werden ausgeblendet.</p></details>
+  </section>
+
+  <!-- ===================================================== Mein Haus -->
+  <section id="v-haus" class="view">
+    <form class="search" id="f-haus" autocomplete="off" style="margin-top:6px">
+      <input name="q" id="q-haus" maxlength="40" placeholder="Dein TikTok-Name" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="TikTok-Name">
+      <button class="btn" type="submit">Suchen</button>
     </form>
-    <p class="hint">Dein Benutzername (der mit dem @) oder dein Anzeigename.</p>
-    <section id="out" class="card" hidden aria-live="polite"></section>
-    <button id="backMine" class="b2 back" type="button" hidden>Zurück zu meinem Haus</button>
-    <section id="leer" class="card">
-      <h3>Noch kein Haus?</h3>
-      <p class="msg" id="leerT">Komm in den LIVE von @flexhausen – dort wird dein Haus gebaut.</p>
-      <button id="toInfo" class="b2 back" type="button">So geht’s</button>
-    </section>
+    <div id="hausBox" style="margin-top:14px" aria-live="polite"></div>
   </section>
 
-  <section id="t-karte" hidden>
-    <h2>Stadtkarte</h2>
-    <p class="lead">Live aus dem Spiel: jedes Feld ist ein Grundstück. Tippe auf ein Haus.</p>
-    <div class="mapbar">
-      <button type="button" id="mFind" class="b2">Mein Haus finden</button>
-      <button type="button" id="mZoom" class="b2">Größer</button>
-    </div>
-    <div id="mWrap" class="mwrap"><div id="mIn" class="min"><canvas id="mC" width="10" height="10" role="img" aria-label="Karte von Stinkhausen: jedes Feld ist ein Grundstück, die Farbe zeigt die Stufe des Hauses"></canvas><i id="mPin" class="pin" hidden></i><i id="mSel" class="sel" hidden></i></div></div>
-    <div class="leg"><b></b><span>frei</span><span>Stufe 1</span><i></i><span id="legMax">25</span></div>
-    <section id="mInfo" class="card" hidden aria-live="polite"></section>
-    <p id="mMe" class="hint" hidden></p>
-    <section class="card list news">
-      <h3>Gerade passiert</h3>
-      <ol id="mNews"><li class="msg">lädt …</li></ol>
-    </section>
-    <div class="live"><span id="mDot" class="dot"></span><span id="mTot">–</span></div>
+  <!-- ===================================================== Top 10 -->
+  <section id="v-top" class="view">
+    <h2>Top 10 <small id="rangCount"></small></h2>
+    <div class="list" id="rangList"><div class="skel" style="height:300px"></div></div>
+    <div id="meBox"></div>
+    <h2>Spiele-Sieger <small>die letzten Runden</small></h2>
+    <div class="list" id="siegerList"><div class="skel" style="height:56px"></div></div>
+    <div id="mostBox"></div>
   </section>
 
-  <section id="t-rang" hidden>
-    <h2>Rangliste</h2>
-    <p class="lead" id="rLead">Tippe auf einen Namen, um das Haus zu sehen.</p>
-    <div class="seg" role="group" aria-label="Art der Rangliste">
-      <button type="button" id="a-stufe" aria-pressed="true">Top</button>
-      <button type="button" id="a-likes" aria-pressed="false">Likes</button>
-      <button type="button" id="a-heute" aria-pressed="false">Heute</button>
-      <button type="button" id="a-woche" aria-pressed="false">Woche</button>
-      <button type="button" id="a-neu" aria-pressed="false">Neu</button>
-    </div>
-    <div id="pod" class="pod"></div>
-    <section id="mine" class="card mine" hidden></section>
-    <section class="card list"><ol id="rl"><li class="msg">lädt …</li></ol></section>
-    <div class="live"><span id="dot" class="dot"></span><span id="tot">–</span></div>
+  <!-- ===================================================== Gemeinschaftsbauten -->
+  <section id="v-bauten" class="view">
+    <h2>Gemeinschaftsbauten</h2>
+    <div id="gemBox"><div class="skel" style="height:240px"></div></div>
   </section>
 
-  <section id="t-stufen" hidden>
-    <h2 id="stH">Alle Stufen</h2>
-    <p class="lead">So wächst dein Haus – von der Hütte bis ganz nach oben.</p>
-    <div id="st" class="st"><p class="msg">lädt …</p></div>
+  <!-- ===================================================== Stufen -->
+  <section id="v-stufen" class="view">
+    <h2>Alle 25 Mond-Stufen</h2>
+    <p class="muted" style="margin:-2px 0 0">Jedes Haus in Flexhausen wächst Stufe für Stufe – von der Landekapsel bis zum Mondpalast. So sieht jede Stufe aus.</p>
+    <div id="stufenBox"></div>
   </section>
 
-  <section id="t-info" hidden>
-    <h2>So geht’s</h2>
-    <p class="lead">In drei Schritten zu deinem Haus.</p>
-    <section class="card">
-      <ol class="steps">
-        <li><div><b>Komm in den LIVE</b><span>Stinkhausen läuft auf TikTok bei @flexhausen.</span></div></li>
-        <li><div><b id="how2">Dein Haus wird gebaut</b><span id="how2t">Sobald du dabei bist, steht dein erstes Haus in der Stadt.</span></div></li>
-        <li><div><b>Lass es wachsen</b><span>Mit jedem Like kommt dein Haus der nächsten Stufe näher. Geschenke zählen auch, nötig sind sie nie.</span></div></li>
-      </ol>
-    </section>
-    <section class="card">
-      <h3>Deine Idee für Stinkhausen</h3>
-      <p class="msg">Was fehlt in der Stadt? Schreib es uns. Jede Idee bekommt eine Ticket-Nummer.</p>
-      <textarea id="ideeT" maxlength="400" rows="4" placeholder="Zum Beispiel: ein Fußballplatz neben dem Marktplatz" aria-label="Deine Idee für Stinkhausen"></textarea>
-      <div class="idrow"><small id="ideeN">0 / 400</small><button type="button" id="ideeB" class="b1">Idee senden</button></div>
-      <p id="ideeM" class="msg okmsg" hidden aria-live="polite"></p>
-      <p class="fine">Deine Idee und dein TikTok-Name (falls du ihn bei „Mein Haus“ eingegeben hast) gehen nur an das Team von Stinkhausen. Sie werden nicht veröffentlicht.</p>
-    </section>
-    <section class="card">
-      <h3>Stream-Zeiten</h3>
-      <p id="zNow" class="msg">lädt …</p>
-      <p id="zNote" class="znote" hidden></p>
-      <ol id="zList" class="cmd"></ol>
-    </section>
-    <section class="card">
-      <h3>Die Serie „Sieben Tage“</h3>
-      <p class="msg">Kurze Filme über Bürgermeister Momo und seine Stadt.</p>
-      <div id="vList" class="vid"></div>
-      <a class="b2 back" href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener">Alle Videos auf TikTok</a>
-    </section>
-    <section class="card">
-      <h3>Das kannst du in den Chat schreiben</h3>
-      <ol class="cmd">
-        <li><code>haus</code><span>Dein Haus wird gezeigt<small>Ist viel los, kommt eine kurze Einblendung.</small></span></li>
-        <li><code>farbe blau</code><span>Streicht dein Haus<small>ab Stufe 4, viele Farben</small></span></li>
-        <li><code>!hund</code><span>Ein Haustier vor der Tür<small>!hund !katze ab Stufe 3 · !panda !fuchs ab 8 · !golem ab 12 · !drache ab 15</small></span></li>
-        <li><code>regeln</code><span>Die Regeln als Fenster im Stream</span></li>
-      </ol>
-    </section>
-    <section class="card qa">
-      <h3>Häufige Fragen</h3>
-      <p><b>Kostet das etwas?</b>Nein. Dein Haus bekommst und baust du ohne Geld aus.</p>
-      <p><b>Mein Haus steht nicht mehr in der Stadt?</b>Ist die Stadt voll, werden kleine Häuser eingelagert. Deine Stufe bleibt, und beim nächsten Like steht es wieder.</p>
-      <p><b>Wie aktuell sind die Zahlen?</b>Sie kommen direkt aus dem Spiel und werden alle zwei Sekunden neu gelesen.</p>
-    </section>
-  </section>
-
-  <footer>Zahlen und Häuser direkt aus dem Spiel.</footer>
+  <footer><b>FLEXHAUSEN</b><br>Die Minecraft-Stadt auf dem Mond · LIVE auf TikTok <a href="https://www.tiktok.com/@flexhausen" target="_blank" rel="noopener noreferrer">@flexhausen</a> · Momo spricht mit KI-Stimme<br>Kein offizielles Minecraft-Produkt. Nicht von Mojang oder Microsoft genehmigt oder mit ihnen verbunden.<br><span id="updated"></span></footer>
 </main>
-<nav class="nav" aria-label="Bereiche"><div>
-  <button type="button" id="n-haus" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>Mein Haus</button>
-  <button type="button" id="n-karte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14"/><path d="M15 6v14"/></svg>Karte</button>
-  <button type="button" id="n-rang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/></svg>Rangliste</button>
-  <button type="button" id="n-stufen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20v-5h4v5"/><path d="M10 20V10h4v10"/><path d="M15 20V5h4v15"/></svg>Stufen</button>
-  <button type="button" id="n-info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.5"/></svg>Mehr</button>
+
+<nav class="tabs" aria-label="Bereiche"><div class="in">
+  <a href="#start" data-v="start" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/><path d="M17 3v3M15.5 4.5h3"/></svg>Start</a>
+  <a href="#haus" data-v="haus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6 20v-5a6 6 0 0 1 12 0v5"/><path d="M10 20v-3h4v3"/><path d="M12 9V5M12 5l2 1"/></svg>Mein Haus</a>
+  <a href="#top" data-v="top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l2-11 5 5 2-7 2 7 5-5 2 11z"/><path d="M3 21h18"/></svg>Top 10</a>
+  <a href="#bauten" data-v="bauten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V11l4-3 4 3v10M13 21v-7h6v7M8 14h2M8 17h2"/><path d="M16 11V5l3-2"/></svg>Bauten</a>
+  <a href="#stufen" data-v="stufen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4v-5h4v-5h4V5h4"/></svg>Stufen</a>
 </div></nav>
-<div id="ov" class="ov" hidden></div>
+
 <script>
-(function () {
-  var $ = function (id) { return document.getElementById(id) }
-  var fmt = function (n) { return Math.round(n || 0).toLocaleString('de-DE') }
-  var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e }
-  var current = ''; var timer = 0; var busy = false; var lastImg = null; var lastSrc = ''
-  /* own = the viewer's own name (typed in or remembered); current = the house on the screen (may be somebody else's,
-     opened from a board) */
-  var own = ''; var art = 'stufe'; var FOLLOW = null; var myLevel = 0; var lvLoaded = false; var lastSig = ''
-  var TABS = ['haus', 'karte', 'rang', 'stufen', 'info']; var ARTS = ['stufe', 'likes', 'heute', 'woche', 'neu']; var tabNow = 'haus'; var MAXLV = 25; var infoAt = 0
-  var same = function (a, b) { return String(a || '').replace(/^@+/, '').toLowerCase() === String(b || '').replace(/^@+/, '').toLowerCase() }
-  var ago = function (t) {
-    var m = Math.max(0, Math.round((Date.now() - t) / 60000))
-    if (m < 1) return 'gerade eben'
-    if (m < 60) return 'vor ' + m + ' Min.'
-    if (m < 1440) return 'vor ' + Math.round(m / 60) + ' Std.'
-    var d = Math.round(m / 1440); return 'vor ' + d + (d === 1 ? ' Tag' : ' Tagen')
-  }
+'use strict'
+// Die 25 Mond-Stufen (Namen + Aussehen). GLEICHE LISTE wie stufen.js – der Test vergleicht beide. Läuft der Stadt-Rechner,
+// kommen die Namen von dort (dann stimmen sie mit dem Spiel überein); diese Liste ist der Rückfall.
+// Bewusst ohne Schwellen und ohne Beträge (Auflage 16).
+const STUFEN = [
+  ['Landekapsel', 'Landekapsel mit Fallschirm'],
+  ['Mond-Iglu', 'Mond-Iglu mit Luftschleuse'],
+  ['Wohncontainer', 'Wohncontainer mit Solardach'],
+  ['Kuppelhaus', 'kleines Kuppelhaus mit Bullaugen'],
+  ['Solar-Kuppel', 'Kuppelhaus mit Solarsegel'],
+  ['Doppelkuppel', 'Doppelkuppel mit Glasgarten'],
+  ['Forschungsstation', 'Forschungsstation mit Radar'],
+  ['Rover-Garage', 'Wohnmodul mit Rover-Garage'],
+  ['Gewächshaus-Turm', 'Turmhaus mit Gewächshaus-Kuppel'],
+  ['Mondvilla', 'moderne Villa mit großen Glasfenstern'],
+  ['Antennen-Turm', 'Turmhaus mit großer Antenne'],
+  ['Krater-Pool-Villa', 'Villa mit beheiztem Krater-Pool'],
+  ['Neon-Loft', 'Neon-Loft mit Leuchtfassade'],
+  ['Raketen-Haus', 'Raketen-Haus auf der Startrampe'],
+  ['Kristall-Villa', 'Kristall-Villa mit Leuchtkristallen'],
+  ['Schwebe-Plattform', 'schwebende Plattform mit Düsen'],
+  ['Sternwarten-Villa', 'Observatorium-Villa mit Teleskop'],
+  ['Mond-Penthouse', 'Glas-Penthouse über dem Mond'],
+  ['Gold-Kuppel', 'Palast unter der Gold-Kuppel'],
+  ['Raumstation', 'Raumstation am Boden'],
+  ['Juwelen-Dom', 'Juwelen-Dom aus Glas'],
+  ['Raketen-Anwesen', 'Anwesen mit zwei Raketen'],
+  ['Regenbogen-Palast', 'Palast in allen Farben des Regenbogens'],
+  ['Sternen-Schloss', 'Sternen-Schloss mit Leuchttürmen'],
+  ['Mondpalast', 'Mondpalast mit Raumschiff-Landeplatz']
+]
+const GRUPPEN = [[1, 'Kapseln und Kuppeln', '🚀'], [6, 'Stationen und Villen', '🛰️'], [11, 'Türme und Villen', '📡'], [16, 'Große Mondbauten', '🔭'], [21, 'Legendäre Paläste', '👑']]
+const TIKTOK = 'https://www.tiktok.com/@flexhausen'
+const POLL_MS = 5000
 
-  /* the house as a drawing: it grows with the level (wider, higher, finer) */
-  function drawing (level) {
-    var NS = 'http://www.w3.org/2000/svg'
-    var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 320 200'); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Haus der Stufe ' + level)
-    var add = function (tag, a) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e }
-    var L = Math.max(1, Math.min(20, level | 0))
-    var kinds = [['#8a5a33', '#5d3a1e', '#6b3f22'], ['#8d9099', '#5f626b', '#7a3b30'], ['#e9dcc0', '#b9a67e', '#8a4a36'], ['#f2f3f5', '#c3c7d1', '#3c4250'], ['#dff1fb', '#9fcbe6', '#5b89a8'], ['#1b1638', '#ff3fd0', '#31e6ff'], ['#b9b3a6', '#8a8376', '#5a6b8c'], ['#9fe9ff', '#56c2ea', '#e8fbff'], ['#f5d98a', '#d1a53a', '#fff0c2'], ['#ffffff', '#f5c542', '#ffe9a6']]
-    var kind = L <= 3 ? 0 : L <= 6 ? 1 : L <= 9 ? 2 : L <= 12 ? 3 : L <= 15 ? 4 : L === 16 ? 5 : L === 17 ? 6 : L === 18 ? 7 : L === 19 ? 8 : 9
-    var c = kinds[kind]
-    var floors = L <= 2 ? 1 : L <= 5 ? 2 : L <= 9 ? 3 : L <= 12 ? 4 : L <= 15 ? 5 : L === 18 ? 9 : L === 16 ? 7 : 6
-    var w = L === 18 ? 96 : Math.min(230, 84 + L * 8); var fh = floors > 6 ? 15 : 22
-    var h = floors * fh; var x = 160 - w / 2; var g = 172; var y = g - h
-    if (L >= 19) add('circle', { cx: 160, cy: y - 26, r: 70, fill: c[1], opacity: '.16' })
-    if (L === 17) { [x - 16, x + w - 12].forEach(function (tx) { add('rect', { x: tx, y: y - 26, width: 28, height: h + 26, fill: c[1] }); add('path', { d: 'M' + tx + ' ' + (y - 26) + 'h7v-8h7v8h7v-8h7v8', fill: 'none', stroke: c[1], 'stroke-width': 7 }) }) }
-    add('rect', { x: x, y: y, width: w, height: h, fill: c[0], stroke: kind === 5 ? c[1] : c[1], 'stroke-width': kind === 5 ? 3 : 2, rx: kind >= 3 ? 3 : 1 })
-    // roof
-    if (kind <= 2) add('path', { d: 'M' + (x - 10) + ' ' + y + 'L160 ' + (y - 34 - L) + 'L' + (x + w + 10) + ' ' + y + 'Z', fill: c[2] })
-    else if (kind === 6) add('path', { d: 'M' + x + ' ' + y + 'h12v-9h12v9h12v-9h12v9h12v-9h12v9h12v-9h12v9', fill: 'none', stroke: c[1], 'stroke-width': 6 })
-    else if (kind === 7) add('path', { d: 'M' + x + ' ' + y + 'L160 ' + (y - 46) + 'L' + (x + w) + ' ' + y + 'Z', fill: c[2], stroke: c[1], 'stroke-width': 2 })
-    else if (kind === 8) { add('path', { d: 'M' + (160 - 46) + ' ' + y + 'a46 40 0 0 1 92 0Z', fill: c[1] }); add('rect', { x: 158, y: y - 56, width: 4, height: 18, fill: c[2] }) }
-    else if (kind === 9) { add('path', { d: 'M' + (x - 12) + ' ' + y + 'L160 ' + (y - 40) + 'L' + (x + w + 12) + ' ' + y + 'Z', fill: c[1] }); for (var k = 0; k < 6; k++) add('rect', { x: x + 8 + k * (w - 28) / 5, y: y + 4, width: 12, height: h - 4, fill: c[2] }) }
-    else add('rect', { x: x - 6, y: y - 7, width: w + 12, height: 8, fill: c[2], rx: 2 })
-    if (kind <= 1) add('rect', { x: x + w - 26, y: y - 30, width: 12, height: 26, fill: c[1] })
-    // windows and door
-    var cols = Math.max(2, Math.floor(w / 30)); var lit = kind === 5 ? c[2] : '#ffd76a'
-    for (var f = 0; f < floors; f++) for (var i = 0; i < cols; i++) {
-      if (f === floors - 1 && i === Math.floor(cols / 2) && kind !== 9) continue
-      if (kind === 9) continue
-      var wx = x + 9 + i * ((w - 18 - 14) / Math.max(1, cols - 1)); var wy = y + f * fh + 5
-      add('rect', { x: wx, y: wy, width: 14, height: fh - 10, fill: (f * 3 + i * 5 + L) % 4 ? lit : '#2b3145', rx: 1.5, opacity: kind === 4 || kind === 7 ? '.85' : '1' })
-    }
-    add('rect', { x: 160 - 9, y: g - Math.min(30, fh + 6), width: 18, height: Math.min(30, fh + 6), fill: kind === 9 ? c[1] : '#3a2414', rx: 2 })
-    if (L >= 8 && kind < 5) add('rect', { x: x + w + 6, y: g - 20, width: 38, height: 20, fill: c[1], rx: 2 })
-    if (L >= 13 && kind === 4) add('ellipse', { cx: x - 30, cy: g + 9, rx: 28, ry: 7, fill: '#49c6ff' })
-    if (L >= 20) for (var s = 0; s < 3; s++) add('ellipse', { cx: 60 + s * 100, cy: g + 6 + (s % 2) * 6, rx: 46, ry: 10, fill: '#ffffff', opacity: '.75' })
-    return svg
-  }
+// ------------------------------------------------------------------ kleine Helfer (Namen immer escaped)
+const $ = id => document.getElementById(id)
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
+const fmt = n => Number(n || 0).toLocaleString('de-DE')
+const grp = n => 'g' + Math.min(4, Math.max(0, Math.floor((Number(n) - 1) / 5)))
+const stufeName = n => (STUFEN[n - 1] || STUFEN[STUFEN.length - 1])[0]
+const store = {
+  get (k) { try { return localStorage.getItem(k) || '' } catch (_) { return '' } },
+  set (k, v) { try { if (v) localStorage.setItem(k, v); else localStorage.removeItem(k) } catch (_) {} }
+}
+const ago = m => m == null ? '' : m < 1 ? 'gerade eben' : m < 60 ? 'vor ' + m + ' Min.' : m < 1440 ? 'vor ' + Math.round(m / 60) + ' Std.' : 'vor ' + Math.round(m / 1440) + ' T.'
+const pct = p => Math.max(0, Math.min(100, Math.round(Number(p) || 0)))
 
-  /* (18.11.2026 ~15:30, the streamer, after the question what the page could do for the people: "ja, macht beides")
-     1. "Jetzt live": the page knows whether the stream runs – a big button leads straight into the LIVE (somebody who
-        got a shared picture from a friend lands here and is one tap away from the stream); otherwise to the profile.
-     2. "Haus teilen": the own house as a picture for a story or a chat (name, level, rank, the real house picture),
-        drawn here in the browser; every shared picture carries the address of this page. */
-  function live (on) {
-    var a = $('go'); a.className = 'go' + (on ? '' : ' off')
-    a.href = on ? 'https://www.tiktok.com/@flexhausen/live' : 'https://www.tiktok.com/@flexhausen'
-    $('goT').textContent = on ? 'Jetzt live – zum Stream' : 'Der Stream ist gerade aus – zum Profil von @flexhausen'
-  }
-  function rrect (g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath() }
-  /* sImg = the house picture that already stands on the page (it is loaded so that it may be drawn into a picture of
-     our own – no second download: through the tunnel that took up to ten seconds behind the pictures of all levels) */
-  function picture (h, d, sImg) {
-    var W = 1080; var H = 1920; var F = 'system-ui,-apple-system,"Segoe UI",Roboto,sans-serif'
-    var c = document.createElement('canvas'); c.width = W; c.height = H; var g = c.getContext('2d')
-    var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#131724'); bg.addColorStop(1, '#07080c'); g.fillStyle = bg; g.fillRect(0, 0, W, H)
-    g.strokeStyle = '#f5c542'; g.lineWidth = 6; rrect(g, 36, 36, W - 72, H - 72, 52); g.stroke()
-    g.textAlign = 'center'; g.textBaseline = 'alphabetic'
-    g.fillStyle = '#f5c542'; g.font = '900 128px ' + F; g.fillText('STINKHAUSEN', W / 2, 250)
-    g.fillStyle = '#a4a8b5'; g.font = '700 40px ' + F; g.fillText('MEIN HAUS IM TIKTOK-LIVE', W / 2, 322)
-    /* the house on its sky */
-    var px = 100; var py = 380; var pw = W - 200; var ph = 780
-    var sky = g.createLinearGradient(0, py, 0, py + ph); sky.addColorStop(0, '#1c2a4a'); sky.addColorStop(1, '#3f679c'); g.fillStyle = sky; rrect(g, px, py, pw, ph, 40); g.fill()
-    if (sImg && sImg.naturalWidth) {
-      var k = Math.min((pw - 50) / sImg.naturalWidth, (ph - 50) / sImg.naturalHeight); var iw = sImg.naturalWidth * k; var ih = sImg.naturalHeight * k
-      g.save(); rrect(g, px, py, pw, ph, 40); g.clip(); g.imageSmoothingEnabled = false; g.drawImage(sImg, W / 2 - iw / 2, py + ph - ih - 8, iw, ih); g.restore()
-    }
-    /* level, house, name */
-    var lv = 'STUFE ' + h.level + (d.totals && d.totals.levels ? ' VON ' + d.totals.levels : '')
-    g.font = '900 46px ' + F; var lw = g.measureText(lv).width + 70
-    g.fillStyle = '#f5c542'; rrect(g, W / 2 - lw / 2, 1200, lw, 76, 38); g.fill(); g.fillStyle = '#1b1503'; g.fillText(lv, W / 2, 1255)
-    g.fillStyle = '#ffe9a6'; g.font = '800 60px ' + F; g.fillText(h.house || '', W / 2, 1362)
-    var fs = 92; g.fillStyle = '#f3f1ea'
-    do { g.font = '900 ' + fs + 'px ' + F; fs -= 4 } while (g.measureText(h.name).width > 880 && fs > 36)
-    g.fillText(h.name, W / 2, 1478)
-    g.fillStyle = '#a4a8b5'; g.font = '600 38px ' + F; g.fillText('@' + h.id, W / 2, 1536)
-    /* three numbers */
-    var cells = [['#' + fmt(h.rank), 'von ' + fmt(d.totals.residents) + ' Häusern'], [fmt(h.likes), 'Likes'], [fmt(h.coins), 'Coins']]
-    for (var i = 0; i < 3; i++) {
-      var bx = 100 + i * 300; g.fillStyle = '#10131a'; rrect(g, bx, 1578, 280, 150, 24); g.fill(); g.strokeStyle = '#2a2f3c'; g.lineWidth = 2; g.stroke()
-      var n = 58; g.fillStyle = i ? '#f3f1ea' : '#f5c542'; do { g.font = '900 ' + n + 'px ' + F; n -= 3 } while (g.measureText(cells[i][0]).width > 250 && n > 26)
-      g.fillText(cells[i][0], bx + 140, 1650)
-      g.fillStyle = '#a4a8b5'; g.font = '600 26px ' + F; g.fillText(cells[i][1], bx + 140, 1700)
-    }
-    g.fillStyle = '#f3f1ea'; g.font = '800 40px ' + F; g.fillText('Such dein Haus: ' + location.host, W / 2, 1800)
-    g.fillStyle = '#a4a8b5'; g.font = '600 32px ' + F; g.fillText('LIVE auf TikTok: @flexhausen', W / 2, 1850)
-    return c
-  }
-  function share (h, d) {
-    var ov = $('ov'); ov.textContent = ''; ov.hidden = false; ov.appendChild(el('p', '', 'Bild wird gebaut …'))
-    var tries = 0
-    /* the house picture may still be on its way: wait for it for six seconds at most */
-    var go = function () {
-      if (ov.hidden) return
-      var ready = !!(lastImg && lastImg.complete && lastImg.naturalWidth)
-      if (!ready && h.img && lastImg && tries++ < 40) { setTimeout(go, 150); return }
-      built(h, d, ready ? lastImg : null)
-    }
-    go()
-  }
-  function built (h, d, house) {
-    var url = ''
-    try { url = picture(h, d, house).toDataURL('image/jpeg', 0.9) } catch (e) { try { url = picture(h, d, null).toDataURL('image/jpeg', 0.9) } catch (e2) { $('ov').hidden = true; return } }
-    var link = location.origin + location.pathname + '?name=' + encodeURIComponent(h.id)
-    var ov = $('ov'); ov.textContent = ''; ov.hidden = false
-    var im = el('img'); im.alt = 'Dein Haus in Stinkhausen als Bild'; im.src = url; ov.appendChild(im)
-    var row = el('div', 'rowb'); var file = null
-    try { var bin = atob(url.split(',')[1]); var arr = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i); file = new File([arr], 'mein-haus-flexhausen.jpg', { type: 'image/jpeg' }) } catch (e3) {}
-    if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
-      var b1 = el('button', 'b1', 'Teilen'); b1.type = 'button'
-      b1.addEventListener('click', function () { navigator.share({ files: [file], text: 'Mein Haus in Stinkhausen: ' + link }).catch(function () {}) }); row.appendChild(b1)
-    }
-    var a = el('a', 'btn', 'Bild speichern'); a.href = url; a.download = 'mein-haus-flexhausen.jpg'; row.appendChild(a)
-    var b2 = el('button', 'b1 x', 'Link kopieren'); b2.type = 'button'
-    b2.addEventListener('click', function () { try { navigator.clipboard.writeText(link).then(function () { b2.textContent = 'Kopiert' }, function () { b2.textContent = link }) } catch (e4) { b2.textContent = link } }); row.appendChild(b2)
-    var b3 = el('button', 'b1 x', 'Schließen'); b3.type = 'button'; b3.addEventListener('click', function () { ov.hidden = true; ov.textContent = '' }); row.appendChild(b3)
-    ov.appendChild(row)
-    ov.appendChild(el('p', '', 'Tipp: Bild gedrückt halten, speichern und in deine Story oder deinen Chat packen.'))
-  }
+// ------------------------------------------------------------------ gezeichnete Mondhäuser (25 Stufen)
+// Bilder aus dem Spiel (haeuser\bilder.json) haben Vorrang; bis sie geladen sind und ohne sie steht diese Zeichnung.
+const S = 'stroke="#141926" stroke-opacity=".55" stroke-width="1"'
+const dome = (cx, by, r, fill) => `<path d="M${cx - r} ${by}A${r} ${r} 0 0 1 ${cx + r} ${by}Z" fill="${fill}" ${S}/>`
+const box = (x, y, w, h, fill, rx = 2) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}" ${S}/>`
+const lit = (x, y, w = 3, h = 3) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx=".6" fill="#ffe08a"/>`
+const port = (cx, cy, r) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#hg-win)" stroke="#59627a" stroke-width="1.1"/>`
+const ant = (x, y, h) => `<path d="M${x} ${y}V${y - h}" stroke="#aab2c3" stroke-width="1.3"/><circle cx="${x}" cy="${y - h}" r="2" fill="#ff5a5a"/>`
+const tree = (cx, by, r = 5) => `<path d="M${cx} ${by}V${by - r}" stroke="#7a5a3a" stroke-width="1.4"/><circle cx="${cx}" cy="${by - r - 2}" r="${r}" fill="#5fbf6a"/>`
+const solar = (x, y, w = 18, h = 9, bis = y + 16) => `<path d="M${x + w / 2} ${bis}V${y + h / 2}" stroke="#8a93a6" stroke-width="1.4"/><g transform="rotate(-14 ${x + w / 2} ${y + h / 2})"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#2b5fb8" stroke="#bcd3ff" stroke-width=".8"/><path d="M${x + w / 3} ${y}v${h}M${x + 2 * w / 3} ${y}v${h}M${x} ${y + h / 2}h${w}" stroke="#bcd3ff" stroke-width=".5"/></g>`
+function rocket (x, by, h) {
+  const w = h * 0.3
+  return `<path d="M${x - w / 2} ${by - h * 0.3}L${x - w * 1.05} ${by - h * 0.04}L${x - w / 2} ${by - h * 0.14}ZM${x + w / 2} ${by - h * 0.3}L${x + w * 1.05} ${by - h * 0.04}L${x + w / 2} ${by - h * 0.14}Z" fill="#ff5a4f"/>` +
+    `<rect x="${x - w / 2}" y="${by - h * 0.8}" width="${w}" height="${h * 0.68}" rx="${w * 0.3}" fill="url(#hg-white)" ${S}/>` +
+    `<path d="M${x - w / 2} ${by - h * 0.76}Q${x} ${by - h * 1.06} ${x + w / 2} ${by - h * 0.76}Z" fill="#ff5a4f"/>` + port(x, by - h * 0.55, w * 0.24)
+}
+const saucer = (cx, cy, s = 1) => `<ellipse cx="${cx}" cy="${cy - 3 * s}" rx="${6 * s}" ry="${5 * s}" fill="#8fd8ff" fill-opacity=".8"/><ellipse cx="${cx}" cy="${cy}" rx="${15 * s}" ry="${4.5 * s}" fill="url(#hg-metal)" ${S}/><circle cx="${cx - 8 * s}" cy="${cy}" r="${1.2 * s}" fill="#ffe08a"/><circle cx="${cx}" cy="${cy + 1.5 * s}" r="${1.2 * s}" fill="#ffe08a"/><circle cx="${cx + 8 * s}" cy="${cy}" r="${1.2 * s}" fill="#ffe08a"/>`
+const star = (cx, cy, r, fill) => { let d = ''; for (let i = 0; i < 10; i++) { const a = Math.PI / 5 * i - Math.PI / 2; const rr = i % 2 ? r * 0.45 : r; d += (i ? 'L' : 'M') + (cx + rr * Math.cos(a)).toFixed(1) + ' ' + (cy + rr * Math.sin(a)).toFixed(1) } return `<path d="${d}Z" fill="${fill}"/>` }
+const crownSvg = (x, y, w, fill) => { const h = w * 0.7; return `<path d="M${x} ${y + h}L${x + w * 0.06} ${y + h * 0.25}L${x + w * 0.3} ${y + h * 0.55}L${x + w / 2} ${y}L${x + w * 0.7} ${y + h * 0.55}L${x + w * 0.94} ${y + h * 0.25}L${x + w} ${y + h}Z" fill="${fill}" ${S}/><circle cx="${x + w / 2}" cy="${y + h * 0.62}" r="${w * 0.07}" fill="#ff5fb0"/><circle cx="${x + w * 0.25}" cy="${y + h * 0.78}" r="${w * 0.05}" fill="#8fd8ff"/><circle cx="${x + w * 0.75}" cy="${y + h * 0.78}" r="${w * 0.05}" fill="#8fd8ff"/>` }
+// Schüssel (Radar/Satellit): Öffnung nach oben, gedreht um rot Grad
+const dish = (x, y, r, rot = -25) => `<g transform="rotate(${rot} ${x} ${y})"><path d="M${x - r} ${y}A${r} ${r * 0.55} 0 0 0 ${x + r} ${y}Z" fill="url(#hg-white)" ${S}/><path d="M${x} ${y}V${y - r * 0.6}" stroke="#aab2c3" stroke-width="1"/><circle cx="${x}" cy="${y - r * 0.6}" r="1.4" fill="#ff5a5a"/></g>`
+const pool = (cx, cy, rx, ry) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx + 2}" ry="${ry + 1.3}" fill="#d9dee8"/><ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#38b6ff"/><ellipse cx="${cx - rx * 0.3}" cy="${cy - ry * 0.3}" rx="${rx * 0.35}" ry="${ry * 0.3}" fill="#bff0ff" opacity=".7"/>`
+const crystal = (x, by, h, w, fill = 'url(#hg-crystal)') => `<path d="M${x - w / 2} ${by}L${x - w * 0.35} ${by - h * 0.7}L${x} ${by - h}L${x + w * 0.35} ${by - h * 0.7}L${x + w / 2} ${by}Z" fill="${fill}" ${S}/><path d="M${x} ${by - h}V${by}" stroke="#f6e2ff" stroke-opacity=".6" stroke-width=".8"/>`
+const flame = (x, y, h, w = 5) => `<path d="M${x - w / 2} ${y}Q${x} ${y + h * 1.1} ${x + w / 2} ${y}Z" fill="#ffb347"/><path d="M${x - w / 4} ${y}Q${x} ${y + h * 0.6} ${x + w / 4} ${y}Z" fill="#fff3c4"/>`
+const beam = (x, y, dir) => `<path d="M${x} ${y}L${x + dir * 40} ${y - 22}L${x + dir * 44} ${y - 8}Z" fill="#fff6c8" opacity=".3"/>`
+const rover = (x, by) => `<rect x="${x}" y="${by - 11}" width="22" height="6" rx="2" fill="url(#hg-white)" ${S}/><rect x="${x + 3}" y="${by - 15}" width="8" height="4" rx="1" fill="#8fd8ff"/><circle cx="${x + 4}" cy="${by - 3}" r="3" fill="#3a4052" stroke="#aab2c3"/><circle cx="${x + 18}" cy="${by - 3}" r="3" fill="#3a4052" stroke="#aab2c3"/><path d="M${x + 17} ${by - 11}V${by - 18}" stroke="#aab2c3" stroke-width="1"/>`
+const glas = (x, y, w, h) => box(x, y, w, h, 'url(#hg-glass)', 1.5)
+const fenster = (x, y, cols, rows, dx, dy, w = 3, h = 3) => { let s = ''; for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) s += lit(x + c * dx, y + r * dy, w, h); return s }
+const streifen = (x1, x2, y, farbe = '#ff9a4d', d = 1.6) => `<path d="M${x1} ${y}H${x2}" stroke="${farbe}" stroke-width="${d}"/>`
+const tuer = (x, y, w = 7, h = 10) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1.5" fill="#59627a"/>`
+const glaskuppel = (cx, by, r) => `<path d="M${cx - r} ${by}A${r} ${r} 0 0 1 ${cx + r} ${by}Z" fill="url(#hg-glass)" stroke="#d7f3ff" stroke-opacity=".75" stroke-width="1.1"/><path d="M${cx} ${by - r}V${by}M${cx - r * 0.75} ${by - r * 0.45}Q${cx} ${by - r * 0.1} ${cx + r * 0.75} ${by - r * 0.45}" stroke="#d7f3ff" stroke-opacity=".35" fill="none"/>`
 
-  function show (d) {
-    var out = $('out'); out.hidden = false; out.textContent = ''
-    if (typeof d.fresh === 'boolean') live(d.fresh)
-    if (d.totals && typeof d.totals.follow === 'boolean') follow(d.totals.follow)
-    $('leer').hidden = !!d.found
-    $('backMine').hidden = !(own && !same(own, current))
-    if (d.error) { out.appendChild(el('p', 'msg', d.error)); return }
-    if (!d.found) {
-      if (d.suggestions && d.suggestions.length) {
-        out.appendChild(el('p', 'msg', 'Kein genauer Treffer. Meinst du:'))
-        var box = el('div', 'sug')
-        d.suggestions.forEach(function (s) { var b = el('button'); b.type = 'button'; b.appendChild(el('span', '', s.name + ' ')); b.appendChild(el('small', '', '@' + s.id + ' · Stufe ' + s.level)); b.addEventListener('click', function () { $('q').value = s.id; look(s.id, true) }); box.appendChild(b) })
-        out.appendChild(box)
-      } else out.appendChild(el('p', 'msg', 'Unter diesem Namen steht noch kein Haus in Stinkhausen. ' + (FOLLOW ? 'Folge @flexhausen im LIVE – dann wird deins gebaut.' : 'Komm in den LIVE und lass ein Like da – dann hast du eins.')))
-      return
+// Eine Zeichnung je Stufe, passend zum Namen im Spiel (mond-haeuser.js). b = Haus, back = dahinter, front = davor; Boden bei y 96.
+const ZEICHNUNG = [
+  // 1 Landekapsel mit Fallschirm
+  (b) => b.push('<path d="M40 96Q50 80 62 96Z" fill="#ff9a4d"/><path d="M46 96Q51 84 56 96Z" fill="#fff" opacity=".85"/><path d="M61 95L70 91M59 92L71 88" stroke="#aab2c3" stroke-width=".7"/>',
+    `<path d="M70 96L73 82Q80 72 87 82L90 96Z" fill="url(#hg-white)" ${S}/>`, '<rect x="69" y="93" width="22" height="3.5" rx="1" fill="#59627a"/>', port(80, 85, 3.2), '<path d="M72 96l-3 3M88 96l3 3" stroke="#aab2c3" stroke-width="1.4"/>'),
+  // 2 Mond-Iglu mit Luftschleuse
+  (b) => b.push(dome(84, 96, 18, 'url(#hg-white)'), '<path d="M66.7 91H101.3M69.8 85H98.2M75.8 80H92.2M72 96V91M84 96V91M96 96V91M78 91V85M90 91V85M84 85V80" stroke="#9aa3b5" stroke-width=".8"/>',
+    ant(92, 80, 9), dome(64, 96, 8, 'url(#hg-white)'), '<rect x="61" y="90" width="6" height="6" rx="2.5" fill="#59627a"/>'),
+  // 3 Wohncontainer mit Solardach
+  (b) => b.push(box(60, 78, 44, 18, 'url(#hg-white)', 3), streifen(60, 104, 83), lit(66, 87, 6, 4), lit(76, 87, 6, 4), tuer(90, 86),
+    '<path d="M62 78L68 70H98L104 78Z" fill="#2b5fb8" stroke="#bcd3ff" stroke-width=".8"/><path d="M74 70L71 78M83 70V78M92 70L95 78M65 74H101" stroke="#bcd3ff" stroke-width=".5"/>', ant(100, 70, 8)),
+  // 4 kleines Kuppelhaus mit Bullaugen
+  (b) => b.push(dome(80, 96, 20, 'url(#hg-white)'), streifen(60.4, 99.6, 92, '#8fd8ff'), port(71, 84, 3.4), port(89, 84, 3.4), '<rect x="77" y="87" width="6" height="9" rx="2.5" fill="#59627a"/>', ant(80, 76, 8)),
+  // 5 Kuppelhaus mit Solarsegel
+  (b) => b.push(solar(38, 60, 30, 13, 96), dome(88, 96, 19, 'url(#hg-white)'), streifen(69.4, 106.6, 92, '#8fd8ff'), port(88, 84, 3.8), '<rect x="96" y="88" width="6" height="8" rx="2.5" fill="#59627a"/>', ant(96, 79, 8)),
+  // 6 Doppelkuppel mit Glasgarten
+  (b) => b.push(box(70, 86, 16, 6, '#aab2c3', 2), dome(58, 96, 18, 'url(#hg-white)'), port(52, 86, 3), port(64, 86, 3), '<rect x="55" y="88" width="6" height="8" rx="2.5" fill="#59627a"/>', ant(58, 78, 9),
+    tree(94, 96, 6), tree(108, 96, 4), '<circle cx="86" cy="94" r="3" fill="#7bd36b"/><circle cx="115" cy="94" r="2.5" fill="#7bd36b"/>', glaskuppel(100, 96, 22)),
+  // 7 Forschungsstation mit Radar
+  (b) => b.push(box(56, 58, 12, 20, 'url(#hg-white)', 2), ant(62, 58, 10), box(44, 76, 60, 20, 'url(#hg-white)', 6), fenster(50, 81, 5, 1, 10, 0, 5, 4), streifen(44, 104, 91),
+    '<path d="M96 76V62" stroke="#8a93a6" stroke-width="1.6"/>', dish(96, 60, 12, -25), box(108, 84, 14, 12, '#aab2c3', 2)),
+  // 8 Wohnmodul mit Rover-Garage
+  (b, back, front) => { b.push(box(26, 74, 42, 22, 'url(#hg-white)', 5), fenster(31, 80, 4, 1, 9, 0, 5, 4), ant(36, 74, 9), box(68, 80, 38, 16, 'url(#hg-white)', 3), '<rect x="74" y="84" width="26" height="12" rx="1" fill="#3a4052"/><path d="M74 87H100M74 90H100M74 93H100" stroke="#59627a" stroke-width="1"/>', streifen(68, 106, 81)); front.push(rover(110, 98)) },
+  // 9 Turmhaus mit Gewächshaus-Kuppel
+  (b) => b.push(box(46, 82, 20, 14, 'url(#hg-white)', 3), lit(51, 86, 4, 4), lit(58, 86, 4, 4), box(70, 46, 22, 50, 'url(#hg-white)', 3), fenster(75, 54, 2, 5, 8, 8, 4, 4),
+    box(65, 44, 32, 3, 'url(#hg-metal)', 1), tree(81, 44, 5), '<circle cx="73" cy="42" r="2.4" fill="#7bd36b"/><circle cx="89" cy="42" r="2.4" fill="#7bd36b"/>', glaskuppel(81, 44, 14), box(96, 84, 16, 12, '#aab2c3', 2)),
+  // 10 moderne Mondvilla mit großen Glasfenstern
+  (b) => b.push('<path d="M30 96V84" stroke="#aab2c3" stroke-width="1"/><circle cx="30" cy="83" r="2" fill="#ffe08a"/>', box(38, 76, 70, 20, 'url(#hg-white)', 2), glas(44, 80, 26, 12), glas(76, 80, 12, 12), tuer(94, 84, 8, 12),
+    box(58, 58, 64, 18, 'url(#hg-white)', 2), glas(64, 62, 52, 9), lit(70, 64, 4, 5), lit(100, 64, 4, 5), streifen(58, 122, 58, '#e8c36a'), tree(116, 58, 3)),
+  // 11 Turmhaus mit großer Antenne
+  (b) => b.push(box(46, 80, 22, 16, 'url(#hg-white)', 3), lit(51, 85, 5, 4), box(68, 44, 24, 52, 'url(#hg-white)', 3), fenster(73, 52, 2, 5, 10, 8, 4, 4), streifen(68, 92, 48, '#ff9a4d'),
+    '<path d="M80 44V18M74 44L80 22L86 44M76 37H84M77.5 30H82.5" stroke="#aab2c3" stroke-width="1.2" fill="none"/><circle cx="80" cy="17" r="2.4" fill="#ff5a5a"/>', '<path d="M92 72H100" stroke="#8a93a6" stroke-width="1.6"/>', dish(106, 66, 11, 30)),
+  // 12 Villa mit beheiztem Krater-Pool
+  (b, back, front) => { b.push(box(30, 70, 66, 26, 'url(#hg-white)', 2), glas(36, 76, 30, 14), tuer(72, 82, 8, 14), box(40, 56, 46, 14, 'url(#hg-white)', 2), glas(46, 60, 34, 7), streifen(40, 86, 56, '#e8c36a'), tree(90, 70, 3)); front.push(pool(120, 101, 22, 5), '<path d="M112 94q2-4 0-8M122 93q2-4 0-8M131 94q2-4 0-8" stroke="#fff" stroke-opacity=".35" stroke-width="1.2" fill="none"/>') },
+  // 13 Neon-Loft mit Leuchtfassade
+  (b) => b.push(box(44, 48, 72, 48, 'url(#hg-metal)', 3), fenster(50, 56, 6, 2, 10, 8, 6, 4), fenster(50, 78, 6, 2, 10, 8, 6, 4), streifen(44, 116, 52, '#ff4fd8'), streifen(44, 116, 73, '#3ff0ff'), '<path d="M45.5 49V95M114.5 49V95" stroke="#ff4fd8" stroke-width="1.4"/>',
+    box(64, 36, 32, 11, '#141926', 2), '<text x="80" y="44.5" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1" fill="#ff4fd8" font-family="Arial, sans-serif">LOFT</text>'),
+  // 14 Raketen-Haus auf der Startrampe
+  (b) => b.push('<rect x="44" y="24" width="12" height="72" fill="none" stroke="#aab2c3" stroke-width="1.4"/><path d="M44 30L56 40M56 30L44 40M44 46L56 56M56 46L44 56M44 62L56 72M56 62L44 72M44 78L56 88M56 78L44 88" stroke="#8a93a6" stroke-width=".8"/><path d="M56 42H68M56 62H68" stroke="#aab2c3" stroke-width="1.4"/>',
+    rocket(80, 96, 66), box(104, 78, 32, 18, 'url(#hg-white)', 4), fenster(109, 83, 3, 1, 9, 0, 5, 4), streifen(104, 136, 92), ant(128, 78, 9)),
+  // 15 Kristall-Villa mit Leuchtkristallen
+  (b, back, front) => { b.push(crystal(40, 96, 26, 12), box(46, 68, 64, 28, 'url(#hg-white)', 2), glas(52, 74, 22, 14), glas(80, 74, 22, 14), crystal(60, 68, 16, 8), crystal(78, 68, 24, 10), crystal(94, 68, 14, 7), streifen(46, 110, 68, '#c58bff')); front.push(crystal(120, 101, 18, 9), crystal(130, 102, 11, 6), crystal(24, 103, 10, 6)) },
+  // 16 schwebende Plattform mit Düsen
+  (b, back, front) => { front.push('<ellipse cx="80" cy="101" rx="40" ry="5" fill="url(#hg-aura)"/>'); b.push(flame(58, 81, 12, 6), flame(80, 82, 15, 7), flame(102, 81, 12, 6), `<path d="M34 70H126L116 80H44Z" fill="url(#hg-metal)" ${S}/>`, streifen(37, 123, 71.5, '#3ff0ff', 1.2), box(55, 78, 8, 3, '#59627a', 1), box(76, 79, 8, 3, '#59627a', 1), box(97, 78, 8, 3, '#59627a', 1), box(48, 50, 40, 20, 'url(#hg-white)', 3), fenster(53, 56, 4, 1, 8, 0, 5, 4), tuer(78, 60, 6, 10), ant(56, 50, 10), tree(104, 70, 4), glaskuppel(104, 70, 12)) },
+  // 17 Observatorium-Villa mit Teleskop
+  (b) => b.push(star(70, 30, 2.4, '#fff3c4'), star(138, 22, 1.8, '#fff3c4'), box(22, 70, 74, 26, 'url(#hg-white)', 2), glas(28, 76, 30, 14), glas(64, 76, 14, 14), tuer(84, 82, 8, 14), streifen(22, 96, 70, '#e8c36a'),
+    box(100, 58, 34, 38, 'url(#hg-white)', 2), fenster(106, 66, 3, 3, 9, 9, 4, 4), `<g transform="rotate(-35 117 50)"><rect x="113" y="26" width="8" height="26" rx="2" fill="url(#hg-metal)" ${S}/></g>`, dome(117, 58, 17, 'url(#hg-white)'), '<path d="M117 41.5V58" stroke="#59627a" stroke-width="3"/>'),
+  // 18 Glas-Penthouse über dem Mond
+  (b) => { b.push(box(38, 84, 22, 12, 'url(#hg-white)', 2), box(100, 84, 22, 12, 'url(#hg-white)', 2), box(60, 26, 40, 70, 'url(#hg-glass)', 2)); for (let y = 32; y < 90; y += 8) b.push(fenster(64, y, 4, 1, 9, 0, 5, 3)); b.push('<path d="M60 27V95M100 27V95M80 27V95" stroke="#d7f3ff" stroke-opacity=".55" stroke-width="1"/>', box(56, 22, 48, 5, 'url(#hg-white)', 1), box(66, 11, 28, 11, 'url(#hg-white)', 2), glas(70, 13, 20, 6), tree(60, 22, 3), tree(100, 22, 3), ant(90, 11, 7)) },
+  // 19 Palast unter der Gold-Kuppel
+  (b) => { b.push(box(36, 72, 88, 24, 'url(#hg-white)', 2)); for (let i = 0; i < 8; i++) b.push(`<rect x="${41 + i * 11}" y="76" width="3" height="20" fill="#eef1f7" stroke="#9aa3b5" stroke-width=".5"/>`); b.push(fenster(46, 80, 7, 1, 11, 0, 4, 7), box(32, 70, 96, 4, 'url(#hg-gold)', 1), dome(80, 70, 30, 'url(#hg-gold)'), '<path d="M62 70Q80 48 98 70" stroke="#fff3c4" stroke-opacity=".5" fill="none"/><path d="M80 40V28" stroke="#e8c36a" stroke-width="2"/>', '<circle cx="80" cy="26" r="3" fill="url(#hg-gold)"/>') },
+  // 20 Raumstation am Boden
+  (b, back) => { back.push('<ellipse cx="80" cy="66" rx="46" ry="10" fill="none" stroke="#c9cfdb" stroke-width="3" stroke-opacity=".6"/>'); b.push('<path d="M64 96l6-12M96 96l-6-12" stroke="#8a93a6" stroke-width="2.2"/>', '<path d="M28 66H66M94 66H132" stroke="#aab2c3" stroke-width="2"/>',
+    '<rect x="6" y="58" width="22" height="16" fill="#2b5fb8" stroke="#bcd3ff" stroke-width=".8"/><path d="M13.3 58v16M20.6 58v16M6 66h22" stroke="#bcd3ff" stroke-width=".5"/><rect x="132" y="58" width="22" height="16" fill="#2b5fb8" stroke="#bcd3ff" stroke-width=".8"/><path d="M139.3 58v16M146.6 58v16M132 66h22" stroke="#bcd3ff" stroke-width=".5"/>',
+    box(36, 60, 18, 12, 'url(#hg-white)', 5), box(106, 60, 18, 12, 'url(#hg-white)', 5), box(66, 46, 28, 40, 'url(#hg-white)', 7), port(80, 56, 3.5), port(80, 68, 3.5), fenster(70, 77, 3, 1, 7, 0, 4, 4), glaskuppel(80, 46, 9), ant(80, 37, 9),
+    '<path d="M34 66Q80 86 126 66" stroke="#c9cfdb" stroke-width="3" fill="none" stroke-opacity=".9"/>') },
+  // 21 Juwelen-Dom aus Glas
+  (b) => b.push(box(36, 88, 88, 8, 'url(#hg-gold)', 2), '<path d="M42 88A38 38 0 0 1 118 88Z" fill="url(#hg-crystal)" stroke="#f6e2ff" stroke-opacity=".8" stroke-width="1.2"/>', '<path d="M80 50V88M60 55L66 88M100 55L94 88M44 76Q80 66 116 76M50 64Q80 56 110 64" stroke="#f6e2ff" stroke-opacity=".45" fill="none"/>',
+    '<circle cx="70" cy="70" r="2.4" fill="#8fd8ff"/><circle cx="92" cy="64" r="2" fill="#ff5fb0"/><circle cx="86" cy="78" r="2.4" fill="#7be0c3"/><circle cx="60" cy="81" r="1.8" fill="#ffe08a"/><circle cx="104" cy="79" r="1.8" fill="#ffe08a"/>', crystal(80, 51, 14, 7, 'url(#hg-gold)'), '<rect x="74" y="79" width="12" height="9" rx="4" fill="#3b2366"/>'),
+  // 22 Anwesen mit zwei Raketen
+  (b) => b.push(rocket(24, 96, 58), rocket(136, 96, 58), box(44, 66, 72, 30, 'url(#hg-white)', 2), box(40, 62, 80, 5, 'url(#hg-gold)', 1), fenster(50, 72, 6, 1, 11, 0, 5, 6), tuer(76, 84, 8, 12), box(60, 46, 40, 16, 'url(#hg-white)', 2), glas(64, 50, 32, 8), streifen(60, 100, 46, '#e8c36a'), ant(94, 46, 10)),
+  // 23 Palast in allen Farben des Regenbogens
+  (b, back) => { back.push(['#ff5a5a', '#ff9a4d', '#ffe08a', '#7be0c3', '#8fd8ff', '#c58bff'].map((c, i) => `<path d="M${22 + i * 4} 96A${58 - i * 4} ${58 - i * 4} 0 0 1 ${138 - i * 4} 96" fill="none" stroke="${c}" stroke-width="4" stroke-opacity=".5"/>`).join(''))
+    b.push(box(38, 52, 12, 44, 'url(#hg-white)', 2), dome(44, 52, 6, '#ff5fb0'), box(110, 52, 12, 44, 'url(#hg-white)', 2), dome(116, 52, 6, '#8fd8ff'), box(46, 66, 68, 30, 'url(#hg-white)', 2))
+    ;['#ff5a5a', '#ff9a4d', '#ffe08a', '#7be0c3', '#8fd8ff', '#c58bff'].forEach((c, i) => b.push(`<rect x="46" y="${68 + i * 2}" width="68" height="2" fill="${c}"/>`))
+    b.push(fenster(52, 84, 4, 1, 8, 0, 4, 6), fenster(90, 84, 3, 1, 8, 0, 4, 6), '<path d="M75 96V87A5 5 0 0 1 85 87V96Z" fill="#59627a"/>', dome(80, 66, 14, 'url(#hg-gold)'), lit(42, 62, 4, 4), lit(114, 62, 4, 4)) },
+  // 24 Sternen-Schloss mit Leuchttürmen
+  (b, back) => { back.push(beam(29, 34, -1), beam(131, 34, 1))
+    b.push(box(56, 54, 48, 42, 'url(#hg-white)', 2), '<path d="M56 54V50H62V54M66 54V50H72V54M76 54V50H84V54M88 54V50H94V54M98 54V50H104V54" fill="#e3e7ef" stroke="#9aa3b5" stroke-width=".6"/>', box(70, 30, 20, 24, 'url(#hg-white)', 2), '<path d="M68 30L80 12L92 30Z" fill="#c58bff" stroke="#141926" stroke-opacity=".5"/>', star(80, 8, 3.4, '#ffe08a'),
+      fenster(62, 62, 4, 2, 10, 10, 4, 5), '<path d="M75 96V85A5 5 0 0 1 85 85V96Z" fill="#59627a"/>', lit(77, 38, 6, 6))
+    for (const x of [22, 124]) b.push(box(x, 40, 14, 56, 'url(#hg-white)', 2), `<path d="M${x} 52H${x + 14}M${x} 66H${x + 14}M${x} 80H${x + 14}" stroke="#ff5a5a" stroke-width="3"/>`, `<rect x="${x + 2}" y="31" width="10" height="9" rx="1" fill="#fff3c4"/>`, `<path d="M${x} 31L${x + 7} 22L${x + 14} 31Z" fill="#ff5a5a"/>`) },
+  // 25 Mondpalast mit Raumschiff-Landeplatz
+  (b, back, front) => { back.push('<ellipse cx="40" cy="40" rx="40" ry="26" fill="url(#hg-nebula)"/><ellipse cx="124" cy="30" rx="34" ry="22" fill="url(#hg-nebula)"/>')
+    b.push('<path d="M76 54L80 22L84 54Z" fill="url(#hg-gold)" stroke="#141926" stroke-opacity=".5"/>', box(34, 52, 12, 22, 'url(#hg-gold)', 2), dome(40, 52, 6, 'url(#hg-gold)'), box(114, 52, 12, 22, 'url(#hg-gold)', 2), dome(120, 52, 6, 'url(#hg-gold)'),
+      box(30, 72, 100, 24, 'url(#hg-gold)', 3), dome(80, 72, 20, 'url(#hg-white)'), '<path d="M60 72H100" stroke="#9c6b22" stroke-width="1.6"/>', lit(38, 58, 4, 5), lit(118, 58, 4, 5))
+    for (let i = 0; i < 8; i++) b.push(`<path d="M${36 + i * 12} 93V83A3 3 0 0 1 ${42 + i * 12} 83V93Z" fill="#ffe08a" stroke="#9c6b22" stroke-width=".6"/>`)
+    b.push('<ellipse cx="80" cy="12" rx="22" ry="12" fill="url(#hg-aura)"/>', crownSvg(68, 4, 24, 'url(#hg-gold)'), star(20, 20, 2.6, '#fff3c4'), star(140, 14, 2.2, '#fff3c4'), star(150, 44, 1.8, '#fff3c4'))
+    front.push('<ellipse cx="138" cy="106" rx="17" ry="4" fill="#59627a" stroke="#ffe08a" stroke-opacity=".8" stroke-dasharray="2 2"/>', saucer(138, 94, 0.75)) }
+]
+
+function mondhaus (n) {
+  n = Math.max(1, Math.min(25, Number(n) | 0 || 1))
+  const g = Math.floor((n - 1) / 5)
+  const back = []; const b = []; const front = []
+  if (g === 4) back.push('<ellipse cx="80" cy="58" rx="66" ry="52" fill="url(#hg-aura)"/>')
+  ZEICHNUNG[n - 1](b, back, front)
+  // kleine Häuser näher heran (gleiches Seitenverhältnis 4:3), große ganz
+  const vb = ['30 38 100 75', '15 25 130 97.5', '8 14 144 108', '0 0 160 120', '0 0 160 120'][g]
+  return `<svg viewBox="${vb}" aria-hidden="true">${back.join('')}<path d="M0 98Q80 88 160 98V120H0Z" fill="url(#hg-moon)"/><ellipse cx="34" cy="110" rx="12" ry="2.8" fill="url(#hg-crater)"/><ellipse cx="128" cy="113" rx="15" ry="3.4" fill="url(#hg-crater)"/><ellipse cx="96" cy="116" rx="6" ry="1.6" fill="url(#hg-crater)"/>${b.join('')}${front.join('')}</svg>`
+}
+
+// Bilder aus dem Spiel: haeuser/bilder.json = { "1": "stufe-1.png", … } (legt tools\bilder-uebernehmen.js an)
+let BILDER = {}
+const pic = (n, cls, alt) => {
+  n = Number(n) | 0
+  const f = BILDER[n]
+  return `<span class="pic ${cls || ''}" role="img" aria-label="${esc(alt == null ? stufeName(n) : alt)}">${mondhaus(n)}${f ? `<img src="haeuser/${esc(f)}" alt="" loading="lazy" decoding="async">` : ''}</span>`
+}
+// nur neu zeichnen, wenn sich wirklich etwas geändert hat (sonst flackern die Bilder alle paar Sekunden)
+const put = (el, html) => {
+  if (!el || el._h === html) return
+  el._h = html; el.innerHTML = html
+  el.querySelectorAll('.pic img').forEach(i => {
+    const ok = () => i.parentNode && i.parentNode.classList.add('hasimg')
+    if (i.complete && i.naturalWidth) ok(); else { i.addEventListener('load', ok, { once: true }); i.addEventListener('error', () => i.remove(), { once: true }) }
+  })
+}
+const krone = p => {
+  const c = p === 1 ? ['#fff3c4', '#e8c36a', '#9c6b22'] : p === 2 ? ['#ffffff', '#d3d8e2', '#7d8597'] : ['#ffe0c4', '#d49a6a', '#8a5530']
+  return `<svg class="crown" viewBox="0 0 26 22" aria-label="Platz ${p}"><defs><linearGradient id="kr${p}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c[0]}"/><stop offset=".5" stop-color="${c[1]}"/><stop offset="1" stop-color="${c[2]}"/></linearGradient></defs><path d="M2 17L3.5 6l5.5 5L13 3l4 8 5.5-5L24 17Z" fill="url(#kr${p})" stroke="#1b1405" stroke-opacity=".4"/><rect x="2" y="17.6" width="22" height="3" rx="1.2" fill="url(#kr${p})"/><circle cx="13" cy="12" r="1.5" fill="#ff5fb0"/></svg>`
+}
+
+// ------------------------------------------------------------------ Datenweg
+// Die Seite liegt fest (GitHub Pages); die Zahlen kommen vom Stadt-Rechner, dessen Adresse in adresse.json steht.
+// Wird die Seite direkt vom Stadt-Rechner geladen, steht dort "" (= dieselbe Adresse).
+let API = null; let apiAt = 0
+async function base (force) {
+  if (API !== null && !force) return API
+  if (force && API !== null && Date.now() - apiAt < 30000) return API
+  apiAt = Date.now()
+  let a = API || ''
+  try {
+    const r = await fetch('adresse.json?t=' + Date.now(), { cache: 'no-store' })
+    if (r.ok) { const j = await r.json(); const v = typeof j.api === 'string' ? j.api.replace(/\/+$/, '') : ''; a = v === '' || /^https?:\/\/[a-z0-9.-]+(:\d{2,5})?$/i.test(v) ? v : '' }
+  } catch (_) {}
+  API = a
+  return a
+}
+async function get (p) {
+  for (let i = 0; i < 2; i++) {
+    const b = await base(i > 0)
+    try {
+      const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 9000)
+      const r = await fetch(b + p, { cache: 'no-store', signal: ctl.signal })
+      clearTimeout(t)
+      if (r.ok) { const j = await r.json(); online(true, j); return j }
+      if (r.status === 429) { await new Promise(res => setTimeout(res, 1500)); continue }
+    } catch (_) {}
+  }
+  online(false)
+  throw new Error('offline')
+}
+let isOnline = true
+function online (on, j) {
+  isOnline = on
+  $('offline').classList.toggle('on', !on)
+  if (!on) return live(null)
+  if (j && 'live' in j) live(j.live)
+  if (j && j.at) $('updated').textContent = 'Stand ' + new Date(j.at).toLocaleTimeString('de-DE') + ' · alle ' + (POLL_MS / 1000) + ' Sekunden neu'
+}
+function live (on) {
+  const el = $('live')
+  el.classList.toggle('on', !!on)
+  el.href = on ? TIKTOK + '/live' : TIKTOK
+  el.textContent = on ? 'LIVE' : 'TikTok'
+}
+// Stufen-Namen vom Stadt-Rechner (dann genau wie im Spiel) – einmal, sobald er erreichbar ist
+let namenGeholt = false
+async function stufenNamen () {
+  if (namenGeholt) return
+  try {
+    const d = await get('/api/stufen')
+    if (Array.isArray(d.stufen) && d.stufen.length) { d.stufen.forEach((s, i) => { if (STUFEN[i] && s && s.name) STUFEN[i] = [String(s.name), String(s.aussehen || STUFEN[i][1])] }); namenGeholt = true; stufenFor = -1 }
+  } catch (_) {}
+}
+async function bilderListe () {
+  let n = 0
+  try {
+    const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 6000)
+    const r = await fetch('haeuser/bilder.json', { cache: 'no-cache', signal: ctl.signal })
+    clearTimeout(t)
+    if (r.ok) { const j = await r.json(); if (j && typeof j === 'object') { for (const [s, f] of Object.entries(j.stufen || j)) if (Number(s) >= 1 && Number(s) <= 25 && /^stufe-\d{1,2}\.(png|jpg|webp)$/.test(String(f))) { BILDER[Number(s)] = String(f); n++ } } }
+  } catch (_) {}
+  return n
+}
+
+// ------------------------------------------------------------------ Bereiche
+const VIEWS = ['start', 'haus', 'top', 'bauten', 'stufen']
+let view = 'start'
+// eigenes Haus: nur der kurze Schlüssel, nur auf diesem Gerät gemerkt (kein Name, kein Konto)
+let me = { k: /^[0-9a-f]{12}$/.test(store.get('fh-k')) ? store.get('fh-k') : '', stufe: 0 }
+let haus = { q: '', k: '', search: false } // was gerade unter „Mein Haus“ steht
+let resetHaus = false
+
+function route () { const v = (location.hash || '').replace(/^#/, ''); show(VIEWS.includes(v) ? v : 'start') }
+function show (v) {
+  const changed = v !== view
+  view = v
+  if (v === 'haus' && resetHaus) { haus = { q: '', k: '', search: false }; $('q-haus').value = '' }
+  resetHaus = false
+  for (const x of VIEWS) $('v-' + x).classList.toggle('on', x === v)
+  document.querySelectorAll('nav.tabs a').forEach(a => a.classList.toggle('on', a.dataset.v === v))
+  if (changed) window.scrollTo(0, 0)
+  load(true)
+}
+function load (first) {
+  if (view === 'start') return loadStart()
+  if (view === 'haus') return loadHaus(first)
+  if (view === 'top') return loadTop()
+  if (view === 'bauten') return loadBauten()
+  if (view === 'stufen') return loadStufen()
+}
+
+// ---------- Start
+const info = () => get('/api/info')
+async function loadStart () {
+  let d
+  try { d = await info() } catch (_) { put($('podiumHome'), '<div class="note" style="grid-column:1/-1">Die Stadt schläft gerade.</div>'); put($('feed'), ''); return }
+  $('sHaeuser').textContent = fmt(d.haeuser); $('sWohnen').textContent = fmt(d.wohnen); $('sHeute').textContent = fmt(d.heute); $('sHoechste').textContent = d.hoechste || '–'
+  if (d.regel) $('regelText').textContent = `Häuser bis Stufe ${d.regel.bisStufe} werden nach ${String(d.regel.stunden).replace('.', ',')} LIVE-Stunden ohne dich eingelagert, damit auf dem Mond Platz für Neue bleibt. Deine Stufe bleibt – komm in den LIVE und schreib im Chat, dann steht dein Haus wieder.`
+  put($('podiumHome'), podium(d.top || []) + ((d.top || []).length ? '' : '<div class="note" style="grid-column:1/-1;margin-top:4px">Noch steht kein Haus auf dem Mond. Die ersten Häuser kommen im nächsten LIVE.</div>'))
+  const g = d.gemeinschaft; const j = g && (g.bauten || []).find(b => b.jetzt)
+  put($('gemStart'), j ? `<a class="now" href="#bauten" style="display:block;margin-top:12px;text-decoration:none;color:inherit"><small>Gerade im Bau · ${g.fertig + 1} von ${g.anzahl}</small><div class="nm"><span>${esc(j.icon || '🏗️')}</span>${esc(j.name)}${j.prozent != null ? `<b class="pc num">${pct(j.prozent)} %</b>` : ''}</div>${j.prozent != null ? `<div class="prog gold"><i style="width:${Math.max(pct(j.prozent), 2)}%"></i></div>` : ''}</a>` : '')
+  const feed = d.feed || []
+  put($('feed'), feed.length ? feed.map(feedHtml).join('') : '<div class="note">Gerade ist es ruhig auf dem Mond.</div>')
+}
+function feedHtml (e) {
+  const k = e.k ? ` data-k="${esc(e.k)}" role="button" tabindex="0"` : ''
+  if (e.art === 'sieg') return `<div class="ev win"${k}><span class="ic">🏆</span><span class="tx"><b>${esc(e.name)}</b> ist Sieger bei ${esc(e.spiel)}</span><time>${ago(e.min)}</time></div>`
+  if (e.art === 'zurueck') return `<div class="ev"${k}><span class="ic">🌙</span><span class="tx"><b>${esc(e.name)}</b> ist zurück in Flexhausen</span><time>${ago(e.min)}</time></div>`
+  if (e.art === 'einzug') return `<div class="ev"${k}><span class="ic">🚀</span><span class="tx"><b>${esc(e.name)}</b> ist auf dem Mond gelandet${e.hausName ? ' – ' + esc(e.hausName) : ''}</span><time>${ago(e.min)}</time></div>`
+  return `<div class="ev"${k}><span class="ic">🔧</span><span class="tx"><b>${esc(e.name)}</b> ${e.hausName ? 'hat jetzt Stufe ' + e.stufe + ' · ' + esc(e.hausName) : 'hat das Haus ausgebaut'}</span><time>${ago(e.min)}</time></div>`
+}
+function podium (top) {
+  return [[top[1], 2], [top[0], 1], [top[2], 3]].map(([x, p]) => x
+    ? `<button class="pod p${p}" type="button" data-k="${esc(x.k)}">${krone(p)}${pic(x.stufe, '', '')}<div class="nm">${esc(x.name)}</div><div class="pt">Stufe ${x.stufe} · ${esc(x.hausName)}</div></button>`
+    : `<div class="pod p${p} empty">${krone(p)}<div class="pt" style="margin-top:14px">Platz ${p}</div><div class="pt">noch frei</div></div>`).join('')
+}
+
+// ---------- Mein Haus
+function openHaus (o) {
+  haus = { q: o.q || '', k: o.k || '', search: !!o.search }
+  if (o.q) $('q-haus').value = o.q
+  if (location.hash !== '#haus') location.hash = '#haus'
+  else loadHaus(true)
+}
+async function loadHaus (first) {
+  const box = $('hausBox')
+  if (!haus.q && !haus.k) {
+    if (me.k) haus = { q: '', k: me.k, search: false }
+    else return put(box, '<div class="note">Tipp deinen TikTok-Namen ein, dann zeigen wir dir dein Haus auf dem Mond – mit Stufe, Bau-XP und Platz in der Stadt.</div>')
+  }
+  const want = haus
+  if (first) put(box, '<div class="skel" style="height:460px"></div>')
+  let d
+  try { d = await get('/api/haus?' + (want.k ? 'k=' + encodeURIComponent(want.k) : 'name=' + encodeURIComponent(want.q))) } catch (_) { if (first) put(box, ''); return }
+  if (want !== haus) return // inzwischen etwas anderes gesucht
+  if (d.found) return showHaus(d.haus)
+  if (d.vorschlaege && d.vorschlaege.length) {
+    return put(box, `<div class="card"><b style="font:600 15px var(--head);letter-spacing:.16em">MEINST DU EINS VON DIESEN HÄUSERN?</b><div class="sugg">${d.vorschlaege.map(x => rowHtml(x, '', true)).join('')}</div></div>`)
+  }
+  if (want.k && want.k === me.k) { me = { k: '', stufe: 0 }; store.set('fh-k', '') } // gemerktes Haus gibt es nicht mehr
+  put(box, '<div class="note"><b>Kein Haus unter diesem Namen.</b><br>Schau, ob der Name genau so geschrieben ist wie bei TikTok. Neue Häuser stehen kurz nach dem Einzug hier.</div>')
+}
+function showHaus (x) {
+  const mine = !!me.k && x.k === me.k
+  if (mine) me.stufe = x.stufe
+  const btn = []
+  if (!mine && haus.search) btn.push(`<button class="btn" type="button" data-act="merken" data-k="${esc(x.k)}" data-s="${x.stufe}">✓ Mein Haus – merken</button>`)
+  if (mine) btn.push('<button class="btn ghost" type="button" data-act="vergessen">Vergessen</button>')
+  if (!mine && me.k) btn.push('<button class="btn ghost" type="button" data-act="meins">← Zurück zu meinem Haus</button>')
+  btn.push('<a class="btn ghost" href="#stufen">Alle 25 Stufen</a>')
+  const nx = x.naechste
+  const r = x.regel || { bisStufe: 10, stunden: 8 }
+  const p = x.prozent == null ? null : pct(x.prozent)
+  const xp = nx
+    ? `<div class="xp"><div class="row"><span>Bau-XP bis Stufe ${nx.stufe}</span><b class="num">${p == null ? '–' : p + ' %'}</b></div><div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${p || 0}"><i style="width:${Math.max(p || 0, 2)}%"></i></div><small>Als Nächstes: ${esc(nx.name)}</small></div>`
+    : '<div class="xp"><div class="row"><span>Bau-XP</span><b>100 %</b></div><div class="prog gold"><i style="width:100%"></i></div><small>Höchste Mond-Stufe erreicht – ganz oben in Flexhausen.</small></div>'
+  const st = x.wohnt
+    ? '<div class="status ok"><span class="ic">🟢</span><div><b>Wohnt gerade in Flexhausen</b><p>Das Haus steht auf dem Mond.</p></div></div>'
+    : `<div class="status lager"><span class="ic">📦</span><div><b>Haus eingelagert</b><p>Komm in den LIVE und schreib im Chat – dann steht es wieder. Deine Stufe bleibt.${x.stufe <= r.bisStufe ? ` (Häuser bis Stufe ${r.bisStufe} werden nach ${String(r.stunden).replace('.', ',')} LIVE-Stunden ohne dich eingelagert.)` : ''}</p></div></div>`
+  put($('hausBox'), `<div class="card akte">
+    <div class="top"><span>${mine ? '🌙 Dein Haus auf dem Mond' : haus.search ? 'Hausakte · Flexhausen' : 'Haus von'}</span><span class="stamp">Platz ${fmt(x.platz)}</span></div>
+    ${pic(x.stufe, 'big', x.hausName + ' von ' + x.name)}
+    <div class="who2"><div class="nm">${esc(x.name)}</div>
+      <div class="badges"><span class="bd ${grp(x.stufe)}">Stufe ${x.stufe} von ${x.stufen || 25}</span><span class="bd">Platz ${fmt(x.platz)} von ${fmt(x.von)}</span>${x.siege ? `<span class="bd gold">🏆 ${fmt(x.siege)} ${x.siege === 1 ? 'Spiel-Sieg' : 'Spiel-Siege'}</span>` : ''}</div></div>
+    <div class="lvl"><span class="n">${x.stufe}</span><span class="t">${esc(x.hausName)}</span><span class="c">${esc((STUFEN[x.stufe - 1] || [])[1] || '')}</span></div>
+    ${xp}
+    ${st}
+    ${nx ? `<div class="next">${pic(nx.stufe, '', '')}<div><small>Das nächste Haus</small><b>Stufe ${nx.stufe} · ${esc(nx.name)}</b></div></div>` : ''}
+    <div class="pet"><span>🐾</span><div><b>Haustier</b>Bald kannst du hier dein eigenes Mond-Haustier sehen.</div></div>
+    <div class="facts"><div><b class="num">${fmt(x.platz)}</b><span>Platz in der Stadt</span></div><div><b class="num">${fmt(x.von)}</b><span>Häuser in Flexhausen</span></div></div>
+    <div class="actions">${btn.join('')}</div>
+  </div>`)
+}
+
+// ---------- Top 10 und Spiele-Rad
+function rowHtml (x, meK, plain) {
+  const p = x.platz
+  return `<button class="row1${p <= 3 && !plain ? ' r' + p : ''}${x.k === meK ? ' me' : ''}" type="button" data-k="${esc(x.k)}"${plain ? ' data-search="1"' : ''}><span class="ps">${p <= 3 && !plain ? krone(p) : p}</span>${pic(x.stufe, '', '')}<span class="nm">${esc(x.name)}<small>${esc(x.hausName)}</small></span><span class="pt">${x.stufe}<small>STUFE</small></span></button>`
+}
+async function loadTop () {
+  let d
+  try { d = await get('/api/rang' + (me.k ? '?k=' + me.k : '')) } catch (_) { put($('rangList'), '<div class="note">Die Stadt schläft gerade.</div>'); return }
+  const meK = d.ich ? d.ich.k : ''
+  $('rangCount').textContent = fmt(d.von) + ' Häuser'
+  put($('rangList'), (d.liste || []).length ? d.liste.map(x => rowHtml(x, meK)).join('') : '<div class="note">Noch steht kein Haus auf dem Mond.</div>')
+  put($('meBox'), d.ich && d.ich.platz > 10 ? `<h2>Dein Platz</h2><div class="list">${d.ich.nah.map(x => rowHtml(x, meK)).join('')}</div>` : '')
+  const s = d.sieger || []
+  put($('siegerList'), s.length ? s.map(e => feedHtml({ ...e, art: 'sieg' })).join('') : '<div class="note">Noch gibt es keinen Sieger. Die nächste Runde am Spiele-Rad kommt im LIVE.</div>')
+  const chips = l => `<div class="most">${l.map((x, i) => `<span${x.k ? ` data-k="${esc(x.k)}" role="button" tabindex="0"` : ''}>${i === 0 ? '👑' : '🏆'} ${esc(x.name)} <b class="num">${fmt(x.siege)}</b></span>`).join('')}</div>`
+  const h = d.siegeHeute || []; const w = d.meisteSiege || []
+  put($('mostBox'), (h.length ? `<h2>Meiste Siege <small>heute</small></h2>${chips(h)}` : '') + (w.length ? `<h2>Meiste Siege <small>diese Woche</small></h2>${chips(w)}` : ''))
+}
+
+// ---------- Gemeinschaftsbauten
+async function loadBauten () {
+  let d
+  try { d = await info() } catch (_) { put($('gemBox'), '<div class="note">Die Stadt schläft gerade.</div>'); return }
+  const g = d.gemeinschaft
+  if (!g || !(g.bauten || []).length) return put($('gemBox'), '<div class="note">Die Gemeinschaftsbauten werden gerade auf dem Mond vermessen. Bald siehst du hier alle Bauten der Stadt und wie weit sie sind.</div>')
+  const all = g.bauten; const fertig = all.filter(b => b.fertig).length; const jetzt = all.find(b => b.jetzt)
+  const ring = Math.round(fertig / all.length * 100)
+  const C = 2 * Math.PI * 40
+  put($('gemBox'), `<div class="card"><div class="gemTop"><div class="ring"><svg viewBox="0 0 92 92"><circle cx="46" cy="46" r="40" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="7"/><circle cx="46" cy="46" r="40" fill="none" stroke="url(#hg-gold)" stroke-width="7" stroke-linecap="round" stroke-dasharray="${(C * ring / 100).toFixed(1)} ${C.toFixed(1)}"/></svg><b class="num">${fertig}<small>VON ${all.length}</small></b></div>
+      <div><h3>Die ganze Stadt baut mit</h3><p>Flexhausen baut gemeinsam – ein Bau nach dem anderen, live im Stream. ${fertig === all.length ? 'Alle Bauten stehen!' : fertig ? fertig + ' von ' + all.length + ' stehen schon.' : 'Der erste Bau beginnt gerade.'}</p></div></div>
+    ${jetzt ? `<div class="now"><small>Gerade im Bau</small><div class="nm"><span>${esc(jetzt.icon || '🏗️')}</span>${esc(jetzt.name)}${jetzt.prozent != null ? `<b class="pc num">${pct(jetzt.prozent)} %</b>` : ''}</div>${jetzt.prozent != null ? `<div class="prog gold"><i style="width:${Math.max(pct(jetzt.prozent), 2)}%"></i></div>` : ''}</div>` : ''}
+  </div>
+  <div class="bauten">${all.map(b => {
+    const cls = b.fertig ? 'fertig' : b.jetzt ? 'jetzt' : 'geplant'
+    const mitPc = b.jetzt && b.prozent != null
+    const st = b.fertig ? '✓ fertig' : b.jetzt ? 'im Bau' + (mitPc ? ' · ' + pct(b.prozent) + ' %' : '') : 'geplant'
+    return `<div class="bau ${cls}"><span class="nr">${b.nr}</span><span class="ic">${esc(b.icon || (b.fertig ? '✓' : '🏗️'))}</span><b>${esc(b.name)}</b>${mitPc ? `<div class="prog gold"><i style="width:${Math.max(pct(b.prozent), 2)}%"></i></div>` : ''}<span class="st">${st}</span></div>`
+  }).join('')}</div>`)
+}
+
+// ---------- Stufen (ohne Datenserver, steht immer)
+let stufenFor = null
+async function loadStufen () {
+  if (me.k && !me.stufe && isOnline) { try { const d = await get('/api/haus?k=' + me.k); if (d.found) me.stufe = d.haus.stufe } catch (_) {} }
+  if (stufenFor === me.stufe) return
+  stufenFor = me.stufe
+  put($('stufenBox'), GRUPPEN.map(([from, title, icon], gi) => {
+    const to = (GRUPPEN[gi + 1] || [STUFEN.length + 1])[0] - 1
+    let cards = ''
+    for (let n = from; n <= to; n++) {
+      cards += `<div class="lv${n === me.stufe ? ' mine' : ''}">${n === me.stufe ? '<span class="here">DEIN HAUS</span>' : ''}${pic(n, '', STUFEN[n - 1][0])}<span class="no">STUFE ${n}</span><b>${esc(STUFEN[n - 1][0])}</b><small>${esc(STUFEN[n - 1][1])}</small></div>`
     }
-    var h = d.house
-    if (!own || same(own, current) || same(own, h.id)) { if (myLevel !== h.level) { myLevel = h.level; mark() } }
-    var who = el('div', 'who'); var left = el('div'); left.appendChild(el('b', '', h.name)); left.appendChild(el('small', '', '@' + h.id)); who.appendChild(left)
-    var rank = el('button', 'rank'); rank.type = 'button'; rank.setAttribute('aria-label', 'Platz ' + h.rank + ' – zur Rangliste'); rank.addEventListener('click', function () { pick('stufe'); tab('rang') }); rank.appendChild(el('b', '', '#' + fmt(h.rank))); rank.appendChild(el('small', '', 'von ' + fmt(d.totals.residents))); who.appendChild(rank)
-    out.appendChild(who)
-    var pic = el('div', 'pic')
-    if (h.img) {
-      /* the same picture stays the same element from reading to reading: nothing flickers */
-      var src = BASE + h.img
-      if (!lastImg || lastSrc !== src) { lastSrc = src; lastImg = el('img'); lastImg.crossOrigin = 'anonymous'; lastImg.alt = 'Haus der Stufe ' + h.level + ' – ' + h.house; lastImg.decoding = 'async'; lastImg.onerror = (function (lv, im) { return function () { if (im.parentNode) im.parentNode.replaceChild(drawing(lv), im); lastImg = null } })(h.level, lastImg); lastImg.src = src }
-      pic.appendChild(lastImg)
-    } else pic.appendChild(drawing(h.level))
-    out.appendChild(pic)
-    var lvl = el('div', 'lvl'); lvl.appendChild(el('span', 'n', 'Stufe ' + h.level + (d.totals && d.totals.levels ? ' von ' + d.totals.levels : ''))); lvl.appendChild(el('span', 'h', h.house)); out.appendChild(lvl)
-    var nums = el('div', 'nums')
-    var a = el('div', 'num'); a.appendChild(el('b', '', fmt(h.likes))); a.appendChild(el('small', '', 'Likes gegeben')); nums.appendChild(a)
-    var b = el('div', 'num'); b.appendChild(el('b', '', fmt(h.coins))); b.appendChild(el('small', '', 'Coins geschickt')); nums.appendChild(b)
-    out.appendChild(nums)
-    if (h.next) {
-      var bar = el('div', 'bar'); var fill = el('i'); bar.appendChild(fill); out.appendChild(bar)
-      setTimeout(function () { fill.style.width = Math.round(h.next.part * 100) + '%' }, 30)
-      var nx = el('div', 'next'); nx.appendChild(document.createTextNode('Noch ')); nx.appendChild(el('b', '', fmt(h.next.likes) + ' Likes')); nx.appendChild(document.createTextNode(' oder ')); nx.appendChild(el('b', '', fmt(h.next.coins) + ' Coins'))
-      nx.appendChild(document.createTextNode(' bis Stufe ' + h.next.level + (h.next.name ? ' – ' + h.next.name : ''))); out.appendChild(nx)
-    } else { var done = el('div', 'next'); done.appendChild(el('b', '', 'Höchste Stufe erreicht – dein Haus ist fertig.')); out.appendChild(done) }
-    var tags = el('div', 'tags')
-    tags.appendChild(el('span', 'tag ' + (h.onMap ? 'ok' : 'warn'), h.onMap ? 'steht in der Stadt' : 'gerade eingelagert – beim nächsten Like steht es wieder'))
-    if (h.damaged) tags.appendChild(el('span', 'tag warn', 'beschädigt'))
-    if (h.hotel) tags.appendChild(el('span', 'tag ok', 'Hotel Stufe ' + h.hotel.level + (h.hotel.name ? ' – ' + h.hotel.name : '')))
-    if (h.followed) tags.appendChild(el('span', 'tag', 'Haustier vor der Tür'))
-    if (h.vaultWins) tags.appendChild(el('span', 'tag', 'Tresor geknackt: ' + h.vaultWins + '×'))
-    out.appendChild(tags)
-    if (h.onMap && own && (same(own, current) || same(own, h.id))) { var mb = el('button', 'b2 back', 'Auf der Karte zeigen'); mb.type = 'button'; mb.addEventListener('click', function () { wantFind = true; tab('karte') }); out.appendChild(mb) }
-    var sb = el('button', 'b1 share', 'Haus teilen'); sb.type = 'button'; sb.addEventListener('click', function () { share(h, d) }); out.appendChild(sb)
-    var lv2 = el('div', 'live'); lv2.appendChild(el('span', 'dot' + (d.fresh ? '' : ' off'))); lv2.appendChild(el('span', '', d.fresh ? 'live – wird alle 2 Sekunden neu gelesen' : 'der Stream läuft gerade nicht – letzter Stand')); out.appendChild(lv2)
-  }
+    return `<div class="grp"><span class="tg ${grp(from)}">${icon}</span>${esc(title)}<small>Stufe ${from}–${to}</small></div><div class="gal">${cards}</div>`
+  }).join(''))
+}
 
-  /* On the fixed address (GitHub Pages) the numbers come from the game's own address, which changes now and then:
-     it stands in adresse.json next to this page. If the game does not answer there, the newest address is fetched
-     once more – straight from GitHub, past every cache – and the question is asked again. */
-  var BASE = ''
-  var STATIC = /\.github\.io$/.test(location.hostname)
-  function resolve (fresh) {
-    /* owner.github.io/repo/ – or, for the site of an organization, owner.github.io/ with the repository owner.github.io */
-    var owner = location.hostname.split('.')[0]; var repo = location.pathname.split('/').filter(Boolean)[0] || (owner + '.github.io')
-    var pages = function () { return fetch('adresse.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json() }) }
-    var api = function () { return fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/adresse.json', { headers: { Accept: 'application/vnd.github.raw+json' }, cache: 'no-store' }).then(function (r) { return r.json() }) }
-    return (fresh ? api() : pages()).catch(function () { return fresh ? pages() : api() }).then(function (j) {
-      var a = String((j && j.api) || '').replace(/\/+$/, '')
-      if (!/^https:\/\/[a-z0-9-]+\.trycloudflare\.com$/.test(a)) throw new Error('keine Adresse')
-      BASE = a; return a
-    })
+// ------------------------------------------------------------------ Bedienung
+document.addEventListener('click', e => {
+  const act = e.target.closest('[data-act]')
+  if (act) {
+    if (act.dataset.act === 'merken') { me = { k: act.dataset.k, stufe: Number(act.dataset.s) || 0 }; store.set('fh-k', me.k); stufenFor = null; $('hausBox')._h = ''; haus.search = false; loadHaus(false) }
+    if (act.dataset.act === 'vergessen') { me = { k: '', stufe: 0 }; store.set('fh-k', ''); stufenFor = null; $('hausBox')._h = ''; loadHaus(false) }
+    if (act.dataset.act === 'meins') { $('q-haus').value = ''; openHaus({ k: me.k }) }
+    return
   }
-  function get (path) {
-    var go = function () { return fetch(BASE + path, { cache: 'no-store' }).then(function (r) { if (!r.ok && r.status !== 429) throw new Error('weg'); return r.json() }) }
-    if (!STATIC) return go()
-    return (BASE ? Promise.resolve() : resolve(false)).then(go).catch(function () { return resolve(true).then(go) })
-  }
-  /* peek = somebody else's house, opened from a board or a shared link: it is shown, but the viewer's own name stays */
-  function look (name, first, peek) {
-    name = String(name || '').trim(); if (!name) return
-    current = name; clearTimeout(timer)
-    if (first) {
-      var out = $('out'); out.hidden = false; out.textContent = ''; out.appendChild(el('p', 'msg', 'suche …'))
-      if (!peek) { own = name; lastSig = ''; try { localStorage.setItem('flexhausen-name', name) } catch (e) {} }
-      try { history.replaceState(null, '', '?name=' + encodeURIComponent(name) + location.hash) } catch (e) {}
-    }
-    if (busy) { if (first) setTimeout(function () { if (current === name) look(name) }, 400); return }
-    busy = true
-    get('/api/haus?name=' + encodeURIComponent(name)).then(function (d) { if (name === current) { show(d); if (d.found) timer = setTimeout(function () { if (!document.hidden) look(current); else timer = setTimeout(function () { look(current) }, 4000) }, 2000) } })
-      .catch(function () { if (first) show({ error: 'Gerade keine Verbindung zum Spiel. Versuch es gleich noch einmal.' }); else timer = setTimeout(function () { look(current) }, 8000) })
-      .then(function () { busy = false })
-  }
-  /* (18.11.2026 ~16:30, the streamer: the page "besser geordnet, mit Kategorien unten", and nicer) – four areas with
-     a bar at the bottom: my house, the boards, all levels, how it works. */
-  function tab (t, keep) {
-    if (TABS.indexOf(t) < 0) t = 'haus'
-    TABS.forEach(function (x) { $('t-' + x).hidden = x !== t; var b = $('n-' + x); if (x === t) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current') })
-    try { history.replaceState(null, '', location.pathname + location.search + (t === 'haus' ? '' : '#' + t)) } catch (e) {}
-    tabNow = t
-    if (!keep) window.scrollTo(0, 0)
-    if (t === 'rang') board()
-    if (t === 'stufen' && !lvLoaded) levels()
-    if (t === 'karte') karte()
-    if (t === 'info') about()
-  }
-  function open (id) { $('q').value = id; tab('haus'); look(id, true, !!own && !same(own, id)) }
-  /* whether the first house needs a follow (the rule of the stream): the texts of the page follow it */
-  function follow (on) {
-    if (FOLLOW === on) return
-    FOLLOW = on
-    $('leerT').textContent = on ? 'Folge @flexhausen im LIVE – dann wird dein Haus gebaut.' : 'Komm in den LIVE von @flexhausen und lass ein Like da – dann wird dein Haus gebaut.'
-    $('how2').textContent = on ? 'Folge @flexhausen' : 'Lass ein Like da'
-    $('how2t').textContent = on ? 'Wer folgt, bekommt sein erstes Haus in der Stadt.' : 'Mit dem ersten Like steht dein erstes Haus in der Stadt.'
-    var f = $('st1'); if (f) f.textContent = on ? 'dein erstes Haus – fürs Folgen' : 'ab dem ersten Like'
-  }
-  function stats (d) {
-    var t = d.totals || {}
-    $('sH').textContent = fmt(t.residents); $('sL').textContent = fmt(t.likes); $('sN').textContent = typeof t.today === 'number' ? fmt(t.today) : '–'
-    if (typeof t.follow === 'boolean') follow(t.follow)
-    if (t.levels) { MAXLV = t.levels; $('legMax').textContent = t.levels }
-    $('tot').textContent = $('mTot').textContent = d.fresh ? 'live – wird laufend neu gelesen' : 'der Stream läuft gerade nicht – letzter Stand'
-    $('dot').className = $('mDot').className = 'dot' + (d.fresh ? '' : ' off')
-    live(!!d.fresh)
-  }
-  var plus = function (h) { return '+' + fmt(h.gain) + ' Likes' }
-  var under = function (h) { return art === 'likes' ? fmt(h.likes) + ' Likes' : art === 'neu' ? ago(h.since) : art === 'heute' || art === 'woche' ? plus(h) : 'Stufe ' + h.level }
-  var side = function (h) { return art === 'likes' ? 'Stufe ' + h.level : art === 'neu' ? 'Stufe ' + h.level + ' · ' + ago(h.since) : art === 'heute' || art === 'woche' ? 'Stufe ' + h.level + ' · ' + plus(h) : 'Stufe ' + h.level + ' · ' + fmt(h.likes) + ' Likes' }
-  var LEAD = { stufe: 'Die größten Häuser der Stadt. Tippe auf einen Namen, um das Haus zu sehen.', likes: 'Wer insgesamt die meisten Likes gegeben hat.', heute: 'Die meisten Likes seit heute 0 Uhr – jeden Tag fängt es neu an.', woche: 'Die meisten Likes seit Montag – jede Woche fängt es neu an.', neu: 'Wer zuletzt eingezogen ist.' }
-  var OF = { stufe: ' Häusern', likes: ' nach Likes', heute: ' mit Likes heute', woche: ' mit Likes diese Woche' }
-  function rowOf (h, me) {
-    var li = el('li', me ? 'i' : ''); var b = el('button', 'row'); b.type = 'button'
-    b.appendChild(el('span', 'p', art === 'neu' ? '' : h.pos + '.')); b.appendChild(el('span', 'nm', h.name)); b.appendChild(el('span', 'lv', side(h)))
-    b.addEventListener('click', function () { open(h.id) }); li.appendChild(b); return li
-  }
-  function board () {
-    var asked = art
-    get('/api/rang?art=' + asked + (own ? '&name=' + encodeURIComponent(own) : '')).then(function (d) {
-      stats(d)
-      if (asked !== art || !d.list) return
-      var sig = JSON.stringify([d.art, d.list, d.me, art === 'neu' ? Math.floor(Date.now() / 60000) : 0])
-      if (sig === lastSig) return
-      lastSig = sig
-      /* the three best stand on a podium; "who moved in last" is no contest and stays a plain list */
-      var pod = $('pod'); pod.textContent = ''; var np = art === 'neu' ? 0 : 3; pod.hidden = !np
-      ;(np ? [1, 0, 2] : []).forEach(function (ix) {
-        var h = d.list[ix]; if (!h) { pod.appendChild(el('span')); return }
-        var c = el('button', 'pd p' + (ix + 1)); c.type = 'button'; var p = el('div', 'ph')
-        if (h.img) { var im = el('img'); im.alt = ''; im.decoding = 'async'; im.src = BASE + h.img; p.appendChild(im) }
-        p.appendChild(el('span', 'md', String(ix + 1))); c.appendChild(p); c.appendChild(el('b', '', h.name)); c.appendChild(el('small', '', under(h)))
-        c.addEventListener('click', function () { open(h.id) }); pod.appendChild(c)
-      })
-      var ol = $('rl'); ol.textContent = ''
-      if (!d.list.length) ol.appendChild(el('li', 'msg', 'Noch niemand da.'))
-      d.list.slice(np).forEach(function (h) { ol.appendChild(rowOf(h, d.me && h.id === d.me.id)) })
-      var box = $('mine'); box.textContent = ''; var later = !d.me && own && (art === 'heute' || art === 'woche'); box.hidden = !d.me && !later
-      if (d.me) {
-        box.appendChild(el('h3', '', 'Dein Platz'))
-        var p2 = el('p', 'msg'); p2.appendChild(el('b', 'big', '#' + fmt(d.me.pos))); p2.appendChild(document.createTextNode(' von ' + fmt(d.count || d.totals.residents) + (OF[art] || ''))); box.appendChild(p2)
-        var near = el('ol', 'list'); d.me.near.forEach(function (h) { near.appendChild(rowOf(h, h.id === d.me.id)) }); box.appendChild(near)
-      } else if (later) { box.appendChild(el('h3', '', 'Dein Platz')); box.appendChild(el('p', 'msg', art === 'heute' ? 'Heute stehst du noch nicht in dieser Liste.' : 'Diese Woche stehst du noch nicht in dieser Liste.')) }
-    }).catch(function () { $('dot').className = 'dot off' })
-  }
-  function pick (a) {
-    art = a; lastSig = ''; $('rLead').textContent = LEAD[a] || ''
-    ARTS.forEach(function (x) { $('a-' + x).setAttribute('aria-pressed', x === a ? 'true' : 'false') })
-  }
-
-  /* ---- the map (18.11.2026 ~16:50, the streamer: "Die Stadtkarte soll live funktionieren, immer aktualisiert werden")
-     The plots lie in rings around the market place, exactly as in the game (plotGrid in stinkhausen.js): ring 2 is the
-     first one, every ring runs through dx and dz from -ring to +ring. One field per plot, its color is the level of
-     the house; it is read again every four seconds while the map is on the screen, and a field that changed flashes. */
-  var GRID = null; var CELL = {}; var mapStr = ''; var flash = {}; var mapMe = null; var mapBig = false; var mapT = 0; var mapBusy = false; var wantFind = false
-  var STOPS = ['#5f7f96', '#3fb0a8', '#57d38c', '#b8d94a', '#f5c542', '#ff9d4a', '#ff5d73', '#c86bff']
-  function grid (total) {
-    var out = []; var R = 2
-    for (var ring = 2; out.length < total; ring++) { R = ring; for (var dx = -ring; dx <= ring && out.length < total; dx++) for (var dz = -ring; dz <= ring && out.length < total; dz++) { if (Math.max(Math.abs(dx), Math.abs(dz)) === ring) out.push([dx, dz]) } }
-    return { cells: out, r: R }
-  }
-  function draw () {
-    if (!GRID) return
-    var c = $('mC'); var w = $('mIn').clientWidth; if (!w) return
-    var px = Math.round(w * Math.min(window.devicePixelRatio || 1, mapBig ? 2 : 3))
-    if (c.width !== px) { c.width = px; c.height = px }
-    var g = c.getContext('2d'); var n = GRID.r * 2 + 1; var s = px / n; var pad = Math.max(0.5, s * 0.09); var now = Date.now()
-    g.fillStyle = '#0a0d16'; g.fillRect(0, 0, px, px)
-    var p0 = (GRID.r - 1) * s + pad; var pw = 3 * s - 2 * pad
-    g.fillStyle = 'rgba(245,197,66,.18)'; g.fillRect(p0, p0, pw, pw); g.strokeStyle = '#f5c542'; g.lineWidth = Math.max(1, s * 0.14); g.strokeRect(p0, p0, pw, pw)
-    for (var i = 0; i < GRID.cells.length; i++) {
-      var lv = parseInt(mapStr.charAt(i) || '0', 36) || 0
-      g.fillStyle = flash[i] > now ? '#ffffff' : lv ? STOPS[Math.min(STOPS.length - 1, Math.floor((lv - 1) * STOPS.length / MAXLV))] : '#161b29'
-      g.fillRect((GRID.cells[i][0] + GRID.r) * s + pad, (GRID.cells[i][1] + GRID.r) * s + pad, s - 2 * pad, s - 2 * pad)
-    }
-  }
-  function place (mark, i) {
-    if (!GRID || i == null || i < 0 || !GRID.cells[i]) { mark.hidden = true; return }
-    var n = GRID.r * 2 + 1
-    mark.style.left = ((GRID.cells[i][0] + GRID.r + 0.5) / n * 100) + '%'; mark.style.top = ((GRID.cells[i][1] + GRID.r + 0.5) / n * 100) + '%'; mark.hidden = false
-  }
-  function center (i) {
-    if (!GRID) return
-    var w = $('mWrap'); var n = GRID.r * 2 + 1; var c = i != null && i >= 0 && GRID.cells[i] ? GRID.cells[i] : [0, 0]; var W = $('mIn').clientWidth
-    w.scrollLeft = (c[0] + GRID.r + 0.5) / n * W - w.clientWidth / 2; w.scrollTop = (c[1] + GRID.r + 0.5) / n * W - w.clientHeight / 2
-  }
-  function zoom (on) {
-    mapBig = on; $('mIn').className = 'min' + (on ? ' big' : ''); $('mZoom').textContent = on ? 'Kleiner' : 'Größer'; draw()
-  }
-  function happened (list) {
-    var ol = $('mNews'); ol.textContent = ''
-    if (!list || !list.length) { ol.appendChild(el('li', 'msg', 'Gerade ist es ruhig.')); return }
-    list.forEach(function (e) {
-      var li = el('li'); var nm = el('span', 'nm'); nm.appendChild(el('b', '', e.name)); nm.appendChild(document.createTextNode(e.in ? ' ist eingezogen' : ' baut aus' + (e.house ? ': ' + e.house : '')))
-      var sec = Math.max(0, Math.round((Date.now() - e.t) / 1000)); li.appendChild(nm); li.appendChild(el('small', '', sec < 60 ? 'vor ' + sec + ' Sek.' : ago(e.t))); ol.appendChild(li)
-    })
-  }
-  function karte () {
-    clearTimeout(mapT)
-    if (tabNow !== 'karte' || mapBusy) return
-    mapBusy = true
-    get('/api/karte' + (own ? '?name=' + encodeURIComponent(own) : '')).then(function (d) {
-      stats(d)
-      if (!GRID || GRID.cells.length !== d.n) { GRID = grid(d.n); CELL = {}; GRID.cells.forEach(function (c, i) { CELL[(c[0] + GRID.r) * 100 + c[1] + GRID.r] = i }); mapStr = '' }
-      var m = String(d.map || ''); var changed = m !== mapStr
-      if (mapStr && mapStr.length === m.length) for (var i = 0; i < m.length; i++) if (m.charAt(i) !== mapStr.charAt(i)) flash[i] = Date.now() + 1300
-      mapStr = m; draw(); if (changed) setTimeout(draw, 1400)
-      mapMe = d.me; place($('mPin'), d.me && d.me.plot != null ? d.me.plot : -1)
-      var hint = $('mMe'); hint.hidden = !(d.me && d.me.plot == null)
-      if (!hint.hidden) hint.textContent = 'Dein Haus ist gerade eingelagert und steht deshalb nicht auf der Karte. Beim nächsten Like steht es wieder.'
-      happened(d.news)
-      if (wantFind) { wantFind = false; findMine() }
-    }).catch(function () { $('mDot').className = 'dot off' }).then(function () { mapBusy = false; if (tabNow === 'karte') mapT = setTimeout(karte, document.hidden ? 9000 : 4000) })
-  }
-  function tapped (e) {
-    if (!GRID || !mapStr) return
-    var r = $('mC').getBoundingClientRect(); var n = GRID.r * 2 + 1
-    var gx = Math.floor((e.clientX - r.left) / r.width * n); var gz = Math.floor((e.clientY - r.top) / r.height * n)
-    var i = CELL[gx * 100 + gz]; var box = $('mInfo'); box.hidden = false; box.textContent = ''
-    if (i == null) { place($('mSel'), -1); box.appendChild(el('p', 'msg', Math.abs(gx - GRID.r) <= 1 && Math.abs(gz - GRID.r) <= 1 ? 'Das ist der Marktplatz in der Mitte der Stadt.' : 'Hier ist kein Grundstück.')); return }
-    place($('mSel'), i)
-    if (!(parseInt(mapStr.charAt(i), 36) > 0)) { box.appendChild(el('p', 'msg', 'Grundstück ' + (i + 1) + ' ist gerade frei.')); return }
-    box.appendChild(el('p', 'msg', 'lädt …'))
-    get('/api/platz?nr=' + i).then(function (d) {
-      box.textContent = ''
-      if (!d.found) { box.appendChild(el('p', 'msg', 'Grundstück ' + (i + 1) + ' ist gerade frei.')); return }
-      var h = d.house; var who = el('div', 'who'); var left = el('div'); left.appendChild(el('b', '', h.name)); left.appendChild(el('small', '', '@' + h.id + ' · Grundstück ' + (i + 1))); who.appendChild(left)
-      var lv = el('div', 'rank'); lv.appendChild(el('b', '', String(h.level))); lv.appendChild(el('small', '', 'Stufe')); who.appendChild(lv); box.appendChild(who)
-      var b = el('button', 'b2 back', 'Haus ansehen'); b.type = 'button'; b.addEventListener('click', function () { open(h.id) }); box.appendChild(b)
-    }).catch(function () { box.textContent = ''; box.appendChild(el('p', 'msg', 'Gerade keine Verbindung zum Spiel.')) })
-  }
-  function findMine () {
-    if (!own) { tab('haus'); try { $('q').focus() } catch (e) {} return }
-    if (mapMe && mapMe.plot != null) { if (!mapBig) zoom(true); place($('mPin'), mapMe.plot); setTimeout(function () { center(mapMe.plot) }, 60); return }
-    var box = $('mInfo'); box.hidden = false; box.textContent = ''
-    box.appendChild(el('p', 'msg', mapMe ? 'Dein Haus ist gerade eingelagert und steht deshalb nicht auf der Karte. Beim nächsten Like steht es wieder.' : 'Unter deinem Namen steht noch kein Haus in der Stadt.'))
-  }
-
-  /* ---- stream times and the series (read from the game once a minute while this area is open) */
-  var clock = function (t) { return new Date(t).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) }
-  var dayOf = function (t) {
-    var a = new Date(t); a.setHours(0, 0, 0, 0); var b = new Date(); b.setHours(0, 0, 0, 0); var diff = Math.round((b - a) / 86400000)
-    return diff === 0 ? 'Heute' : diff === 1 ? 'Gestern' : new Date(t).toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' })
-  }
-  function about () {
-    if (Date.now() - infoAt < 30000) return
-    infoAt = Date.now()
-    get('/api/info').then(function (d) {
-      stats(d)
-      var s = d.sessions || []; var on = !!d.fresh && s.length > 0
-      $('zNow').textContent = on ? 'Jetzt live – seit ' + dayOf(s[0].from).toLowerCase() + ' ' + clock(s[0].from) + ' Uhr.' : s.length ? 'Gerade nicht live. Zuletzt: ' + dayOf(s[0].to).toLowerCase() + ' bis ' + clock(s[0].to) + ' Uhr.' : 'Gerade nicht live.'
-      $('zNote').hidden = !d.note; $('zNote').textContent = d.note || ''
-      var ol = $('zList'); ol.textContent = ''
-      s.slice(on ? 1 : 0).forEach(function (x) { var li = el('li'); li.appendChild(el('code', '', dayOf(x.from))); li.appendChild(el('span', '', clock(x.from) + ' – ' + clock(x.to) + ' Uhr')); ol.appendChild(li) })
-      var v = $('vList'); v.textContent = ''
-      ;(d.videos || []).forEach(function (x) { if (!/^https:\/\/www\.tiktok\.com\/@flexhausen\/video\/\d+$/.test(x.url)) return; var a = el('a', 'b2', x.titel); a.href = x.url; a.target = '_blank'; a.rel = 'noopener'; v.appendChild(a) })
-    }).catch(function () { infoAt = 0 })
-  }
-
-  /* ---- the idea box: one short text to the team, answered with a ticket number; nothing of it is shown here */
-  function post (path, body) {
-    var go = function () { return fetch(BASE + path, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(body), cache: 'no-store' }).then(function (r) { return r.json() }) }
-    if (!STATIC) return go()
-    return (BASE ? Promise.resolve() : resolve(false)).then(go).catch(function () { return resolve(true).then(go) })
-  }
-  function idea () {
-    var t = $('ideeT').value.replace(/\s+/g, ' ').trim(); var m = $('ideeM'); m.hidden = false
-    if (t.length < 8) { m.textContent = 'Schreib ein bisschen mehr – mindestens ein kurzer Satz.'; return }
-    $('ideeB').disabled = true; m.textContent = 'wird gesendet …'
-    post('/api/idee', { text: t, name: own || '' }).then(function (d) {
-      if (d && d.ok) { $('ideeT').value = ''; $('ideeN').textContent = '0 / 400'; m.textContent = 'Danke! Deine Idee ist notiert – Ticket #' + d.ticket + '.' } else m.textContent = (d && d.error) || 'Das hat gerade nicht geklappt. Versuch es gleich noch einmal.'
-    }).catch(function () { m.textContent = 'Gerade keine Verbindung. Versuch es gleich noch einmal.' }).then(function () { $('ideeB').disabled = false })
-  }
-  /* the viewer's own level in the list of all levels: his is marked, the ones below are done */
-  function mark () {
-    var all = $('st').children
-    for (var i = 0; i < all.length; i++) {
-      var lv = Number(all[i].getAttribute('data-l')); if (!lv) continue
-      var tag = all[i].querySelector('em'); if (tag) all[i].removeChild(tag)
-      all[i].className = 's' + (myLevel && lv === myLevel ? ' me' : '')
-      if (myLevel && lv <= myLevel) all[i].appendChild(el('em', '', lv === myLevel ? 'Dein Haus' : 'geschafft'))
-    }
-  }
-  function levels () {
-    get('/api/stufen').then(function (d) {
-      var box = $('st'); box.textContent = ''; $('stH').textContent = 'Alle ' + d.count + ' Stufen'; lvLoaded = true
-      ;(d.levels || []).forEach(function (s) {
-        var c = el('div', 's'); c.setAttribute('data-l', s.level); var p = el('div', 'p')
-        if (s.img) { var im = el('img'); im.loading = 'lazy'; im.decoding = 'async'; im.alt = 'Stufe ' + s.level + ' – ' + s.name; im.src = BASE + s.img; p.appendChild(im) }
-        c.appendChild(p); c.appendChild(el('b', '', 'Stufe ' + s.level)); c.appendChild(el('span', '', s.name))
-        var sm = el('small', '', s.level === 1 ? (FOLLOW ? 'dein erstes Haus – fürs Folgen' : 'ab dem ersten Like') : 'ab ' + fmt(s.likes) + ' Likes oder ' + fmt(s.coins) + ' Coins'); if (s.level === 1) sm.id = 'st1'
-        c.appendChild(sm); box.appendChild(c)
-      })
-      mark()
-    }).catch(function () { setTimeout(levels, 6000) })
-  }
-
-  $('f').addEventListener('submit', function (e) { e.preventDefault(); look($('q').value, true); $('q').blur() })
-  $('backMine').addEventListener('click', function () { if (own) { $('q').value = own.replace(/^@+/, ''); look(own, true) } })
-  $('toInfo').addEventListener('click', function () { tab('info') })
-  TABS.forEach(function (x) { $('n-' + x).addEventListener('click', function () { tab(x) }) })
-  ARTS.forEach(function (x) { $('a-' + x).addEventListener('click', function () { pick(x); board() }) })
-  $('mC').addEventListener('click', tapped)
-  $('mZoom').addEventListener('click', function () { zoom(!mapBig); setTimeout(function () { center(mapMe && mapMe.plot != null ? mapMe.plot : -1) }, 60) })
-  $('mFind').addEventListener('click', findMine)
-  $('ideeB').addEventListener('click', idea)
-  $('ideeT').addEventListener('input', function () { $('ideeN').textContent = this.value.length + ' / 400' })
-  window.addEventListener('resize', function () { if (tabNow === 'karte') draw() })
-  document.addEventListener('visibilitychange', function () { if (!document.hidden && tabNow === 'karte') karte() })
-  setInterval(function () { if (!document.hidden && tabNow === 'info') about() }, 60000)
-  var start = ''; var asked = ''
-  try { own = localStorage.getItem('flexhausen-name') || '' } catch (e) {}
-  try { asked = new URLSearchParams(location.search).get('name') || '' } catch (e) {}
-  start = asked || own
-  var first = String(location.hash || '').replace('#', '')
-  if (start) { $('q').value = start.replace(/^@+/, ''); look(start, true, !!own && !same(own, start)) }
-  tab(first, true)
-  board(); setInterval(function () { if (!document.hidden) board() }, 10000)
-})()
+  const item = e.target.closest('[data-k]')
+  if (item) openHaus({ k: item.dataset.k, search: !!item.dataset.search })
+})
+document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.matches && e.target.matches('[data-k][role="button"]')) e.target.click() })
+$('f-haus').addEventListener('submit', e => { e.preventDefault(); const q = $('q-haus').value.trim(); if (q) openHaus({ q, search: true }) })
+$('f-start').addEventListener('submit', e => { e.preventDefault(); const q = $('q-start').value.trim(); if (q) openHaus({ q, search: true }) })
+// „Mein Haus“ unten antippen = immer zurück zum eigenen Haus (nicht zum zuletzt angesehenen fremden)
+document.querySelector('nav.tabs a[data-v="haus"]').addEventListener('click', () => { resetHaus = true; if (view === 'haus') show('haus') })
+window.addEventListener('hashchange', route)
+document.addEventListener('visibilitychange', () => { if (!document.hidden) load(false) })
+setInterval(() => { if (!document.hidden && view !== 'stufen') load(false) }, POLL_MS)
+// direkter Link mit ?name=… : gleich das Haus zeigen
+try { const q = new URLSearchParams(location.search).get('name'); if (q) { haus = { q: q.slice(0, 40), k: '', search: true }; $('q-haus').value = haus.q; if (location.hash !== '#haus') history.replaceState(null, '', location.pathname + location.search + '#haus') } } catch (_) {}
+route()
+// Bilder aus dem Spiel und die Stufen-Namen vom Stadt-Rechner kommen nach – dann einmal alles neu zeichnen
+const neuZeichnen = () => { stufenFor = -1; document.querySelectorAll('[id]').forEach(el => { el._h = '' }); load(false) }
+bilderListe().then(n => { if (n) neuZeichnen() })
+stufenNamen().then(() => { if (namenGeholt) neuZeichnen() })
 </script>
 </body>
 </html>
